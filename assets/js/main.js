@@ -81,7 +81,10 @@
     const category = categories[key];
     if (!category) { mount.innerHTML = '<div class="container page-hero"><h1>Section not found</h1><a href="index.html">Return home</a></div>'; return; }
     document.title = `${category.label} — Publication Today`;
+    const canonical = $('link[rel=canonical]'); if (canonical) canonical.href = `https://publication.today/section.html?category=${encodeURIComponent(key)}`;
     const description = $('meta[name="description"]'); if (description) description.content = category.description;
+    const ogTitle = $('meta[property="og:title"]'); if (ogTitle) ogTitle.content = `${category.label} — Publication Today`;
+    const ogDescription = $('meta[property="og:description"]'); if (ogDescription) ogDescription.content = category.description;
     const items = state.articles.filter(article => article.category === key);
     mount.innerHTML = `<div class="container"><section class="page-hero"><div class="breadcrumb"><a href="index.html">Home</a> / ${category.label}</div><p class="eyebrow">THE ${category.label.toUpperCase()} EDIT</p><h1>${category.label} <i>for real life.</i></h1><p>${category.description} Explore our guides and ideas, made to help you ask better questions and take informed next steps.</p></section><section class="section-block" style="padding-top:42px"><div class="section-heading"><div><p class="eyebrow">EXPLORE THE SECTION</p><h2>Stories to <i>start with.</i></h2></div><p class="section-intro">${items.length} stories in this section</p></div><div class="article-grid">${items.map(card).join("")}</div><p style="margin-top:40px"><a class="button button-outline" href="index.html">← Back to all topics</a></p></section></div>`;
   };
