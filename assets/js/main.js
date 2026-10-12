@@ -14,7 +14,7 @@
   const articleUrl = article => `articles/${encodeURIComponent(article.slug)}.html`;
   const card = article => {
     const category = categories[article.category] || categories.wellness;
-    return `<article class="article-card"><a class="article-visual visual-${safe(article.category)}" href="${articleUrl(article)}" aria-label="Read ${safe(article.title)}"><span class="visual-glyph" aria-hidden="true">${category.glyph}</span></a><div class="article-meta"><span class="article-category">${category.label}</span><span>${safe(article.readTime || "5 min read")}</span></div><h3><a href="${articleUrl(article)}">${safe(article.title)}</a></h3><p>${safe(article.excerpt)}</p><a class="card-read" href="${articleUrl(article)}">Read story ↗</a></article>`;
+    return `<article class="article-card"><a class="article-visual visual-${safe(article.category)}" href="${articleUrl(article)}" aria-label="Read ${safe(article.title)}"><img src="assets/images/${safe(article.category)}.svg" alt="" loading="lazy" decoding="async"><span class="visual-glyph" aria-hidden="true">${category.glyph}</span></a><div class="article-meta"><span class="article-category">${category.label}</span><span>${safe(article.readTime || "5 min read")}</span></div><h3><a href="${articleUrl(article)}">${safe(article.title)}</a></h3><p>${safe(article.excerpt)}</p><a class="card-read" href="${articleUrl(article)}">Read story ↗</a></article>`;
   };
   const matching = () => state.articles.filter(article => {
     const categoryMatch = state.filter === "all" || article.category === state.filter;
