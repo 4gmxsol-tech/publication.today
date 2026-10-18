@@ -77,11 +77,12 @@
   };
   const initSectionPage = () => {
     const mount = $("#section-content"); if (!mount) return;
-    const key = new URLSearchParams(location.search).get("category") || "fitness";
+    const pathCategory = location.pathname.match(/^\/section-([a-z]+)\.html$/)?.[1];
+    const key = pathCategory || new URLSearchParams(location.search).get("category") || "fitness";
     const category = categories[key];
     if (!category) { mount.innerHTML = '<div class="container page-hero"><h1>Section not found</h1><a href="index.html">Return home</a></div>'; return; }
     document.title = `${category.label} — Publication Today`;
-    const canonical = $('link[rel=canonical]'); if (canonical) canonical.href = `https://publication.today/section.html?category=${encodeURIComponent(key)}`;
+    const canonical = $('link[rel=canonical]'); if (canonical) canonical.href = `https://publication.today/section-${encodeURIComponent(key)}.html`;
     const description = $('meta[name="description"]'); if (description) description.content = category.description;
     const ogTitle = $('meta[property="og:title"]'); if (ogTitle) ogTitle.content = `${category.label} — Publication Today`;
     const ogDescription = $('meta[property="og:description"]'); if (ogDescription) ogDescription.content = category.description;
