@@ -1,0 +1,67 @@
+name: Validate static site
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Validate article data and sitemap
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import xml.etree.ElementTree as ET
+
+          root = pathlib.Path(".")
+          articles = json.loads((root / "data/articles.json").read_text(encoding="utf-8"))
+          slugs = [item["slug"] for item in articles]
+          assert len(slugs) == len(set(slugs)), "Duplicate article slugs"
+          assert all(item.get("title") and item.get("excerpt") and item.get("category") for item in articles), "Article missing required metadata"
+
+          sitemap = ET.parse(root / "sitemap.xml").getroot()
+          ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [node.text.strip() for node in sitemap.findall("sm:url/sm:loc", ns)]
+          assert len(urls) == len(set(urls)), "Duplicate sitemap URLs"
+          for url in urls:
+              path = url.split("publication.today/", 1)[-1]
+              path = path or "index.html"
+              if not path:
+                  path = "index.html"
+              target = root / path
+              assert target.is_file(), f"Sitemap target does not exist: {url} -> {target}"
+
+          slug = "champions-league-fixtures-week-barcelona-psg-real-madrid-leipzig-october-2026"
+          article = next((item for item in articles if item["slug"] == slug), None)
+          assert article and article["category"] == "football", "Champions League preview missing from article feed"
+          assert (root / "articles" / f"{slug}.html").is_file(), "Static article page is missing"
+          section = (root / "section-football.html").read_text(encoding="utf-8")
+          assert f"articles/{slug}.html" in section, "Football section does not link to the new preview"
+          homepage = (root / "index.html").read_text(encoding="utf-8")
+          assert 'data-filter="football"' in homepage and 'href="section-football.html"' in homepage, "Homepage football navigation/filter missing"
+          print(f"Validated {len(articles)} articles and {len(urls)} sitemap URLs.")
+          PY
+      - name: Check new article metadata and references
+        run: |
+          python - <<'PY'
+          import json, pathlib, re
+          p = pathlib.Path("articles/champions-league-fixtures-week-barcelona-psg-real-madrid-leipzig-october-2026.html")
+          html = p.read_text(encoding="utf-8")
+          assert "<title>" in html and 'rel="canonical"' in html
+          assert "Paris Saint-Germain vs Barcelona" in html
+          assert "Real Madrid vs RB Leipzig" in html
+          assert "La Liga fixture, not a Champions League match" in html
+          assert "uefa.com" in html and "fcbarcelona.com" in html and "realmadrid.com" in html
+          scripts = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+          assert len(scripts) == 1
+          json.loads(scripts[0])
+          print("Article metadata, official references, and JSON-LD are valid.")
+          PY
