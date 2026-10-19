@@ -7,7 +7,8 @@
     skincare: { label: "Skincare", glyph: "◌", description: "Understand routines, ingredients and the basics of caring for skin." },
     nutrition: { label: "Nutrition", glyph: "⌁", description: "Food knowledge and balanced ideas for everyday choices." },
     wellness: { label: "Wellness", glyph: "☼", description: "Small habits for a more grounded, intentional everyday." },
-    beauty: { label: "Beauty", glyph: "✧", description: "Personal care, considered products and simple rituals." }
+    beauty: { label: "Beauty", glyph: "✧", description: "Personal care, considered products and simple rituals." },
+    football: { label: "Football", glyph: "⚽", description: "Practical football fitness, match-day nutrition, hydration and recovery guides for recreational players." }
   };
   const state = { articles: [], filter: "all", query: "", visible: 9 };
   const safe = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
