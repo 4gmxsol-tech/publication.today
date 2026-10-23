@@ -1,0 +1,60 @@
+name: Generate and validate sitemap
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "articles/**"
+      - "data/articles.json"
+      - "index.html"
+      - "section*.html"
+      - "privacy.html"
+      - "scripts/generate-sitemap.py"
+      - ".github/workflows/sitemap.yml"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "articles/**"
+      - "data/articles.json"
+      - "index.html"
+      - "section*.html"
+      - "privacy.html"
+      - "scripts/generate-sitemap.py"
+      - ".github/workflows/sitemap.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Generate sitemap
+        run: python scripts/generate-sitemap.py
+      - name: Validate sitemap coverage
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import xml.etree.ElementTree as ET
+
+          root = pathlib.Path(".")
+          feed = json.loads((root / "data/articles.json").read_text(encoding="utf-8"))
+          ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          sitemap = ET.parse(root / "sitemap.xml").getroot()
+          urls = [node.text.strip() for node in sitemap.findall("sm:url/sm:loc", ns)]
+          assert len(urls) == len(set(urls)), "Duplicate sitemap URLs"
+          expected = {"https://publication.today/", *[
+              f"https://publication.today/articles/{item['slug']}.html" for item in feed
+          ]}
+          missing = expected - set(urls)
+          assert not missing, f"Sitemap missing URLs: {sorted(missing)}"
+          for url in urls:
+              path = url.removeprefix("https://publication.today/")
+              target = root / (path or "index.html")
+              assert target.is_file(), f"Sitemap target does not exist: {url}"
+          print(f"OK: {len(feed)} articles, {len(urls)} URLs, no duplicates or missing targets.")
+          PY
