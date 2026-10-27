@@ -1,5 +1,116 @@
 [
   {
+    "slug": "football-match-time-zone-converter",
+    "category": "football",
+    "title": "Football Match Time Zone Converter: Convert Kick-off Times",
+    "excerpt": "Convert a match time from a selected source timezone into another timezone using your browser’s timezone database.",
+    "readTime": "4 min read",
+    "tags": [
+      "football time zone converter",
+      "convert football kick off time",
+      "match time converter"
+    ],
+    "body": [
+      {
+        "heading": "How time-zone conversion works",
+        "text": "Choose the date, local kick-off time and source timezone, then select the timezone where you will watch. The conversion uses the browser’s Intl timezone data, including daylight-saving rules where supported."
+      },
+      {
+        "heading": "Always verify official kick-off times",
+        "text": "Enter the timezone shown by the official competition or club. If the match is rescheduled, update the date and time before relying on the conversion."
+      }
+    ]
+  },
+  {
+    "slug": "football-match-countdown",
+    "category": "football",
+    "title": "Football Match Countdown: Build a Countdown to Kick-off",
+    "excerpt": "Set a match date and kick-off time to create a live countdown, with timezone-aware guidance for planning match day.",
+    "readTime": "3 min read",
+    "tags": [
+      "football match countdown",
+      "kick off countdown",
+      "match countdown timer"
+    ],
+    "body": [
+      {
+        "heading": "How to use the countdown",
+        "text": "Choose the scheduled kick-off date and time on your device, then start the countdown. Check the club or competition’s official fixture page for postponements and local kick-off time changes."
+      },
+      {
+        "heading": "Why confirm the fixture?",
+        "text": "Fixture times can change due to broadcast schedules, competition decisions or local circumstances. The timer is only as accurate as the date and time you enter."
+      }
+    ]
+  },
+  {
+    "slug": "daily-water-intake-estimator",
+    "category": "wellness",
+    "title": "Daily Water Intake Estimator: A Practical Hydration Guide",
+    "excerpt": "Estimate a general daily fluid starting point and learn how heat, exercise, diet and health can change hydration needs.",
+    "readTime": "5 min read",
+    "tags": [
+      "daily water intake calculator",
+      "how much water should I drink",
+      "hydration calculator"
+    ],
+    "body": [
+      {
+        "heading": "How much water do you need?",
+        "text": "Fluid needs vary with climate, activity, body size, diet, pregnancy and health. This estimator offers a simple planning starting point, not a universal target or medical instruction."
+      },
+      {
+        "heading": "Listen to context",
+        "text": "Hot weather and exercise can increase fluid losses. Food also contributes water. People with conditions requiring fluid restriction, or those taking relevant medicines, should follow their clinician’s advice rather than a general calculator."
+      }
+    ]
+  },
+  {
+    "slug": "bmi-calculator",
+    "category": "health",
+    "title": "BMI Calculator: Calculate Body Mass Index",
+    "excerpt": "Calculate adult BMI from height and weight, see the standard category ranges, and understand why BMI is only a screening measure.",
+    "readTime": "5 min read",
+    "tags": [
+      "BMI calculator",
+      "body mass index calculator",
+      "calculate BMI"
+    ],
+    "body": [
+      {
+        "heading": "What is BMI?",
+        "text": "Body mass index is weight in kilograms divided by height in metres squared. It is a screening measure and does not directly measure body fat or diagnose a health condition."
+      },
+      {
+        "heading": "Understanding the result",
+        "text": "For adults, standard categories commonly classify BMI below 18.5 as underweight, 18.5–24.9 as healthy weight, 25–29.9 as overweight, and 30 or above as obesity. These ranges do not apply to children and teenagers and may not fully reflect individual health."
+      }
+    ]
+  },
+  {
+    "slug": "daily-calorie-needs-calculator",
+    "category": "health",
+    "title": "Daily Calorie Needs Calculator: Estimate Your Daily Energy Needs",
+    "excerpt": "Estimate daily calorie needs from age, height, weight and activity, with clear notes on the limits of equation-based estimates.",
+    "readTime": "6 min read",
+    "tags": [
+      "daily calorie needs calculator",
+      "calorie calculator",
+      "daily energy needs",
+      "TDEE calculator"
+    ],
+    "body": [
+      {
+        "heading": "What does this estimate mean?",
+        "text": "This tool uses a commonly used adult energy equation and an activity multiplier to estimate maintenance calories. Actual needs can differ with body composition, health, age and day-to-day movement."
+      },
+      {
+        "heading": "How to use the result",
+        "text": "Treat the result as a starting estimate rather than a prescription. Food labels, activity estimates and equation results all contain uncertainty. Avoid aggressive restriction and seek qualified advice for individual medical needs."
+      }
+    ]
+  },
+  {
     "slug": "daily-protein-intake-calculator",
     "category": "nutrition",
     "title": "Daily Protein Intake Calculator: Estimate Your Needs by Weight",
