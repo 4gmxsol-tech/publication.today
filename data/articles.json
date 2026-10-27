@@ -1,5 +1,42 @@
 [
   {
+    "slug": "daily-protein-intake-calculator",
+    "category": "nutrition",
+    "title": "Daily Protein Intake Calculator: Estimate Your Needs by Weight",
+    "excerpt": "Estimate a general daily protein range using your body weight and activity level. Use the free calculator, understand the assumptions, and learn when to seek individual advice.",
+    "readTime": "5 min read",
+    "date": "October 27, 2026",
+    "tags": [
+      "daily protein intake calculator",
+      "how much protein do I need daily",
+      "protein intake by body weight",
+      "daily protein needs for adults",
+      "protein calculator"
+    ],
+    "body": [
+      {
+        "heading": "How much protein do adults need each day?",
+        "text": "Protein helps build and maintain tissues and supports normal body functions. Needs vary with body size, age, health, energy intake and training. A commonly used baseline for healthy adults is around 0.8 grams per kilogram of body weight per day; people who exercise regularly or train intensely may need more. There is no single target that fits everyone."
+      },
+      {
+        "heading": "How the calculator works",
+        "text": "The tool converts pounds to kilograms when needed, then multiplies body weight by the selected grams-per-kilogram factor. The activity options are broad examples, not strict categories or clinical rules. The result is rounded to the nearest gram."
+      },
+      {
+        "heading": "What foods provide protein?",
+        "text": "Sources include beans, lentils, chickpeas, tofu, nuts and seeds, eggs, dairy foods, fish, poultry and meat. A varied eating pattern can provide protein alongside fibre, vitamins, minerals and energy."
+      },
+      {
+        "heading": "Is more protein always better?",
+        "text": "No. The calculator does not assess total diet, energy needs, medical history or individual goals. People with kidney disease or other conditions affecting protein needs, people who are pregnant or breastfeeding, adolescents, and anyone following a prescribed diet should seek advice from a qualified health professional."
+      },
+      {
+        "heading": "Frequently asked questions",
+        "text": "This calculator is intended for adults only. It can provide a broad starting estimate, but training, energy intake, recovery and overall diet also matter. Children and teenagers need age-appropriate guidance."
+      }
+    ]
+  },
+  {
     "slug": "champions-league-matchday-4-preview-barcelona-aston-villa-real-madrid-aek-november-2026",
     "category": "football",
     "title": "Champions League Matchday 4 Preview: Barcelona vs Aston Villa and Real Madrid at AEK Athens",
