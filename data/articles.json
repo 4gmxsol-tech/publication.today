@@ -1,5 +1,38 @@
 [
   {
+    "slug": "walking-calories-calculator",
+    "category": "fitness",
+    "title": "Walking Calories Calculator: Estimate Calories Burned by Walking",
+    "excerpt": "Estimate calories burned during a walk using your weight, walking time and pace, with a transparent MET-based formula and clear limits.",
+    "readTime": "6 min read",
+    "tags": [
+      "walking calories calculator",
+      "calories burned walking",
+      "calories burned walking 30 minutes",
+      "walking calorie calculator",
+      "calories burned per mile walking",
+      "MET walking calculator"
+    ],
+    "body": [
+      {
+        "heading": "How many calories does walking burn?",
+        "text": "Energy use depends on body weight, duration, pace, terrain and individual differences. This calculator estimates gross calories and the approximate calories above resting energy using activity intensity values from the 2024 Adult Compendium of Physical Activities."
+      },
+      {
+        "heading": "How the walking calories calculator works",
+        "text": "The estimate uses kcal per minute = MET × 3.5 × body weight in kilograms ÷ 200. Multiply by walking minutes for gross calories. Subtracting 1 MET gives an approximate net estimate above resting energy. The result is a population-level estimate, not a direct measurement of your metabolism."
+      },
+      {
+        "heading": "What affects calories burned while walking?",
+        "text": "Walking pace and duration, body weight, hills, surface, carrying a load, fitness and individual physiology can all change energy expenditure. This calculator assumes level, firm ground and does not measure heart rate or incline."
+      },
+      {
+        "heading": "Make walking a sustainable habit",
+        "text": "Start from a duration that feels manageable, then build consistency. Explore our walking fitness guide and beginner strength-training guide for practical ways to build movement into a routine."
+      }
+    ]
+  },
+  {
     "slug": "sleep-calculator-bedtime",
     "category": "wellness",
     "title": "Sleep Calculator: Find Bedtimes Based on Your Wake-Up Time",
