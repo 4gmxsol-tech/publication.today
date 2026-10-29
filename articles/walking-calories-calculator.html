@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Walking Calories Calculator: Calories Burned by Walking — Publication Today</title>
+<meta name="description" content="Estimate calories burned walking for 15, 30 or 60 minutes. Enter your weight, duration and walking pace to see gross and net calorie estimates using published MET values.">
+<link rel="canonical" href="https://publication.today/articles/walking-calories-calculator.html">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Publication Today">
+<meta property="og:title" content="Walking Calories Calculator: Estimate Calories Burned by Walking">
+<meta property="og:description" content="Estimate calories burned walking from body weight, duration and pace. See gross and net estimates and how the formula works.">
+<meta property="og:url" content="https://publication.today/articles/walking-calories-calculator.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Walking Calories Calculator","applicationCategory":"HealthApplication","operatingSystem":"Any","url":"https://publication.today/articles/walking-calories-calculator.html","description":"Estimate calories burned walking from body weight, duration and pace using published MET values. Results are approximate.","publisher":{"@type":"Organization","name":"Publication Today","url":"https://publication.today/"}}</script>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+.walk-tool{background:#fffdf8;border:1px solid #deded4;border-radius:18px;padding:clamp(20px,4vw,34px);margin:28px 0}
+.walk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.walk-field label{display:block;font-weight:700;margin-bottom:7px}
+.walk-field input,.walk-field select{width:100%;padding:12px;border:1px solid #c9cabe;border-radius:9px;background:#fff;min-height:46px}
+.walk-action{border:0;border-radius:9px;background:#253d31;color:white;padding:13px 18px;font-weight:700;cursor:pointer;margin-top:18px}
+.walk-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin-top:20px}
+.walk-result{background:#e9f0e5;border-radius:12px;padding:16px}.walk-result strong{font-size:27px;display:block}.walk-result span{font-size:13px}
+.walk-note{font-size:13px;color:#5f665b}.walk-error{color:#8d2f22;font-weight:700}
+</style>
+</head>
+<body>
+<div class="topline"><div class="container topline-inner"><span>Curiosity for a healthier, better everyday.</span><span>THE FITNESS EDIT</span></div></div>
+<header class="site-header"><div class="container header-main"><a class="wordmark" href="../index.html">publication<span>.</span><em>today</em></a><button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav class="main-nav" id="main-nav" aria-label="Main navigation"><a href="../section-fitness.html" aria-current="page">Fitness</a><a href="../section-health.html">Health</a><a href="../section-nutrition.html">Nutrition</a><a href="../section-wellness.html">Wellness</a><a href="../section-beauty.html">Beauty</a><a href="../section-football.html">Football</a></nav><a class="header-cta" href="../index.html#latest">All stories ↗</a></div></header>
+<main><div class="container"><article class="article-page">
+<div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../section-fitness.html">Fitness</a> / Walking Calories Calculator</div>
+<p class="eyebrow">FITNESS · FREE CALCULATOR</p>
+<h1>Walking Calories Calculator: Estimate Calories Burned by Walking</h1>
+<p class="article-lead">How many calories do you burn walking for 15, 30 or 60 minutes? Enter your weight, walking time and pace to get a practical estimate, plus a clear explanation of what the numbers mean.</p>
+<div class="article-meta"><span>Publication Today Editorial</span><span>Updated October 29, 2026</span></div>
+<section class="walk-tool" aria-labelledby="walk-tool-title">
+<h2 id="walk-tool-title">Calculate calories burned walking</h2>
+<p>Choose your units, enter your details and select the pace that best matches your walk. Results update when you calculate.</p>
+<div class="walk-grid">
+<div class="walk-field"><label for="walk-weight">Body weight</label><div style="display:flex;gap:8px"><input id="walk-weight" type="number" min="30" max="300" step="0.1" value="70" inputmode="decimal" aria-label="Body weight"><select id="walk-unit" aria-label="Weight unit" style="max-width:100px"><option value="kg">kg</option><option value="lb">lb</option></select></div></div>
+<div class="walk-field"><label for="walk-minutes">Walking duration (minutes)</label><input id="walk-minutes" type="number" min="1" max="1440" step="1" value="30" inputmode="numeric"></div>
+<div class="walk-field"><label for="walk-pace">Walking pace</label><select id="walk-pace"><option value="2.3">Very slow stroll · under 3.2 km/h</option><option value="2.8">Slow · 3.2–3.9 km/h</option><option value="3.0">Easy · about 4.0 km/h</option><option value="3.8" selected>Moderate · 4.5–5.5 km/h</option><option value="4.8">Brisk · 5.6–6.3 km/h</option><option value="5.5">Very brisk · 6.4–7.1 km/h</option><option value="7.0">Very, very brisk · 7.2–7.9 km/h</option><option value="8.5">Fast walk · 8.0 km/h or faster</option></select></div>
+</div>
+<button type="button" class="walk-action" id="walk-calculate">Calculate calories</button>
+<p id="walk-error" class="walk-error" role="alert" hidden></p>
+<div id="walk-results" class="walk-results" aria-live="polite">
+<div class="walk-result"><span>Gross calories</span><strong id="gross-result">140 kcal</strong><span>Estimated total energy</span></div>
+<div class="walk-result"><span>Net calories</span><strong id="net-result">103 kcal</strong><span>Above estimated resting energy</span></div>
+<div class="walk-result"><span>Per hour at this pace</span><strong id="hour-result">279 kcal</strong><span>Gross estimate</span></div>
+</div>
+<p class="walk-note">These are estimates, not measurements. The calculation assumes level, firm ground and does not account for hills, load, heart rate or individual differences.</p>
+</section>
+<div class="article-body">
+<h2>How many calories does walking burn?</h2>
+<p>There is no single number that applies to everyone. Body weight, time spent walking and pace all influence energy use. For example, a 30-minute moderate walk will generally produce a different estimate from a short stroll or a faster walk. Enter your own details above instead of relying on a generic chart.</p>
+<h2>How this walking calories calculator works</h2>
+<p>The tool uses metabolic equivalent of task (MET) values for walking from the <a href="https://pacompendium.com/walking/" rel="noopener noreferrer">2024 Adult Compendium of Physical Activities</a>. The standard estimate is:</p>
+<p><strong>Calories per minute = MET × 3.5 × body weight in kilograms ÷ 200</strong></p>
+<p>Multiplying by the number of minutes gives gross calories, including the energy your body would have used at rest during that time. The net estimate subtracts 1 MET to approximate the energy above resting level. Both figures are estimates and can differ from a fitness watch or a laboratory measurement.</p>
+<h2>What changes calories burned while walking?</h2>
+<ul><li><strong>Body weight:</strong> the formula scales with body mass, so estimates differ between people.</li><li><strong>Duration and pace:</strong> longer or faster walks generally use more energy.</li><li><strong>Terrain:</strong> hills, soft sand, snow and uneven surfaces can increase effort compared with level, firm ground.</li><li><strong>Individual differences:</strong> fitness, gait, age and other factors mean no equation can predict an exact personal result.</li></ul>
+<h2>How to use the estimate</h2>
+<p>Use the number to compare similar walks or understand how duration and pace change the estimate—not as a precise food allowance or a reason to compensate for eating. A sustainable walking routine can support general fitness, and consistency matters more than chasing a particular calorie number.</p>
+<h2>Keep building your fitness knowledge</h2>
+<p>Read our guide to <a href="walking-for-everyday-fitness.html">walking as everyday exercise</a>, explore <a href="strength-training-beginners.html">strength training for beginners</a>, or use the <a href="daily-calorie-needs-calculator.html">daily calorie needs calculator</a> for a separate estimate of daily energy needs.</p>
+<h2>Source and limitations</h2>
+<p>The walking intensity values come from the <a href="https://pacompendium.com/" rel="noopener noreferrer">Compendium of Physical Activities</a>, a research-based reference for estimating energy costs of activities. This calculator is for general educational use and is not medical advice. It is not designed for children or for making clinical decisions.</p>
+</div></article></div></main>
+<footer class="site-footer"><div class="container footer-top"><a class="wordmark wordmark-footer" href="../index.html">publication<span>.</span><em>today</em></a><p>Ideas for a better everyday.</p><a class="back-top" href="#">Back to top ↑</a></div><div class="container footer-bottom"><span>© <span id="year"></span> Publication Today</span><span>Independent ideas. Everyday perspective.</span><a href="../privacy.html">Privacy</a></div></footer>
+<script>
+(() => {
+ const weight=document.getElementById('walk-weight'),unit=document.getElementById('walk-unit'),minutes=document.getElementById('walk-minutes'),pace=document.getElementById('walk-pace'),error=document.getElementById('walk-error');
+ const fmt=n=>Math.round(n).toLocaleString();
+ function calculate(){
+  const rawWeight=Number(weight.value),mins=Number(minutes.value),met=Number(pace.value);
+  const kg=unit.value==='lb'?rawWeight/2.2046226218:rawWeight;
+  if(!Number.isFinite(kg)||kg<30||kg>300||!Number.isFinite(mins)||mins<1||mins>1440){error.hidden=false;error.textContent='Enter a weight from 30 to 300 kg (or the equivalent in pounds) and a duration from 1 to 1,440 minutes.';return;}
+  error.hidden=true;
+  const gross=met*3.5*kg/200*mins;
+  const net=Math.max(0,(met-1)*3.5*kg/200*mins);
+  document.getElementById('gross-result').textContent=fmt(gross)+' kcal';
+  document.getElementById('net-result').textContent=fmt(net)+' kcal';
+  document.getElementById('hour-result').textContent=fmt(met*3.5*kg/200*60)+' kcal';
+ }
+ document.getElementById('walk-calculate').addEventListener('click',calculate);
+ [weight,unit,minutes,pace].forEach(el=>el.addEventListener('change',calculate));
+ const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
+ const menu=document.getElementById('menu-toggle'),nav=document.getElementById('main-nav');if(menu&&nav)menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+ calculate();
+})();
+</script>
+<script src="../assets/js/adsterra-ads.js" defer></script>
+</body></html>
