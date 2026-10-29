@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sleep Calculator: Find Bedtimes Based on Your Wake-Up Time — Publication Today</title>
+<meta name="description" content="Use this free sleep calculator to explore bedtime options based on your wake-up time and approximate 90-minute sleep cycles. Learn why consistency matters more than perfect timing.">
+<link rel="canonical" href="https://publication.today/articles/sleep-calculator-bedtime.html">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Publication Today">
+<meta property="og:title" content="Sleep Calculator: Find Bedtimes Based on Your Wake-Up Time">
+<meta property="og:description" content="Explore possible bedtimes from your wake-up time with a simple sleep-cycle planner and practical sleep-habit guidance.">
+<meta property="og:url" content="https://publication.today/articles/sleep-calculator-bedtime.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sleep Calculator: Bedtime Planner","applicationCategory":"HealthApplication","operatingSystem":"Any","url":"https://publication.today/articles/sleep-calculator-bedtime.html","description":"A simple bedtime planner using approximate sleep-cycle intervals; not a medical assessment.","publisher":{"@type":"Organization","name":"Publication Today","url":"https://publication.today/"}}</script>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+.sleep-tool{background:#fffdf8;border:1px solid #deded4;border-radius:18px;padding:clamp(20px,4vw,34px);margin:28px 0}
+.sleep-tool label{display:block;font-weight:700;margin-bottom:8px}.sleep-tool input{width:100%;max-width:260px;padding:12px;border:1px solid #c9cabe;border-radius:9px;background:#fff}
+.sleep-tool button{display:block;border:0;border-radius:9px;background:#253d31;color:white;padding:12px 18px;font-weight:700;cursor:pointer;margin-top:18px}
+.sleep-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin-top:20px}
+.sleep-time{background:#e9f0e5;border-radius:12px;padding:16px}.sleep-time strong{font-size:22px;display:block}.sleep-time span{font-size:13px}
+.sleep-note{font-size:13px;color:#5f665b}
+</style>
+</head>
+<body>
+<div class="topline"><div class="container topline-inner"><span>Curiosity for a healthier, better everyday.</span><span>THE WELLNESS EDIT</span></div></div>
+<header class="site-header"><div class="container header-main"><a class="wordmark" href="../index.html">publication<span>.</span><em>today</em></a><button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav class="main-nav" id="main-nav" aria-label="Main navigation"><a href="../section-fitness.html">Fitness</a><a href="../section-health.html">Health</a><a href="../section-nutrition.html">Nutrition</a><a href="../section-wellness.html" aria-current="page">Wellness</a><a href="../section-beauty.html">Beauty</a><a href="../section-football.html">Football</a></nav><a class="header-cta" href="../index.html#latest">All stories ↗</a></div></header>
+<main><div class="container"><article class="article-page">
+<div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../section-wellness.html">Wellness</a> / Sleep Calculator</div>
+<p class="eyebrow">WELLNESS · FREE TOOL</p>
+<h1>Sleep Calculator: Find Bedtimes Based on Your Wake-Up Time</h1>
+<p class="article-lead">Plan a realistic bedtime with a simple sleep-cycle estimate. Choose when you need to wake up and compare several possible times to get into bed.</p>
+<div class="article-meta"><span>Publication Today Editorial</span><span>Practical sleep planning</span></div>
+<section class="sleep-tool" aria-labelledby="sleep-tool-title">
+<h2 id="sleep-tool-title">Calculate possible bedtimes</h2>
+<p>Sleep cycles are often described as lasting around 90 minutes, but they vary between people and throughout the night. These times are planning estimates, not a guarantee of sleep quality.</p>
+<label for="wake-time">What time do you need to wake up?</label>
+<input id="wake-time" type="time" value="07:00">
+<button type="button" id="calculate-sleep">Show bedtime options</button>
+<div class="sleep-results" id="sleep-results" aria-live="polite"></div>
+<p class="sleep-note">The estimates include about 15 minutes to fall asleep. Adjust for your own routine and how much sleep you need.</p>
+</section>
+<div class="article-body">
+<h2>How this sleep calculator works</h2>
+<p>The planner counts backwards from your wake-up time in approximate 90-minute intervals and adds a 15-minute buffer for falling asleep. It displays options around 6, 7.5 and 9 hours of estimated sleep. Actual sleep cycles are not fixed, so use the results as a starting point rather than a precise biological measurement.</p>
+<h2>How much sleep should you aim for?</h2>
+<p>Sleep needs depend on age, health, schedule and individual differences. Many adults do best with a regular opportunity for roughly seven to nine hours of sleep, but a calculator cannot assess your personal needs or diagnose a sleep disorder.</p>
+<h2>Habits that can support a steadier sleep schedule</h2>
+<ul><li>Keep wake-up and bedtime routines reasonably consistent, including on weekends.</li><li>Make the bedroom comfortable, dark and quiet where practical.</li><li>Allow time to wind down and reduce bright screens or stimulating activities before bed if they keep you alert.</li><li>Notice how caffeine, alcohol, late meals and daytime naps affect your own sleep.</li></ul>
+<h2>When to seek more help</h2>
+<p>If sleep problems persist, affect daily functioning, or involve loud snoring, breathing pauses or severe daytime sleepiness, consider speaking with a qualified healthcare professional. Do not use this calculator as a substitute for medical advice.</p>
+<h2>Related wellness guides</h2>
+<p>Explore our guides to <a href="sleep-habits-worth-protecting.html">sleep habits worth protecting</a>, <a href="rest-and-the-art-of-doing-less.html">rest and recovery</a>, and <a href="daily-water-intake-estimator.html">daily hydration estimates</a>.</p>
+</div></article></div></main>
+<footer class="site-footer"><div class="container footer-top"><a class="wordmark wordmark-footer" href="../index.html">publication<span>.</span><em>today</em></a><p>Ideas for a better everyday.</p><a class="back-top" href="#">Back to top ↑</a></div><div class="container footer-bottom"><span>© <span id="year"></span> Publication Today</span><span>Independent ideas. Everyday perspective.</span><a href="../privacy.html">Privacy</a></div></footer>
+<script>
+(() => {
+ const input=document.getElementById('wake-time'), results=document.getElementById('sleep-results'), button=document.getElementById('calculate-sleep');
+ const calculate=()=>{if(!input.value)return;const [h,m]=input.value.split(':').map(Number);const wake=new Date(2000,0,2,h,m);const options=[{hours:9,cycles:6},{hours:7.5,cycles:5},{hours:6,cycles:4}];results.innerHTML=options.map(o=>{const bed=new Date(wake.getTime()-(o.hours*60+15)*60000);const time=bed.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});return '<div class="sleep-time"><span>About '+o.hours+' hours</span><strong>'+time+'</strong><span>Get into bed</span></div>';}).join('');};
+ button.addEventListener('click',calculate);input.addEventListener('change',calculate);calculate();
+ const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
+ const menu=document.getElementById('menu-toggle'),nav=document.getElementById('main-nav');if(menu&&nav)menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+})();
+</script>
+<script src="../assets/js/adsterra-ads.js" defer></script>
+</body></html>

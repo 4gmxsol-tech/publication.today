@@ -1,5 +1,33 @@
 [
   {
+    "slug": "sleep-calculator-bedtime",
+    "category": "wellness",
+    "title": "Sleep Calculator: Find Bedtimes Based on Your Wake-Up Time",
+    "excerpt": "Use a free bedtime planner to compare possible sleep windows from your wake-up time, plus practical guidance on consistent sleep habits.",
+    "readTime": "5 min read",
+    "tags": [
+      "sleep calculator",
+      "bedtime calculator",
+      "when should I go to bed",
+      "sleep cycle calculator",
+      "wake up time"
+    ],
+    "body": [
+      {
+        "heading": "How the sleep calculator works",
+        "text": "Choose a wake-up time to see bedtime options based on approximate 90-minute sleep-cycle intervals, with a 15-minute allowance to fall asleep. Real sleep cycles vary, so these times are planning estimates rather than a guarantee."
+      },
+      {
+        "heading": "Build a steadier sleep routine",
+        "text": "Keep a reasonably consistent schedule, make your room comfortable and dark, and notice how caffeine, alcohol, naps and evening screen use affect your sleep. Sleep needs differ from person to person."
+      },
+      {
+        "heading": "When to seek help",
+        "text": "Persistent sleep problems, severe daytime sleepiness, loud snoring or breathing pauses warrant advice from a qualified healthcare professional. This tool is not a medical assessment."
+      }
+    ]
+  },
+  {
     "slug": "football-match-time-zone-converter",
     "category": "football",
     "title": "Football Match Time Zone Converter: Convert Kick-off Times",
