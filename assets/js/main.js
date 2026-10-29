@@ -8,7 +8,8 @@
     nutrition: { label: "Nutrition", glyph: "⌁", description: "Food knowledge and balanced ideas for everyday choices." },
     wellness: { label: "Wellness", glyph: "☼", description: "Small habits for a more grounded, intentional everyday." },
     beauty: { label: "Beauty", glyph: "✧", description: "Personal care, considered products and simple rituals." },
-    football: { label: "Football", glyph: "F", description: "Football news, match previews, fixtures and practical fitness guides." }
+    football: { label: "Football", glyph: "F", description: "Football news, match previews, fixtures and practical fitness guides." },
+    technology: { label: "Technology", glyph: "⌘", description: "Practical AI tools, automation guides and grounded analysis of emerging technology." }
   };
   const state = { articles: [], filter: "all", query: "", visible: 9 };
   const safe = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));

@@ -222,4 +222,8 @@
     <loc>https://publication.today/articles/football-fitness-beginners-build-endurance-safely.html</loc>
     <priority>0.7</priority>
   </url>
+  <url><loc>https://publication.today/section-technology.html</loc><priority>0.8</priority></url>
+  <url><loc>https://publication.today/articles/ai-tools-to-watch-in-2027-agents-local-models-automation.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
+  <url><loc>https://publication.today/articles/ai-automation-roi-calculator.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
+  <url><loc>https://publication.today/articles/football-competitions-calendar-2027-afcon-womens-world-cup-champions-league.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
 </urlset>
