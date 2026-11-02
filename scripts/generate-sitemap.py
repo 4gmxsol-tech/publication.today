@@ -26,7 +26,6 @@ CORE_PAGES = [
     ("section-beauty.html", "0.8"),
     ("section-football.html", "0.8"),
     ("section-technology.html", "0.8"),
-    ("section.html", "0.5"),
     ("privacy.html", "0.3"),
 ]
 
