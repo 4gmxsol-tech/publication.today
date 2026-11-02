@@ -32,9 +32,51 @@
     <loc>https://publication.today/section-football.html</loc>
     <priority>0.8</priority>
   </url>
-<url>
+  <url>
+    <loc>https://publication.today/section-technology.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://publication.today/privacy.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/walking-calories-calculator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/sleep-calculator-bedtime.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/football-match-time-zone-converter.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/football-match-countdown.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/daily-water-intake-estimator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/bmi-calculator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/daily-calorie-needs-calculator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/daily-protein-intake-calculator.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/champions-league-matchday-4-preview-barcelona-aston-villa-real-madrid-aek-november-2026.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/el-clasico-preview-barcelona-vs-real-madrid-october-25-2026.html</loc>
@@ -218,8 +260,19 @@
     <loc>https://publication.today/articles/football-fitness-beginners-build-endurance-safely.html</loc>
     <priority>0.7</priority>
   </url>
-  <url><loc>https://publication.today/section-technology.html</loc><priority>0.8</priority></url>
-  <url><loc>https://publication.today/articles/ai-tools-to-watch-in-2027-agents-local-models-automation.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
-  <url><loc>https://publication.today/articles/ai-automation-roi-calculator.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
-  <url><loc>https://publication.today/articles/football-competitions-calendar-2027-afcon-womens-world-cup-champions-league.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
+  <url>
+    <loc>https://publication.today/articles/ai-tools-to-watch-in-2027-agents-local-models-automation.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/ai-automation-roi-calculator.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/football-competitions-calendar-2027-afcon-womens-world-cup-champions-league.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>
