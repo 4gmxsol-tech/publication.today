@@ -32,9 +32,51 @@
     <loc>https://publication.today/section-football.html</loc>
     <priority>0.8</priority>
   </url>
-<url>
+  <url>
+    <loc>https://publication.today/section-technology.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://publication.today/privacy.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/walking-calories-calculator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/sleep-calculator-bedtime.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/football-match-time-zone-converter.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/football-match-countdown.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/daily-water-intake-estimator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/bmi-calculator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/daily-calorie-needs-calculator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/daily-protein-intake-calculator.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/champions-league-matchday-4-preview-barcelona-aston-villa-real-madrid-aek-november-2026.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/el-clasico-preview-barcelona-vs-real-madrid-october-25-2026.html</loc>
@@ -48,178 +90,232 @@
   </url>
   <url>
     <loc>https://publication.today/articles/google-gemini-4-argon-ai-model-coding-benchmark-pricing.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/build-a-fitness-routine-that-lasts.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/strength-training-beginners.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/walking-for-everyday-fitness.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/recovery-days-are-training-days.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/mobility-versus-flexibility.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/choosing-cardio-you-enjoy.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/sleep-habits-worth-protecting.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/understanding-preventive-health-checkups.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/hydration-basics-without-the-hype.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/how-to-read-health-headlines.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/building-a-healthier-morning.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/understanding-blood-pressure-basics.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/simple-skincare-routine.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/understanding-sunscreen-labels.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/what-skin-barrier-means.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/retinoids-introduction-guide.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/oily-skin-moisturizer.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/exfoliation-how-much-is-enough.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/balanced-plate-basics.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/protein-basics-for-everyday-eating.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/fiber-foods-and-digestion.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/meal-prep-without-spending-sunday-cooking.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/reading-food-labels.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/mindful-mornings-without-perfection.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/digital-boundaries-that-feel-realistic.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/rest-and-the-art-of-doing-less.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/habit-stacking-explained.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/journaling-prompts-for-clarity.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/beauty-routine-edit.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/how-to-compare-beauty-products.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/fragrance-sensitivity-and-personal-care.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/everyday-grooming-essentials.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/building-confidence-through-small-wins.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/healthy-habits-on-a-tight-budget.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/beginner-guide-to-home-workouts.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/stress-signals-and-small-resets.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/hiv-prevention-testing-treatment-guide.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/inclusive-fitness-accessible-exercise-guide.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/preventive-care-access-healthcare-guide.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/football-match-day-nutrition-guide.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/football-recovery-sleep-hydration-rest-days.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/football-fitness-beginners-build-endurance-safely.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.7</priority>
   </url>
-  <url><loc>https://publication.today/section-technology.html</loc><priority>0.8</priority></url>
-  <url><loc>https://publication.today/articles/ai-tools-to-watch-in-2027-agents-local-models-automation.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
-  <url><loc>https://publication.today/articles/ai-automation-roi-calculator.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
-  <url><loc>https://publication.today/articles/football-competitions-calendar-2027-afcon-womens-world-cup-champions-league.html</loc><lastmod>2026-10-29</lastmod><priority>0.7</priority></url>
+  <url>
+    <loc>https://publication.today/articles/ai-tools-to-watch-in-2027-agents-local-models-automation.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/ai-automation-roi-calculator.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/football-competitions-calendar-2027-afcon-womens-world-cup-champions-league.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>
