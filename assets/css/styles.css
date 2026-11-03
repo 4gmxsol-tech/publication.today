@@ -46,3 +46,13 @@ body{background:var(--paper);color:var(--ink);font-size:15px;line-height:1.65}
 
 /* Technology editorial category */
 .visual-technology{background:#e4ebe4}.dept-technology{background:#e5ece5;color:#24382d}.dept-technology .dept-number,.dept-technology .dept-link{color:#7a4937}.dept-technology .dept-symbol{color:#a24f3b}
+
+/* Google Preferred Sources */
+.preferred-source-section{display:flex;align-items:center;justify-content:space-between;gap:28px;padding-top:34px;padding-bottom:34px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:12px;margin-bottom:12px}
+.preferred-source-copy{max-width:620px}
+.preferred-source-copy .eyebrow{margin-bottom:8px}
+.preferred-source-copy h2{font-family:var(--serif);font-size:clamp(25px,3vw,36px);font-weight:500;line-height:1.15;margin:0 0 8px;letter-spacing:-1px}
+.preferred-source-copy h2 i{color:#70856e}
+.preferred-source-copy p:last-child{margin:0;color:var(--muted);font-size:13px}
+.preferred-source-inline{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px 18px;margin:24px 0;background:#e9e8df;border:1px solid var(--line);font-size:12px;color:#4f554c}
+@media(max-width:640px){.preferred-source-section{align-items:flex-start;flex-direction:column;gap:16px}.preferred-source-inline{align-items:flex-start;flex-direction:column}}
