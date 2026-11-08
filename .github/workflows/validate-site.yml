@@ -49,6 +49,8 @@ jobs:
           assert 'data-filter="football"' in homepage and 'href="section-football.html"' in homepage, "Homepage football navigation/filter missing"
           print(f"Validated {len(articles)} articles and {len(urls)} sitemap URLs.")
           PY
+      - name: Validate Champions League Matchday 4 results update
+        run: python scripts/validate_champions_league_results.py
       - name: Check new article metadata and references
         run: |
           python - <<'PY'
