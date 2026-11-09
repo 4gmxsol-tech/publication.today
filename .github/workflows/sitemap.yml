@@ -9,6 +9,7 @@ on:
       - "index.html"
       - "section*.html"
       - "privacy.html"
+      - "sitemap.xml"
       - "scripts/generate-sitemap.py"
       - ".github/workflows/sitemap.yml"
   pull_request:
@@ -19,6 +20,7 @@ on:
       - "index.html"
       - "section*.html"
       - "privacy.html"
+      - "sitemap.xml"
       - "scripts/generate-sitemap.py"
       - ".github/workflows/sitemap.yml"
   workflow_dispatch:
