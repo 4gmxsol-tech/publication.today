@@ -34,6 +34,12 @@ jobs:
           expected_article_urls = {f"https://publication.today/articles/{slug}.html" for slug in slugs}
           missing_article_urls = expected_article_urls - set(urls)
           assert not missing_article_urls, f"Every article feed URL must be present in sitemap: {sorted(missing_article_urls)}"
+          for item in articles:
+              if item.get("lastmod"):
+                  url = f"https://publication.today/articles/{item['slug']}.html"
+                  entry = next((node for node in sitemap.findall("sm:url", ns)
+                                if node.findtext("sm:loc", default="", namespaces=ns) == url), None)
+                  assert entry and entry.findtext("sm:lastmod", default="", namespaces=ns) == item["lastmod"], f"Explicit lastmod mismatch for {url}"
           for url in urls:
               path = url.split("publication.today/", 1)[-1]
               path = path or "index.html"
