@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://publication.today/</loc><lastmod>2026-11-03</lastmod>
+    <loc>https://publication.today/</loc>
     <priority>1.0</priority>
   </url>
   <url>
@@ -273,6 +273,11 @@
   <url>
     <loc>https://publication.today/articles/football-competitions-calendar-2027-afcon-womens-world-cup-champions-league.html</loc>
     <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/atletico-madrid-vs-barcelona-2026-match-report-fermin-comeback.html</loc>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>

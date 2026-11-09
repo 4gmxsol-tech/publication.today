@@ -31,6 +31,15 @@ CORE_PAGES = [
 
 
 def lastmod_for(item: dict) -> str:
+    explicit = item.get("lastmod", "")
+    if explicit:
+        try:
+            return datetime.strptime(explicit, "%Y-%m-%d").date().isoformat()
+        except (TypeError, ValueError) as exc:
+            raise SystemExit(
+                f"Invalid explicit lastmod for {item.get('slug', 'unknown')}: {explicit}"
+            ) from exc
+
     value = item.get("date", "")
     try:
         return datetime.strptime(value, "%B %d, %Y").date().isoformat()

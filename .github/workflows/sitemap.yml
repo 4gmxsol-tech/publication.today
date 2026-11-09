@@ -9,6 +9,7 @@ on:
       - "index.html"
       - "section*.html"
       - "privacy.html"
+      - "sitemap.xml"
       - "scripts/generate-sitemap.py"
       - ".github/workflows/sitemap.yml"
   pull_request:
@@ -19,6 +20,7 @@ on:
       - "index.html"
       - "section*.html"
       - "privacy.html"
+      - "sitemap.xml"
       - "scripts/generate-sitemap.py"
       - ".github/workflows/sitemap.yml"
   workflow_dispatch:
@@ -34,6 +36,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Generate sitemap
         run: python scripts/generate-sitemap.py
+      - name: Ensure generated sitemap is committed
+        run: git diff --exit-code -- sitemap.xml
       - name: Validate sitemap coverage
         run: |
           python - <<'PY'
