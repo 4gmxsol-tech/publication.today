@@ -31,6 +31,9 @@ jobs:
           ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
           urls = [node.text.strip() for node in sitemap.findall("sm:url/sm:loc", ns)]
           assert len(urls) == len(set(urls)), "Duplicate sitemap URLs"
+          expected_article_urls = {f"https://publication.today/articles/{slug}.html" for slug in slugs}
+          missing_article_urls = expected_article_urls - set(urls)
+          assert not missing_article_urls, f"Every article feed URL must be present in sitemap: {sorted(missing_article_urls)}"
           for url in urls:
               path = url.split("publication.today/", 1)[-1]
               path = path or "index.html"
