@@ -71,10 +71,44 @@ def main():
     if not entry or entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-09":
         errors.append("sitemap lastmod must be 2026-11-09 for the updated article")
 
+
+    recap_slug = "champions-league-fixtures-week-barcelona-psg-real-madrid-leipzig-october-2026"
+    recap_url = f"https://publication.today/articles/{recap_slug}.html"
+    recap_path = ROOT / "articles" / f"{recap_slug}.html"
+    if not recap_path.is_file():
+        errors.append("Matchday 3 recap page is missing")
+    else:
+        recap_html = recap_path.read_text(encoding="utf-8")
+        for phrase in (
+            "Real Madrid won 2–1",
+            "Kylian Mbappé scored in the 41st and 87th minutes",
+            "Raphinha equalised for Barcelona in the 61st",
+            "La Liga fixture, not a Champions League match",
+            "laliga.com/en-ES/partidazos/el-clasico",
+            "fcbarcelona.com/en/matches/138374/fc-barcelona-real-madrid-la-liga-2026-2027-0",
+        ):
+            if phrase not in recap_html:
+                errors.append(f"Matchday 3 recap missing verified result/source: {phrase}")
+        if "Barcelona are scheduled to host Real Madrid" in recap_html:
+            errors.append("Matchday 3 recap still describes the completed El Clasico as upcoming")
+        recap_scripts = re.findall(r'<script type="application/ld\+json">(.*?)</script>', recap_html, re.S)
+        if len(recap_scripts) != 1:
+            errors.append("Matchday 3 recap must contain exactly one JSON-LD script")
+        else:
+            try:
+                recap_schema = json.loads(recap_scripts[0])
+                if recap_schema.get("@type") != "NewsArticle":
+                    errors.append("Completed multi-match recap must remain a NewsArticle, not an Event")
+            except json.JSONDecodeError:
+                errors.append("Matchday 3 recap NewsArticle JSON-LD is invalid")
+        recap_entry = next((u for u in entries if u.findtext("sm:loc", default="", namespaces=ns) == recap_url), None)
+        if not recap_entry or recap_entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-09":
+            errors.append("Matchday 3 recap sitemap lastmod must be refreshed to 2026-11-09")
+
     if errors:
         print("\n".join(f"FAIL: {x}" for x in errors))
         return 1
-    print("PASS: Matchday 4 results article, feed card, official sources, NewsArticle schema and sitemap are consistent.")
+    print("PASS: Matchday 3 and 4 recaps, official sources, NewsArticle schema and sitemap are consistent.")
     return 0
 
 if __name__ == "__main__":
