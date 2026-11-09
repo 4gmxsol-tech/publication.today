@@ -64,6 +64,14 @@ jobs:
           assert "uefa.com" in html and "fcbarcelona.com" in html and "realmadrid.com" in html
           scripts = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
           assert len(scripts) == 1
-          json.loads(scripts[0])
-          print("Article metadata, official references, and JSON-LD are valid.")
+          schema = json.loads(scripts[0])
+          assert schema.get("@type") == "NewsArticle", "Past match recap must remain a NewsArticle"
+          assert schema.get("dateModified") == "2026-11-09", "Article modification date is stale"
+          about = schema.get("about", [])
+          assert not any(isinstance(item, dict) and item.get("@type") == "SportsEvent" for item in about), "Past fixtures must not be marked up as upcoming event rich results"
+          assert "Matchday 4 has since been completed" in html, "Stale upcoming Matchday 4 copy remains"
+          assert "begins on November 3–4" not in html, "Past matchday is still described as upcoming"
+          assert "Updated November 9, 2026" in html, "Visible article update date is stale"
+          assert 'href="champions-league-matchday-4-preview-barcelona-aston-villa-real-madrid-aek-november-2026.html"' in html, "Missing internal link to the Matchday 4 results report"
+          print("Article metadata, official references, NewsArticle schema, and current fixture status are valid.")
           PY
