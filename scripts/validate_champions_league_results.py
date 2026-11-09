@@ -91,7 +91,7 @@ def main():
                 errors.append(f"Matchday 3 recap missing verified result/source: {phrase}")
         if "Barcelona are scheduled to host Real Madrid" in recap_html:
             errors.append("Matchday 3 recap still describes the completed El Clasico as upcoming")
-        recap_scripts = re.findall(r'<script type="application/ld\\+json">(.*?)</script>', recap_html, re.S)
+        recap_scripts = re.findall(r'<script type="application/ld\+json">(.*?)</script>', recap_html, re.S)
         if len(recap_scripts) != 1:
             errors.append("Matchday 3 recap must contain exactly one JSON-LD script")
         else:
@@ -108,7 +108,7 @@ def main():
     if errors:
         print("\n".join(f"FAIL: {x}" for x in errors))
         return 1
-    print("PASS: Matchday 4 results article, feed card, official sources, NewsArticle schema and sitemap are consistent.")
+    print("PASS: Matchday 3 and 4 recaps, official sources, NewsArticle schema and sitemap are consistent.")
     return 0
 
 if __name__ == "__main__":
