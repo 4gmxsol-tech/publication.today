@@ -56,7 +56,16 @@ jobs:
           assert f"articles/{slug}.html" in section, "Football section does not link to the new preview"
           homepage = (root / "index.html").read_text(encoding="utf-8")
           assert 'data-filter="football"' in homepage and 'href="section-football.html"' in homepage, "Homepage football navigation/filter missing"
-          print(f"Validated {len(articles)} articles and {len(urls)} sitemap URLs.")
+
+          date_slug = "days-between-dates-calculator"
+          date_url = f"https://publication.today/articles/{date_slug}.html"
+          date_page = root / "articles" / f"{date_slug}.html"
+          assert date_url in urls and date_page.is_file(), "Date calculator must remain present in the sitemap and repository"
+          technology_section = (root / "section-technology.html").read_text(encoding="utf-8")
+          date_link = f"articles/{date_slug}.html"
+          assert technology_section.count(f'href="{date_link}"') == 3, "Technology section must expose the date calculator card image, title and CTA links"
+          assert "Free date calculator" in technology_section, "Date calculator card must retain its clear utility label"
+          print(f"Validated {len(articles)} articles, {len(urls)} sitemap URLs, and technology-section calculator discovery.")
           PY
       - name: Validate Champions League Matchday 4 results update
         run: python scripts/validate_champions_league_results.py
