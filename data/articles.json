@@ -1,5 +1,38 @@
 [
   {
+    "slug": "celsius-to-fahrenheit",
+    "category": "technology",
+    "title": "Celsius to Fahrenheit: Formula, Examples and Quick Conversion Chart",
+    "excerpt": "Learn how to convert Celsius to Fahrenheit with the simple formula, worked examples, a quick temperature chart and an instant converter.",
+    "readTime": "4 min read",
+    "date": "November 11, 2026",
+    "tags": [
+      "Celsius to Fahrenheit",
+      "convert Celsius to Fahrenheit",
+      "temperature conversion formula",
+      "20 C to F",
+      "Celsius Fahrenheit chart"
+    ],
+    "body": [
+      {
+        "heading": "What is the Celsius to Fahrenheit formula?",
+        "text": "Multiply Celsius by 9/5 (or 1.8), then add 32. The formula is °F = (°C × 9/5) + 32."
+      },
+      {
+        "heading": "Common Celsius to Fahrenheit conversions",
+        "text": "0°C is 32°F; 10°C is 50°F; 20°C is 68°F; 25°C is 77°F; 30°C is 86°F; and 100°C is 212°F."
+      },
+      {
+        "heading": "How do you convert Fahrenheit back to Celsius?",
+        "text": "Subtract 32 from Fahrenheit, then multiply by 5/9. The reverse formula is °C = (°F − 32) × 5/9."
+      },
+      {
+        "heading": "Frequently asked questions",
+        "text": "20°C equals 68°F and is often considered mild. 180°C equals 356°F, commonly rounded to 350°F for oven settings."
+      }
+    ]
+  },
+  {
     "slug": "walking-calories-calculator",
     "category": "fitness",
     "title": "Walking Calories Calculator: Estimate Calories Burned by Walking",
