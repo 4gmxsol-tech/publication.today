@@ -41,6 +41,21 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://publication.today/articles/days-between-dates-calculator.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/how-to-calculate-a-percentage.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/celsius-to-fahrenheit.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://publication.today/articles/walking-calories-calculator.html</loc>
     <priority>0.7</priority>
   </url>
@@ -281,7 +296,4 @@
     <lastmod>2026-11-09</lastmod>
     <priority>0.7</priority>
   </url>
-  <url><loc>https://publication.today/articles/celsius-to-fahrenheit.html</loc><lastmod>2026-11-11</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://publication.today/articles/how-to-calculate-a-percentage.html</loc><lastmod>2026-11-11</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://publication.today/articles/days-between-dates-calculator.html</loc><lastmod>2026-11-11</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
 </urlset>
