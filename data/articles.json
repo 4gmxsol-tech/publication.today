@@ -1468,7 +1468,7 @@
     "slug": "football-match-day-nutrition-guide",
     "category": "nutrition",
     "title": "What to Eat Before a Football Match: A Practical Nutrition Guide",
-    "excerpt": "Plan familiar meals, fluids, and snacks around football so you can fuel activity without unnecessary complexity.",
+    "excerpt": "Football match-day nutrition: what to eat 3–4 hours before kickoff, a light 1–2 hour snack, hydration tips and simple recovery guidance.",
     "readTime": "7 min read",
     "date": "October 2026",
     "tags": [
@@ -1483,12 +1483,12 @@
         "text": "Carbohydrate is an important fuel for repeated running and high-intensity efforts. In the hours before a match, many players do well with familiar foods such as rice, oats, bread, potatoes, fruit, or pasta, paired with a moderate amount of protein. The best choices depend on timing, appetite, culture, and tolerance."
       },
       {
-        "heading": "Match meal size to timing",
-        "text": "A larger meal is generally easier to tolerate several hours before kickoff, while a smaller snack may suit the final hour or two. Avoid experimenting with unfamiliar foods on match day, especially foods that have previously caused stomach discomfort."
+        "heading": "A simple pre-match timeline",
+        "text": "Work backwards from kickoff. About 3–4 hours before, choose a familiar carbohydrate-rich meal such as rice with chicken, pasta with tomato-based sauce, or a sandwich with fruit. About 1–2 hours before, an optional small snack such as a banana, toast, or a familiar cereal bar may suit you if hungry. Avoid large, unfamiliar, or very fatty meals close to kickoff. These are planning windows, not fixed rules; portion size and food choice depend on appetite, match demands, body size, culture, and digestive tolerance."
       },
       {
         "heading": "Hydrate steadily",
-        "text": "Start the match normally hydrated and drink at intervals that fit the conditions and your needs. Heat, humidity, playing time, body size, and sweat losses all influence fluid requirements. During long or hot sessions, an electrolyte drink may be useful for some players, but it is not necessary for every short session."
+        "text": "Start normally hydrated, drink regularly across the day, and use breaks to sip according to thirst and conditions. There is no single fluid target for everyone: heat, humidity, body size, sweat rate, match duration, and health circumstances all affect needs. A sports or electrolyte drink may be useful during a long, hot, or demanding session, but water and ordinary meals are enough for many recreational players."
       },
       {
         "heading": "Do not overlook recovery food",
@@ -1497,8 +1497,13 @@
       {
         "heading": "Be cautious with supplements",
         "text": "Supplements are not a substitute for a balanced diet, and some products may be contaminated or contain undeclared ingredients. Young players and anyone with a medical condition should seek qualified advice before using performance supplements."
+      },
+      {
+        "heading": "Evidence and individual differences",
+        "text": "The UEFA expert group statement on nutrition in elite football and the Victorian Government's Better Health Channel describe practical pre-event timing windows. Elite-sport recommendations are not a personal prescription; practise familiar choices during training and seek qualified advice when an individual plan is needed."
       }
-    ]
+    ],
+    "lastmod": "2026-11-11"
   },
   {
     "slug": "football-recovery-sleep-hydration-rest-days",

@@ -84,3 +84,5 @@ jobs:
           assert 'href="champions-league-matchday-4-preview-barcelona-aston-villa-real-madrid-aek-november-2026.html"' in html, "Missing internal link to the Matchday 4 results report"
           print("Article metadata, official references, NewsArticle schema, and current fixture status are valid.")
           PY
+      - name: Validate football match-day nutrition guide
+        run: python scripts/validate_football_nutrition_guide.py
