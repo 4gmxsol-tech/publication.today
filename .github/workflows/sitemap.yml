@@ -24,6 +24,8 @@ on:
       - "privacy.html"
       - "sitemap.xml"
       - "scripts/generate-sitemap.py"
+      - "scripts/date-calculator.mjs"
+      - "scripts/date-calculator.test.mjs"
       - ".github/workflows/sitemap.yml"
   workflow_dispatch:
 
