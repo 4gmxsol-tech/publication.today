@@ -1,5 +1,39 @@
 [
   {
+    "slug": "days-between-dates-calculator",
+    "category": "technology",
+    "title": "Days Between Dates Calculator: Count Days, Weeks and Business Days",
+    "excerpt": "Calculate the number of days between two dates instantly. See the difference in weeks and weekdays, with a clear explanation of date counting.",
+    "readTime": "4 min read",
+    "date": "November 11, 2026",
+    "tags": [
+      "days between dates calculator",
+      "calculate days between two dates",
+      "date difference calculator",
+      "how many days between dates",
+      "days calculator",
+      "business days calculator"
+    ],
+    "body": [
+      {
+        "heading": "How do you calculate the number of days between two dates?",
+        "text": "Subtract the earlier date from the later date to get elapsed calendar days. If both endpoints are included, add one."
+      },
+      {
+        "heading": "How many weeks are between two dates?",
+        "text": "Divide the day difference by seven. The remainder is the number of additional days."
+      },
+      {
+        "heading": "What are weekdays and business days?",
+        "text": "Weekdays are Monday through Friday. Business-day calculations may exclude public holidays, which vary by country."
+      },
+      {
+        "heading": "Why can date calculations differ?",
+        "text": "Some methods count elapsed days, while others include both the start and end dates. Check which convention a deadline requires."
+      }
+    ]
+  },
+  {
     "slug": "how-to-calculate-a-percentage",
     "category": "technology",
     "title": "How to Calculate a Percentage: Formula, Examples and Percentage Calculator",
