@@ -1,5 +1,5 @@
 export function parseDateUTC(value) {
-  const match = /^(\\d{4})-(\\d{2})-(\\d{2})$/.exec(value ?? "");
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value ?? "");
   if (!match) throw new RangeError("Enter a valid date.");
 
   const year = Number(match[1]);
