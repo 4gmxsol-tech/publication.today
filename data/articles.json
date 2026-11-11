@@ -1,5 +1,39 @@
 [
   {
+    "slug": "how-to-calculate-a-percentage",
+    "category": "technology",
+    "title": "How to Calculate a Percentage: Formula, Examples and Percentage Calculator",
+    "excerpt": "Learn how to calculate a percentage using simple formulas and worked examples. Find a percentage of a number, calculate percentage increase or decrease, and use the free calculator.",
+    "readTime": "5 min read",
+    "date": "November 11, 2026",
+    "tags": [
+      "how to calculate a percentage",
+      "percentage calculator",
+      "percentage formula",
+      "percentage increase",
+      "percentage decrease",
+      "percentage of a number"
+    ],
+    "body": [
+      {
+        "heading": "What is the basic percentage formula?",
+        "text": "To find what percentage a part is of a whole, divide the part by the whole and multiply by 100. Percentage = (Part ÷ Whole) × 100."
+      },
+      {
+        "heading": "How do you calculate a percentage of a number?",
+        "text": "Convert the percentage to a decimal by dividing by 100, then multiply by the number. For example, 15% of 80 is 12."
+      },
+      {
+        "heading": "How do you calculate percentage increase or decrease?",
+        "text": "For an increase, calculate ((New − Original) ÷ Original) × 100. For a decrease, calculate ((Original − New) ÷ Original) × 100."
+      },
+      {
+        "heading": "Common mistakes",
+        "text": "Use the original value as the baseline for percentage change. Distinguish percentage points from relative percentage change, and remember division by zero is undefined."
+      }
+    ]
+  },
+  {
     "slug": "celsius-to-fahrenheit",
     "category": "technology",
     "title": "Celsius to Fahrenheit: Formula, Examples and Quick Conversion Chart",
