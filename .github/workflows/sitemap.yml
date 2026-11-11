@@ -11,6 +11,8 @@ on:
       - "privacy.html"
       - "sitemap.xml"
       - "scripts/generate-sitemap.py"
+      - "scripts/date-calculator.mjs"
+      - "scripts/date-calculator.test.mjs"
       - ".github/workflows/sitemap.yml"
   pull_request:
     branches: ["main"]
@@ -34,6 +36,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Set up Node.js for calculator tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run date calculator unit tests
+        run: node --test scripts/date-calculator.test.mjs
       - name: Generate sitemap
         run: python scripts/generate-sitemap.py
       - name: Ensure generated sitemap is committed
