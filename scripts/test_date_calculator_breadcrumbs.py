@@ -58,4 +58,7 @@ ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 entry = next((node for node in sitemap.findall("sm:url", ns) if node.findtext("sm:loc", default="", namespaces=ns) == URL), None)
 assert entry is not None, "Date calculator must remain in the sitemap"
 assert entry.findtext("sm:lastmod", default="", namespaces=ns) == "2026-11-13", "Sitemap lastmod must match the page update"
+feed = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
+feed_item = next((item for item in feed if item.get("slug") == "days-between-dates-calculator"), None)
+assert feed_item and feed_item.get("lastmod") == "2026-11-13", "Article feed lastmod must match the page update"
 print("PASS: visible breadcrumb navigation and matching Article/BreadcrumbList structured data.")
