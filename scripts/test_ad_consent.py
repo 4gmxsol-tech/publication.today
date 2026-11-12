@@ -6,10 +6,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECT_AD = re.compile(
-    r"<(?:script|iframe)\\b[^>]*\\bsrc\\s*=\\s*[\"']https?://(?:www\\.)?(?:bicea\\.org|bauval\\.org|highrevenueformat\\.com)/",
+    r"<(?:script|iframe)\b[^>]*\bsrc\s*=\s*[\"']https?://(?:www\.)?(?:bicea\.org|bauval\.org|highrevenueformat\.com)/",
     re.IGNORECASE,
 )
-INLINE_OPTIONS = re.compile(r"\\batOptions\\s*=", re.IGNORECASE)
+INLINE_OPTIONS = re.compile(r"\batOptions\s*=", re.IGNORECASE)
 
 errors = []
 for page in ROOT.rglob("*.html"):
@@ -24,7 +24,9 @@ privacy = (ROOT / "privacy.html").read_text(encoding="utf-8")
 consent = (ROOT / "assets/js/adsterra-ads.js").read_text(encoding="utf-8")
 engine = ROOT / "assets/js/adsterra-ads-engine.js"
 
-for phrase in ('data-adsterra-manual-slot="banner"', 'data-adsterra-ad-key=', 'data-adsterra-ad-url=', 'assets/js/adsterra-ads.js'):
+if homepage.count("data-adsterra-manual-slot=") != 2:
+    errors.append("Homepage must retain both consent-managed ad placements.")
+for phrase in ('data-adsterra-ad-key=', 'data-adsterra-ad-url=', 'assets/js/adsterra-ads.js'):
     if phrase not in homepage:
         errors.append(f"Homepage must retain consent-managed ad placeholder/script: missing {phrase}")
 
@@ -40,7 +42,7 @@ if not engine.is_file():
     errors.append("The deferred advertising engine file is missing.")
 
 if errors:
-    print("\\n".join(f"FAIL: {item}" for item in errors))
+    print("\n".join(f"FAIL: {item}" for item in errors))
     sys.exit(1)
 
 print("PASS: direct third-party ad code is absent from HTML; ads are loaded only through the explicit consent path.")
