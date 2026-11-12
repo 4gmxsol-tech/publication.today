@@ -1,6 +1,7 @@
 from html.parser import HTMLParser
 import json
 from pathlib import Path
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "articles" / "days-between-dates-calculator.html"
@@ -37,7 +38,7 @@ crumbs = next((node for node in nodes if node.get("@type") == "BreadcrumbList"),
 assert article is not None, "Article structured data must remain present"
 assert article.get("mainEntityOfPage") == URL
 assert article.get("datePublished") == "2026-11-11", "Original publication date must remain unchanged"
-assert article.get("dateModified") == "2026-11-12", "Article modification date must remain unchanged"
+assert article.get("dateModified") == "2026-11-13", "Article modification date must match the update"
 assert crumbs is not None, "BreadcrumbList structured data is missing"
 assert crumbs.get("@id") == URL + "#breadcrumb"
 items = crumbs.get("itemListElement", [])
@@ -52,4 +53,9 @@ assert '<div class="breadcrumb">' in html
 assert '<a href="../index.html">Home</a>' in html
 assert '<a href="../section-technology.html">Technology</a>' in html
 assert '<span aria-current="page">Days Between Dates Calculator</span>' in html
+sitemap = ET.parse(ROOT / "sitemap.xml").getroot()
+ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+entry = next((node for node in sitemap.findall("sm:url", ns) if node.findtext("sm:loc", default="", namespaces=ns) == URL), None)
+assert entry is not None, "Date calculator must remain in the sitemap"
+assert entry.findtext("sm:lastmod", default="", namespaces=ns) == "2026-11-13", "Sitemap lastmod must match the page update"
 print("PASS: visible breadcrumb navigation and matching Article/BreadcrumbList structured data.")
