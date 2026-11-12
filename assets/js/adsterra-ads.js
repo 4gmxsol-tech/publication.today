@@ -6,6 +6,7 @@
   const CONSENT_KEY = "publication-ad-consent-v1";
   const ENGINE_URL = "/assets/js/adsterra-ads-engine.js";
   const ALLOWED_HOSTS = ["bicea.org", "bauval.org", "highrevenueformat.com", "www.highrevenueformat.com"];
+  const IS_PRIVACY_PAGE = /\/privacy\.html$/i.test(window.location.pathname);
 
   function readChoice() {
     try { return window.localStorage.getItem(CONSENT_KEY); } catch { return null; }
@@ -72,7 +73,7 @@
     document.head.appendChild(style);
   }
 
-  function showConsent() {
+  function showConsent(focusFirst = false) {
     if (document.getElementById("publication-ad-consent")) return;
     const panel = document.createElement("aside");
     panel.id = "publication-ad-consent";
@@ -94,7 +95,7 @@
     accept.addEventListener("click", () => {
       writeChoice("accepted");
       panel.remove();
-      activateAds();
+      if (!IS_PRIVACY_PAGE) activateAds();
     });
     reject.addEventListener("click", () => {
       writeChoice("rejected");
@@ -103,10 +104,20 @@
     actions.append(accept, reject);
     panel.append(copy, privacy, actions);
     document.body.appendChild(panel);
+    if (focusFirst) accept.focus();
   }
 
   function start() {
-    if (/\/privacy\.html$/i.test(window.location.pathname)) return;
+    if (IS_PRIVACY_PAGE) {
+      const control = document.getElementById("change-ad-preferences");
+      if (control) {
+        control.addEventListener("click", () => {
+          addStyles();
+          showConsent(true);
+        });
+      }
+      return;
+    }
     addStyles();
     const choice = readChoice();
     if (choice === "accepted") { activateAds(); return; }
