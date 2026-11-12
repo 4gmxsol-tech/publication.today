@@ -26,7 +26,7 @@ function countWeekdays(startTime, dayCount) {
   const fullWeeks = Math.floor(dayCount / 7);
   const remainingDays = dayCount % 7;
   let weekdays = fullWeeks * 5;
-  const startDay = new Date(startTime).getUTCDay();
+  const startDay = (new Date(startTime).getUTCDay() + 1) % 7;
 
   for (let offset = 0; offset < remainingDays; offset += 1) {
     const weekday = (startDay + offset) % 7;
