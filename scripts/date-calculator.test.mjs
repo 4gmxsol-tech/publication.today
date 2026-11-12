@@ -66,7 +66,9 @@ test("date calculator copy distinguishes weekdays from business days", () => {
   assert.match(article, /not a business-day calculation/i);
   assert.match(article, /27 weekdays \(Monday–Friday\)/);
   assert.match(article, /excluding the start date and including the end date/i);
-  assert.match(article, /"dateModified":"2026-11-12"/);
+  assert.match(article, /"dateModified":"2026-11-13"/);
+  assert.match(article, /Updated November 13, 2026/);
+  assert.equal(entry.lastmod, "2026-11-13");
   assert.match(homepage, /Days Between Dates Calculator: Count Days, Weeks and Weekdays/);
   assert.match(technology, /Days Between Dates Calculator: Count Days, Weeks and Weekdays/);
   assert.match(sitemap, /<loc>https:\/\/publication\.today\/articles\/days-between-dates-calculator\.html<\/loc>\s*<lastmod>2026-11-12<\/lastmod>/);
