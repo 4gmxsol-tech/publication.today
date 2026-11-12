@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Validate advertising consent and disclosure
+        run: python scripts/test_ad_consent.py
       - name: Validate article data and sitemap
         run: |
           python - <<'PY'
