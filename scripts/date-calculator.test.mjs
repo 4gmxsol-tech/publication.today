@@ -8,7 +8,7 @@ test("calculates elapsed days, weeks, and weekdays for the article example", () 
     days: 38,
     weeks: 5,
     remainingDays: 3,
-    weekdays: 28,
+    weekdays: 27,
   });
 });
 
@@ -37,8 +37,10 @@ test("handles leap-day boundaries in UTC", () => {
   });
 });
 
-test("does not count weekend days as weekdays", () => {
-  assert.equal(calculateDateDifference("2026-11-14", "2026-11-16").weekdays, 0);
+test("weekday count excludes the start date and includes the end date", () => {
+  assert.equal(calculateDateDifference("2026-11-11", "2026-11-14").weekdays, 2);
+  assert.equal(calculateDateDifference("2026-11-14", "2026-11-16").weekdays, 1);
+  assert.equal(calculateDateDifference("2026-11-13", "2026-11-16").weekdays, 1);
 });
 
 test("rejects impossible and malformed calendar dates", () => {
@@ -62,6 +64,8 @@ test("date calculator copy distinguishes weekdays from business days", () => {
   assert.ok(!entry.tags.includes("business days calculator"));
   assert.match(article, /does not exclude public holidays/i);
   assert.match(article, /not a business-day calculation/i);
+  assert.match(article, /27 weekdays \(Monday–Friday\)/);
+  assert.match(article, /excluding the start date and including the end date/i);
   assert.match(article, /"dateModified":"2026-11-12"/);
   assert.match(homepage, /Days Between Dates Calculator: Count Days, Weeks and Weekdays/);
   assert.match(technology, /Days Between Dates Calculator: Count Days, Weeks and Weekdays/);
