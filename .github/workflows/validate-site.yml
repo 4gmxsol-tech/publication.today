@@ -72,6 +72,8 @@ jobs:
           assert "FREE EVERYDAY TOOL" in homepage and "Use the date calculator" in homepage, "Homepage date calculator card must retain a clear utility label and CTA"
           print(f"Validated {len(articles)} articles, {len(urls)} sitemap URLs, and direct homepage plus technology-section calculator discovery.")
           PY
+      - name: Validate date calculator breadcrumb navigation
+        run: python scripts/test_date_calculator_breadcrumbs.py
       - name: Validate Champions League Matchday 4 results update
         run: python scripts/validate_champions_league_results.py
       - name: Check new article metadata and references
