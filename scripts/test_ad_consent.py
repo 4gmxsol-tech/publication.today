@@ -52,6 +52,7 @@ if errors:
 print("PASS: direct third-party ad code is absent from HTML; ads are loaded only through the explicit consent path.")
 
 
+
 # Verify the runtime call graph: no ad unit or engine may be activated without acceptance.
 def extract_block(source, start_marker, end_marker, label):
     start = source.find(start_marker)
@@ -67,37 +68,37 @@ def extract_block(source, start_marker, end_marker, label):
 accept_handler = extract_block(
     consent,
     'accept.addEventListener("click", () => {',
-    "\\n    });",
+    '\n    });',
     "Accept handler",
 )
 reject_handler = extract_block(
     consent,
     'reject.addEventListener("click", () => {',
-    "\\n    });",
+    '\n    });',
     "Reject handler",
 )
 activation = extract_block(
     consent,
     "function activateAds() {",
-    "\\n  }\\n\\n  function addStyles()",
+    '\n  }\n\n  function addStyles()',
     "ad activation function",
 )
 start_handler = extract_block(
     consent,
     "function start() {",
-    "\\n  }\\n\\n  if (document.readyState",
+    '\n  }\n\n  if (document.readyState',
     "startup consent gate",
 )
 
 if accept_handler and (
-    "writeChoice(\\"accepted\\");" not in accept_handler
+    'writeChoice("accepted");' not in accept_handler
     or "activateAds();" not in accept_handler
-    or accept_handler.find("writeChoice(\\"accepted\\");") > accept_handler.find("activateAds();")
+    or accept_handler.find('writeChoice("accepted");') > accept_handler.find("activateAds();")
 ):
     errors.append("Accept must persist the accepted choice before activating ads.")
 
 if reject_handler and (
-    "writeChoice(\\"rejected\\");" not in reject_handler
+    'writeChoice("rejected");' not in reject_handler
     or any(call in reject_handler for call in ("activateAds();", "loadAdEngine();", "renderManualSlots();"))
 ):
     errors.append("Reject must persist rejection and must never activate or load ads.")
