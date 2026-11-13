@@ -50,3 +50,73 @@ if errors:
     sys.exit(1)
 
 print("PASS: direct third-party ad code is absent from HTML; ads are loaded only through the explicit consent path.")
+
+
+
+# Verify the runtime call graph: no ad unit or engine may be activated without acceptance.
+def extract_block(source, start_marker, end_marker, label):
+    start = source.find(start_marker)
+    if start < 0:
+        errors.append(f"Consent loader is missing {label}.")
+        return ""
+    end = source.find(end_marker, start + len(start_marker))
+    if end < 0:
+        errors.append(f"Consent loader has an unterminated {label}.")
+        return ""
+    return source[start:end]
+
+accept_handler = extract_block(
+    consent,
+    'accept.addEventListener("click", () => {',
+    '\n    });',
+    "Accept handler",
+)
+reject_handler = extract_block(
+    consent,
+    'reject.addEventListener("click", () => {',
+    '\n    });',
+    "Reject handler",
+)
+activation = extract_block(
+    consent,
+    "function activateAds() {",
+    '\n  }\n\n  function addStyles()',
+    "ad activation function",
+)
+start_handler = extract_block(
+    consent,
+    "function start() {",
+    '\n  }\n\n  if (document.readyState',
+    "startup consent gate",
+)
+
+if accept_handler and (
+    'writeChoice("accepted");' not in accept_handler
+    or "activateAds();" not in accept_handler
+    or accept_handler.find('writeChoice("accepted");') > accept_handler.find("activateAds();")
+):
+    errors.append("Accept must persist the accepted choice before activating ads.")
+
+if reject_handler and (
+    'writeChoice("rejected");' not in reject_handler
+    or any(call in reject_handler for call in ("activateAds();", "loadAdEngine();", "renderManualSlots();"))
+):
+    errors.append("Reject must persist rejection and must never activate or load ads.")
+
+if activation and (
+    "renderManualSlots();" not in activation
+    or "loadAdEngine();" not in activation
+):
+    errors.append("The single activation function must render approved slots and load the deferred engine.")
+
+if consent.count("activateAds();") != 2:
+    errors.append("Ads may be activated only from the accepted-choice startup path and the Accept button.")
+
+if consent.count("loadAdEngine();") != 1 or consent.count("renderManualSlots();") != 1:
+    errors.append("Ad engine and manual slots must only be called through the guarded activation function.")
+
+if start_handler and (
+    'if (choice === "accepted") { activateAds(); return; }' not in start_handler
+    or 'if (choice === "rejected") return;' not in start_handler
+):
+    errors.append("Returning visitors must load ads only for an accepted choice; rejected visitors must remain ad-free.")
