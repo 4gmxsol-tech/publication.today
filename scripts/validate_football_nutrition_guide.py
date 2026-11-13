@@ -25,13 +25,31 @@ assert 'href="https://www.betterhealth.vic.gov.au/health/healthyliving/sporting-
 assert 'href="football-recovery-sleep-hydration-rest-days.html"' in html
 assert 'href="football-fitness-beginners-build-endurance-safely.html"' in html
 
-schemas = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
-assert len(schemas) == 1, "Expected one Article JSON-LD block"
+schemas = re.findall(r'<script type="application/ld\\+json">(.*?)</script>', html, re.S)
+assert len(schemas) == 1, "Expected one JSON-LD graph"
 schema = json.loads(schemas[0])
-assert schema.get("@type") == "Article"
-assert schema.get("datePublished") == "2026-10-12", "Original publication date must be preserved"
-assert schema.get("dateModified") == UPDATED
-assert schema.get("description") == DESCRIPTION
+graph = schema.get("@graph", [])
+article_schema = next((item for item in graph if item.get("@type") == "Article"), None)
+breadcrumb_schema = next((item for item in graph if item.get("@type") == "BreadcrumbList"), None)
+assert article_schema, "Article structured data must remain present"
+assert breadcrumb_schema, "BreadcrumbList structured data must be present"
+assert article_schema.get("datePublished") == "2026-10-12", "Original publication date must be preserved"
+assert article_schema.get("dateModified") == UPDATED
+assert article_schema.get("description") == DESCRIPTION
+assert breadcrumb_schema.get("@id") == URL + "#breadcrumb"
+breadcrumb_items = breadcrumb_schema.get("itemListElement", [])
+assert [item.get("name") for item in breadcrumb_items] == [
+    "Home", "Nutrition", "What to Eat Before a Football Match"
+]
+assert [item.get("item") for item in breadcrumb_items] == [
+    "https://publication.today/",
+    "https://publication.today/section-nutrition.html",
+    URL
+]
+visible_breadcrumb = re.search(r'<div class="breadcrumb">(.*?)</div>', html, re.S)
+assert visible_breadcrumb, "Visible breadcrumb trail must be present"
+assert 'href="../section-nutrition.html">Nutrition</a>' in visible_breadcrumb.group(1)
+assert 'aria-current="page">What to Eat Before a Football Match</span>' in visible_breadcrumb.group(1)
 
 feed = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
 record = next(item for item in feed if item.get("slug") == SLUG)
