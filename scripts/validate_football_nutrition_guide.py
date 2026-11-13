@@ -8,13 +8,13 @@ import xml.etree.ElementTree as ET
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SLUG = "football-match-day-nutrition-guide"
 URL = f"https://publication.today/articles/{SLUG}.html"
-UPDATED = "2026-11-11"
+UPDATED = "2026-11-13"
 DESCRIPTION = "Football match-day nutrition: what to eat 3–4 hours before kickoff, a light 1–2 hour snack, hydration tips and simple recovery guidance."
 
 html = (ROOT / "articles" / f"{SLUG}.html").read_text(encoding="utf-8")
 assert f'<link rel="canonical" href="{URL}">' in html
 assert html.count(DESCRIPTION) >= 3, "Meta, Open Graph and Article schema descriptions must agree"
-assert "Updated November 11, 2026" in html
+assert "Updated November 13, 2026" in html
 assert "A simple pre-match timeline" in html
 assert "3–4 hours before" in html and "1–2 hours before kickoff" in html
 assert "There is no single fluid target that suits everyone" in html
@@ -26,12 +26,30 @@ assert 'href="football-recovery-sleep-hydration-rest-days.html"' in html
 assert 'href="football-fitness-beginners-build-endurance-safely.html"' in html
 
 schemas = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
-assert len(schemas) == 1, "Expected one Article JSON-LD block"
+assert len(schemas) == 1, "Expected one JSON-LD graph"
 schema = json.loads(schemas[0])
-assert schema.get("@type") == "Article"
-assert schema.get("datePublished") == "2026-10-12", "Original publication date must be preserved"
-assert schema.get("dateModified") == UPDATED
-assert schema.get("description") == DESCRIPTION
+graph = schema.get("@graph", [])
+article_schema = next((item for item in graph if item.get("@type") == "Article"), None)
+breadcrumb_schema = next((item for item in graph if item.get("@type") == "BreadcrumbList"), None)
+assert article_schema, "Article structured data must remain present"
+assert breadcrumb_schema, "BreadcrumbList structured data must be present"
+assert article_schema.get("datePublished") == "2026-10-12", "Original publication date must be preserved"
+assert article_schema.get("dateModified") == UPDATED
+assert article_schema.get("description") == DESCRIPTION
+assert breadcrumb_schema.get("@id") == URL + "#breadcrumb"
+breadcrumb_items = breadcrumb_schema.get("itemListElement", [])
+assert [item.get("name") for item in breadcrumb_items] == [
+    "Home", "Nutrition", "What to Eat Before a Football Match"
+]
+assert [item.get("item") for item in breadcrumb_items] == [
+    "https://publication.today/",
+    "https://publication.today/section-nutrition.html",
+    URL
+]
+visible_breadcrumb = re.search(r'<div class="breadcrumb">(.*?)</div>', html, re.S)
+assert visible_breadcrumb, "Visible breadcrumb trail must be present"
+assert 'href="../section-nutrition.html">Nutrition</a>' in visible_breadcrumb.group(1)
+assert 'aria-current="page">What to Eat Before a Football Match</span>' in visible_breadcrumb.group(1)
 
 feed = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
 record = next(item for item in feed if item.get("slug") == SLUG)
