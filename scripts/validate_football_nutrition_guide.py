@@ -46,3 +46,15 @@ entry = next(node for node in sitemap.findall("sm:url", ns)
              if node.findtext("sm:loc", default="", namespaces=ns) == URL)
 assert entry.findtext("sm:lastmod", default="", namespaces=ns) == UPDATED
 print("Football nutrition guide: intent, source links, Article schema, feed, related links and sitemap lastmod all pass.")
+
+# Static section URLs have dedicated self-canonical pages; avoid routing article navigation
+# through the generic query-parameter section endpoint.
+for category in ("fitness", "health", "skincare", "nutrition", "wellness", "beauty"):
+    section_path = ROOT / f"section-{category}.html"
+    assert section_path.is_file(), f"Static section page is missing: {section_path.name}"
+    assert f'href="../section-{category}.html"' in html, (
+        f"Article navigation must link directly to the canonical {category} section page"
+    )
+assert "../section.html?category=" not in html, (
+    "Article navigation must not route through the generic query-parameter section endpoint"
+)
