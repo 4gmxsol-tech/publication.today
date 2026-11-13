@@ -25,7 +25,7 @@ assert 'href="https://www.betterhealth.vic.gov.au/health/healthyliving/sporting-
 assert 'href="football-recovery-sleep-hydration-rest-days.html"' in html
 assert 'href="football-fitness-beginners-build-endurance-safely.html"' in html
 
-schemas = re.findall(r'<script type="application/ld\\+json">(.*?)</script>', html, re.S)
+schemas = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
 assert len(schemas) == 1, "Expected one JSON-LD graph"
 schema = json.loads(schemas[0])
 graph = schema.get("@graph", [])
