@@ -8,13 +8,13 @@ import xml.etree.ElementTree as ET
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SLUG = "football-match-day-nutrition-guide"
 URL = f"https://publication.today/articles/{SLUG}.html"
-UPDATED = "2026-11-11"
+UPDATED = "2026-11-13"
 DESCRIPTION = "Football match-day nutrition: what to eat 3–4 hours before kickoff, a light 1–2 hour snack, hydration tips and simple recovery guidance."
 
 html = (ROOT / "articles" / f"{SLUG}.html").read_text(encoding="utf-8")
 assert f'<link rel="canonical" href="{URL}">' in html
 assert html.count(DESCRIPTION) >= 3, "Meta, Open Graph and Article schema descriptions must agree"
-assert "Updated November 11, 2026" in html
+assert "Updated November 13, 2026" in html
 assert "A simple pre-match timeline" in html
 assert "3–4 hours before" in html and "1–2 hours before kickoff" in html
 assert "There is no single fluid target that suits everyone" in html
