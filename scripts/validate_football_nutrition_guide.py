@@ -31,6 +31,11 @@ assert hydration_section and 'href="daily-water-intake-estimator.html">Daily Wat
 estimator = (ROOT / "articles" / "daily-water-intake-estimator.html").read_text(encoding="utf-8")
 assert "not a universal target or medical instruction" in estimator
 assert "not suitable for people with clinician-prescribed fluid limits" in estimator
+estimator_related = re.search(r'<h2>Related tools and guides</h2>(.*?)(?=</div></article>)', estimator, re.S)
+assert estimator_related and 'href="football-match-day-nutrition-guide.html">football match-day nutrition guide</a>' in estimator_related.group(1), (
+    "Water estimator must link back to the football match-day guide from its related-guides section"
+)
+assert "without setting an individual fluid target" in estimator_related.group(1)
 
 schemas = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
 assert len(schemas) == 1, "Expected one JSON-LD graph"
