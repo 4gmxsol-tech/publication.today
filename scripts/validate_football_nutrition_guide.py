@@ -24,6 +24,13 @@ assert 'href="https://doi.org/10.1136/bjsports-2019-101961"' in html
 assert 'href="https://www.betterhealth.vic.gov.au/health/healthyliving/sporting-performance-and-food"' in html
 assert 'href="football-recovery-sleep-hydration-rest-days.html"' in html
 assert 'href="football-fitness-beginners-build-endurance-safely.html"' in html
+hydration_section = re.search(r'<h2>Hydrate steadily</h2>(.*?)(?=<h2>)', html, re.S)
+assert hydration_section and 'href="daily-water-intake-estimator.html">Daily Water Intake Estimator</a>' in hydration_section.group(1), (
+    "Hydration section must link contextually to the daily water estimator"
+)
+estimator = (ROOT / "articles" / "daily-water-intake-estimator.html").read_text(encoding="utf-8")
+assert "not a universal target or medical instruction" in estimator
+assert "not suitable for people with clinician-prescribed fluid limits" in estimator
 
 schemas = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
 assert len(schemas) == 1, "Expected one JSON-LD graph"
