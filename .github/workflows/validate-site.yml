@@ -74,6 +74,8 @@ jobs:
           PY
       - name: Test date calculator defaults and date arithmetic
         run: node --test scripts/date-calculator.test.mjs
+      - name: Validate hydration estimator sources and limitations
+        run: python scripts/test_water_intake_estimator.py
       - name: Validate date calculator breadcrumb navigation
         run: python scripts/test_date_calculator_breadcrumbs.py
       - name: Validate Champions League Matchday 4 results update
