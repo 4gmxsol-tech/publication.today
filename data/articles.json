@@ -210,8 +210,9 @@
     "slug": "daily-water-intake-estimator",
     "category": "wellness",
     "title": "Daily Water Intake Estimator: A Practical Hydration Guide",
-    "excerpt": "Estimate a general daily fluid starting point and learn how heat, exercise, diet and health can change hydration needs.",
-    "readTime": "5 min read",
+    "excerpt": "Understand a simple weight-based fluid estimate, its limits, and how it differs from official population-level hydration references.",
+    "readTime": "6 min read",
+    "lastmod": "2026-11-14",
     "tags": [
       "daily water intake calculator",
       "how much water should I drink",
@@ -223,8 +224,16 @@
         "text": "Fluid needs vary with climate, activity, body size, diet, pregnancy and health. This estimator offers a simple planning starting point, not a universal target or medical instruction."
       },
       {
+        "heading": "What this estimate does and does not represent",
+        "text": "The calculator uses a simplified 30 mL per kilogram rule of thumb plus illustrative fixed activity adjustments. It is not a validated clinical formula, official intake recommendation or individualized prescription."
+      },
+      {
+        "heading": "How official water references differ",
+        "text": "The National Academies' adult Adequate Intake values are population-level references for total water from food and all beverages, not mandatory drinking-water targets for every person. The CDC notes that needs vary with age, pregnancy or breastfeeding, activity, climate and illness."
+      },
+      {
         "heading": "Listen to context",
-        "text": "Hot weather and exercise can increase fluid losses. Food also contributes water. People with conditions requiring fluid restriction, or those taking relevant medicines, should follow their clinician’s advice rather than a general calculator."
+        "text": "Hot weather and exercise can increase fluid losses. Food also contributes water. People with clinician-prescribed fluid limits should follow their clinician’s advice rather than a general calculator."
       }
     ]
   },
