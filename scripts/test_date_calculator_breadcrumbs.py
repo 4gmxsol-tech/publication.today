@@ -37,6 +37,18 @@ article = next((node for node in nodes if node.get("@type") == "Article"), None)
 crumbs = next((node for node in nodes if node.get("@type") == "BreadcrumbList"), None)
 assert article is not None, "Article structured data must remain present"
 assert article.get("mainEntityOfPage") == URL
+
+# Keep document, social, and Article metadata aligned with the visible H1 and article feed.
+expected_title = "Days Between Dates Calculator: Count Days, Weeks and Weekdays"
+expected_description = "Calculate elapsed days, full weeks and Monday-to-Friday weekdays between two dates. Public holidays are not excluded, so this is not a business-day calculator."
+assert f"<title>{expected_title}</title>" in html
+assert f'<meta property="og:title" content="{expected_title}">' in html
+assert f'<meta name="twitter:title" content="{expected_title}">' in html
+assert f'<meta name="description" content="{expected_description}">' in html
+assert f'<meta property="og:description" content="{expected_description}">' in html
+assert f'<meta name="twitter:description" content="{expected_description}">' in html
+assert article.get("headline") == expected_title
+assert article.get("description") == expected_description
 assert article.get("datePublished") == "2026-11-11", "Original publication date must remain unchanged"
 assert article.get("dateModified") == "2026-11-13", "Article modification date must match the update"
 assert crumbs is not None, "BreadcrumbList structured data is missing"
