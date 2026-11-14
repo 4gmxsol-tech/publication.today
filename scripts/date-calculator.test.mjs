@@ -87,7 +87,7 @@ test("date calculator copy distinguishes weekdays from business days", () => {
   assert.doesNotMatch(article, /id="start-date" type="date" value=/);
   assert.doesNotMatch(article, /id="end-date" type="date" value=/);
   assert.match(article, /Select two dates to calculate the difference/);
-  assert.match(article, /27 weekdays \(Monday–Friday\)/);
+  assert.match(article, /Monday-to-Friday weekdays/);
   assert.match(article, /excluding the start date and including the end date/i);
   assert.match(article, /"dateModified":"2026-11-13"/);
   assert.match(article, /Updated November 13, 2026/);
