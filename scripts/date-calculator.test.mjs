@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { calculateDateDifference, parseDateUTC } from "./date-calculator.mjs";
+import { addCalendarDays, calculateDateDifference, formatDateInputValue, getDefaultDateRange, parseDateUTC } from "./date-calculator.mjs";
 
 test("calculates elapsed days, weeks, and weekdays for the article example", () => {
   assert.deepEqual(calculateDateDifference("2026-11-11", "2026-12-19"), {
@@ -49,6 +49,24 @@ test("rejects impossible and malformed calendar dates", () => {
   assert.throws(() => parseDateUTC(""), RangeError);
 });
 
+test("defaults the calculator to the current local date and 38 days later", () => {
+  const now = new Date(2026, 10, 14, 12, 0, 0);
+  assert.deepEqual(getDefaultDateRange(now), {
+    startDate: "2026-11-14",
+    endDate: "2026-12-22",
+  });
+});
+
+test("adds calendar days across leap-day boundaries", () => {
+  assert.equal(addCalendarDays("2024-02-28", 2), "2024-03-01");
+  assert.throws(() => addCalendarDays("2024-02-28", 1.5), RangeError);
+});
+
+test("formats a valid local date for date inputs", () => {
+  assert.equal(formatDateInputValue(new Date(2026, 10, 14, 12, 0, 0)), "2026-11-14");
+  assert.throws(() => formatDateInputValue(new Date(Number.NaN)), RangeError);
+});
+
 
 test("date calculator copy distinguishes weekdays from business days", () => {
   const article = readFileSync(new URL("../articles/days-between-dates-calculator.html", import.meta.url), "utf8");
@@ -64,6 +82,11 @@ test("date calculator copy distinguishes weekdays from business days", () => {
   assert.ok(!entry.tags.includes("business days calculator"));
   assert.match(article, /does not exclude public holidays/i);
   assert.match(article, /not a business-day calculation/i);
+  assert.match(article, /id="start-date" type="date"/);
+  assert.match(article, /id="end-date" type="date"/);
+  assert.doesNotMatch(article, /id="start-date" type="date" value=/);
+  assert.doesNotMatch(article, /id="end-date" type="date" value=/);
+  assert.match(article, /Select two dates to calculate the difference/);
   assert.match(article, /27 weekdays \(Monday–Friday\)/);
   assert.match(article, /excluding the start date and including the end date/i);
   assert.match(article, /"dateModified":"2026-11-13"/);
