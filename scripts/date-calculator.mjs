@@ -22,6 +22,38 @@ export function parseDateUTC(value) {
   return date.getTime();
 }
 
+export function formatDateInputValue(date) {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    throw new RangeError("Enter a valid date.");
+  }
+
+  const year = String(date.getFullYear()).padStart(4, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return year + "-" + month + "-" + day;
+}
+
+export function addCalendarDays(value, days) {
+  if (!Number.isInteger(days)) {
+    throw new RangeError("Enter a whole number of days.");
+  }
+
+  const date = new Date(parseDateUTC(value));
+  date.setUTCDate(date.getUTCDate() + days);
+  const year = String(date.getUTCFullYear()).padStart(4, "0");
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  return year + "-" + month + "-" + day;
+}
+
+export function getDefaultDateRange(now = new Date()) {
+  const startDate = formatDateInputValue(now);
+  return {
+    startDate,
+    endDate: addCalendarDays(startDate, 38),
+  };
+}
+
 function countWeekdays(startTime, dayCount) {
   const fullWeeks = Math.floor(dayCount / 7);
   const remainingDays = dayCount % 7;
@@ -59,6 +91,10 @@ if (typeof document !== "undefined") {
   const endInput = document.getElementById("end-date");
   const calculateButton = document.getElementById("date-calculate");
   const result = document.getElementById("date-result");
+
+  const defaultRange = getDefaultDateRange();
+  if (startInput && !startInput.value) startInput.value = defaultRange.startDate;
+  if (endInput && !endInput.value) endInput.value = defaultRange.endDate;
 
   function updateDateResult() {
     if (!startInput || !endInput || !result) return;
