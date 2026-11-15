@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SLUG = "champions-league-matchday-5-fixtures-kickoff-times-november-24-25-2026"
 URL = "https://publication.today/articles/" + SLUG + ".html"
 TITLE = "Champions League Matchday 5 Fixtures: Full Schedule & Kick-off Times"
-DESCRIPTION = "See all 18 UEFA Champions League Matchday 5 fixtures for November 24–25, 2026, with confirmed CET kick-off times and Sudan time conversions."
+DESCRIPTION = "See all 18 UEFA Champions League Matchday 5 fixtures for November 24–25, 2026, with CET, US Eastern, UTC and Sudan kick-off times."
 ARTICLE = ROOT / "articles" / (SLUG + ".html")
 FEED = ROOT / "data" / "articles.json"
 SECTION = ROOT / "section-football.html"
@@ -90,12 +90,22 @@ def main():
         errors.append("fixture test list must contain 18 unique matches")
 
     for phrase in ("Tuesday, November 24, 2026: Champions League fixtures", "Wednesday, November 25, 2026: Champions League fixtures",
-                   "18:45 CET", "17:45 UTC", "19:45 Sudan",
-                   "21:00 CET", "20:00 UTC", "22:00 Sudan",
-                   "CET is UTC+1", "Sudan is UTC+2"):
+                   "18:45 CET", "12:45 p.m. ET", "17:45 UTC", "19:45 Sudan",
+                   "21:00 CET", "3:00 p.m. ET", "20:00 UTC", "22:00 Sudan",
+                   "CET is UTC+1", "US Eastern Time is Eastern Standard Time (EST, UTC−5)", "Sudan is UTC+2"):
         if phrase not in html:
             errors.append("missing schedule or time-zone detail: " + phrase)
 
+    if html.count('class="fixture-table-wrap"') != 2:
+        errors.append("both fixture tables must use the responsive horizontal-scroll wrapper")
+    if "min-width:760px" not in html:
+        errors.append("five-column fixture tables must retain the responsive minimum width")
+    if html.count("12:45 p.m. ET</td>") != 4:
+        errors.append("exactly four early fixtures must convert to 12:45 p.m. ET")
+    if html.count("3:00 p.m. ET</td>") != 14:
+        errors.append("exactly fourteen standard fixtures must convert to 3:00 p.m. ET")
+    if "https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst" not in html:
+        errors.append("US Eastern standard-time conversion must link to NIST")
     if "uefa.com" not in html:
         errors.append("official UEFA source link is required")
     if f'href="{SLUG}.html"' not in PSV_PREVIEW.read_text(encoding="utf-8"):
@@ -132,10 +142,16 @@ def main():
             errors.append("article feed dates are incorrect")
         if "Champions League Matchday 5 fixtures" not in item.get("tags", []):
             errors.append("article feed is missing the primary search phrase")
+        if not {"Champions League Matchday 5 US kickoff times", "Champions League fixtures ET"}.issubset(set(item.get("tags", []))):
+            errors.append("article feed is missing the US Eastern fixture-time search phrases")
+        if "US Eastern" not in item.get("excerpt", ""):
+            errors.append("article feed excerpt must mention US Eastern kick-off times")
 
     section = SECTION.read_text(encoding="utf-8")
     if section.count(f'href="articles/{SLUG}.html"') != 3:
         errors.append("Football section must expose image, title and CTA links to the guide")
+    if "US Eastern" not in section:
+        errors.append("Football section card must mention US Eastern kick-off times")
 
     sitemap = ET.parse(SITEMAP).getroot()
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
