@@ -58,6 +58,16 @@ jobs:
           assert (root / "articles" / f"{slug}.html").is_file(), "Static article page is missing"
           section = (root / "section-football.html").read_text(encoding="utf-8")
           assert f"articles/{slug}.html" in section, "Football section does not link to the new preview"
+          for item in articles:
+              if item.get("category") == "football":
+                  section_link = f"articles/{item['slug']}.html"
+                  assert section_link in section, f"Football section is missing an article card: {section_link}"
+
+          calendar_slug = "football-competitions-calendar-2027-afcon-womens-world-cup-champions-league"
+          calendar = next((item for item in articles if item["slug"] == calendar_slug), None)
+          assert calendar and calendar.get("lastmod") == "2026-11-15", "2027 football calendar feed date is stale"
+          calendar_page = (root / "articles" / f"{calendar_slug}.html").read_text(encoding="utf-8")
+          assert "Updated November 15, 2026" in calendar_page and "Last checked: November 15, 2026" in calendar_page, "2027 football calendar review date is stale"
           homepage = (root / "index.html").read_text(encoding="utf-8")
           assert 'data-filter="football"' in homepage and 'href="section-football.html"' in homepage, "Homepage football navigation/filter missing"
 
