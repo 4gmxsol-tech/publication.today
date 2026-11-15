@@ -667,7 +667,7 @@
     "slug": "google-gemini-4-argon-ai-model-coding-benchmark-pricing",
     "category": "technology",
     "title": "Gemini 4 Argon Explained: Coding, Benchmarks, Pricing & Model Comparison",
-    "excerpt": "Compare Gemini 4 Argon with Gemini 4 Carbon and Hydrogen: model roles, coding workflows, benchmark caveats, API pricing and practical testing advice.",
+    "excerpt": "Compare Gemini 4 Argon, Carbon and Hydrogen: coding roles, benchmark caveats, free-tier availability, paid API pricing and the December 1 price change.",
     "readTime": "9 min read",
     "date": "October 2026",
     "tags": [
@@ -683,7 +683,10 @@
       "software development",
       "Gemini 4 Carbon",
       "Gemini 4 Hydrogen",
-      "Gemini 4 model comparison"
+      "Gemini 4 model comparison",
+      "Gemini 4 Hydrogen free tier",
+      "Gemini API pricing 2026",
+      "Gemini 4 Argon paid tier"
     ],
     "body": [
       {
@@ -691,12 +694,12 @@
         "text": "Google introduced Gemini 4 Argon as a frontier AI model built for difficult, multi-step work rather than simple question answering. Google says it is designed for complex software engineering, finance, legal work, cybersecurity defense and scientific research. That makes Gemini 4 Argon relevant to developers comparing the best AI coding models, teams exploring AI agents, and businesses looking for ways to automate demanding workflows. The important question is not whether a model sounds impressive in a demo, but whether it completes real tasks accurately, safely and consistently."
       },
       {
-        "heading": "The 1-million-token context window: what it means for developers",
-        "text": "Google’s developer documentation lists a unified context window of up to 1,048,576 tokens for Gemini 4 Argon. A large context window can help a model work with extensive documentation, multiple source files, long technical reports and broader project context in a single workflow. It does not guarantee perfect recall, eliminate hallucinations or mean every task will fit comfortably within practical cost and latency limits. Developers should test representative prompts and verify important outputs."
+        "heading": "The 1-million-token unified input-output budget",
+        "text": "Google describes Gemini 4 Argon's API limit as a unified 1-million-token input-output budget. It is a shared allowance for the content the model reads and generates, not one million input tokens plus a separate one million output tokens. A large budget can help a model work with extensive documentation, multiple source files and long technical reports in one workflow. It does not guarantee perfect recall or remove practical cost and latency limits; developers should test representative prompts and verify important outputs."
       },
       {
         "heading": "AI coding, software engineering and long-running agent workflows",
-        "text": "Gemini 4 Argon is positioned for complex coding tasks, codebase refactoring and workflows that require planning, tool use and several stages of execution. Google reports that teams using Argon in Antigravity increased agentic code submissions by more than 35% while reducing code rollbacks by nearly a third. Google also describes using the model to help refactor code across Chromium. These are company-reported results, not a guarantee that every developer or repository will see the same improvement. Independent testing should measure task completion, regression rates, review time and total cost."
+        "text": "Gemini 4 Argon is positioned for complex coding tasks, codebase refactoring and workflows that require planning, tool use and several stages of execution. Google's October 13 announcement reports that teams using Argon in Antigravity increased agentic code submissions by more than 35% while reducing code rollbacks by nearly a third; Google Cloud also describes a Chromium refactor across hundreds of files. These are vendor-reported results, not independent evaluations or guarantees for outside teams. Measure task completion, regressions, review time and total cost on representative work."
       },
       {
         "heading": "How Gemini 4 Argon compares with Carbon and Hydrogen",
@@ -708,7 +711,7 @@
       },
       {
         "heading": "Gemini API pricing: introductory rates and the December change",
-        "text": "Google’s published Gemini 4 Argon API rates are $2 per million input tokens and $10 per million output tokens through November 30, 2026; the published rate becomes $4 per million input tokens and $20 per million output tokens from December 1. Google launched Carbon at the same introductory API rates as Argon. Hydrogen is priced at $1.50 per million input tokens and $7.50 per million output tokens across its 1-million-token context window. Google also documents a 95% discount for cached Argon input tokens under implicit caching. Output pricing includes thinking tokens, so workloads that use extensive reasoning may cost more than a quick estimate based only on visible answer length. Check the current official pricing page before deploying an application."
+        "text": "Google's current Gemini API pricing page lists Argon and Carbon as unavailable on the Free tier. Their paid-tier rates are $2 per million input tokens and $10 per million output tokens through November 30, 2026, then $4 and $20 from December 1. Hydrogen is free on the Free tier; its paid-tier API rates are $1.50 per million input tokens and $7.50 per million output tokens across its 1-million-token context window. The page also lists model-specific context-caching rates. Output pricing includes thinking tokens, so workloads that use extensive reasoning may cost more than estimates based only on visible answer length. Check the official pricing page before deployment."
       },
       {
         "heading": "How to access Gemini 4 Argon and start testing",
@@ -728,10 +731,10 @@
       },
       {
         "heading": "Official sources and further reading",
-        "text": "For current specifications and pricing, consult Google’s official Gemini API model documentation, the Gemini 4 Argon announcement, the Gemini 4 Carbon announcement, and the Gemini 4 Hydrogen announcement. Product availability and prices can change; verify them with Google before making a purchasing or deployment decision."
+        "text": "For current specifications, access and pricing, consult Google's Gemini API model documentation, the official Gemini 4 Argon announcement, Google Cloud's Argon availability report, the Gemini 4 Carbon and Hydrogen announcements, and the Gemini API pricing page. Product availability and prices can change; verify them with Google before making a purchasing or deployment decision."
       }
     ],
-    "lastmod": "2026-11-15"
+    "lastmod": "2026-11-16"
   },
   {
     "slug": "build-a-fitness-routine-that-lasts",
