@@ -96,10 +96,12 @@ def main():
         if phrase not in html:
             errors.append("missing schedule or time-zone detail: " + phrase)
 
-    if html.count(" p.m. ET</td>") != 18:
-        errors.append("all 18 fixture rows must include a US Eastern kick-off time")
-    if "nist.gov" not in html:
-        errors.append("US Eastern standard-time conversion must cite NIST")
+    if html.count("12:45 p.m. ET</td>") != 4:
+        errors.append("exactly four early fixtures must convert to 12:45 p.m. ET")
+    if html.count("3:00 p.m. ET</td>") != 14:
+        errors.append("exactly fourteen standard fixtures must convert to 3:00 p.m. ET")
+    if "https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst" not in html:
+        errors.append("US Eastern standard-time conversion must link to NIST")
     if "uefa.com" not in html:
         errors.append("official UEFA source link is required")
     if f'href="{SLUG}.html"' not in PSV_PREVIEW.read_text(encoding="utf-8"):
