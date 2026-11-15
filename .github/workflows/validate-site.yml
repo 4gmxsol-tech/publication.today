@@ -82,6 +82,8 @@ jobs:
         run: python scripts/validate_champions_league_results.py
       - name: Validate El Clásico match report, feed and sitemap
         run: python scripts/validate_el_clasico_match_report.py
+      - name: Validate Real Madrid vs PSV Matchday 5 preview
+        run: python scripts/validate_real_madrid_psv_preview.py
       - name: Check new article metadata and references
         run: |
           python - <<'PY'
