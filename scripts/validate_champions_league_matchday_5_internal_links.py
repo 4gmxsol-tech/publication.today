@@ -131,6 +131,7 @@ assert city_schema.get("datePublished") == "2026-11-15" and city_schema.get("dat
 assert "Manchester City vs Napoli standings" in city_schema.get("keywords", ""), "City NewsArticle keywords must include the league-table query"
 assert "Man City vs Napoli 3 PM ET" in city_schema.get("keywords", ""), "City NewsArticle keywords must include the US kick-off query"
 assert "UEFA Champions League league phase table" in city_schema.get("keywords", ""), "City NewsArticle keywords must include the standings query"
+assert "<h2>League-phase points before Matchday 5</h2>" in PAGES["city"], "City preview heading must describe points rather than unverified ranks"
 assert "Manchester City have 9 points from three wins and one defeat" in PAGES["city"], "City preview is missing the verified UEFA points total"
 assert "Napoli have 3 points from one win and three defeats" in PAGES["city"], "City preview is missing the verified Napoli points total"
 assert "Manchester City seventh" not in PAGES["city"] and "Napoli are 27th" not in PAGES["city"], "Do not publish unverified table positions"
