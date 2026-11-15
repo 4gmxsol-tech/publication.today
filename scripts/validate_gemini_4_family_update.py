@@ -17,8 +17,11 @@ assert {"Gemini 4 Carbon", "Gemini 4 Hydrogen", "Gemini 4 model comparison"}.iss
 assert item.get("readTime") == "9 min read"
 assert "Gemini 4 Carbon" in page and "Gemini 4 Hydrogen" in page
 assert "November 10, 2026" in page and "November 12" in page
-assert "not available on the Free tier" in page
+assert "unavailable on the Free tier" in page
 assert "Hydrogen is free on the Free tier" in page
+assert "Their paid-tier rates are $2 per million input tokens and $10 per million output tokens" in page
+assert "Google Cloud's availability report" in page
+assert "Google's October 13 announcement" in page
 assert "paid-tier API rates are $1.50 per million input tokens and $7.50 per million output tokens" in page
 assert "November 30, 2026" in page and "December 1" in page
 for official_url in (
