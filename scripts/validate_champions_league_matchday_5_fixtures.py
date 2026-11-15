@@ -89,7 +89,7 @@ def main():
     if len(FIXTURES) != 18 or len(set(FIXTURES)) != 18:
         errors.append("fixture test list must contain 18 unique matches")
 
-    for phrase in ("Tuesday, November 24, 2026", "Wednesday, November 25, 2026",
+    for phrase in ("Tuesday, November 24, 2026: Champions League fixtures", "Wednesday, November 25, 2026: Champions League fixtures",
                    "18:45 CET", "17:45 UTC", "19:45 Sudan",
                    "21:00 CET", "20:00 UTC", "22:00 Sudan",
                    "CET is UTC+1", "Sudan is UTC+2"):
