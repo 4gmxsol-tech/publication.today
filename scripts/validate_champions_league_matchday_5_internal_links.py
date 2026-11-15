@@ -146,7 +146,7 @@ assert "Manchester City vs Napoli standings" in city_item.get("tags", []), (
 assert "Man City vs Napoli 3 PM ET" in city_item.get("tags", []), (
     "City preview must include the US kick-off search phrase"
 )
-assert city_item.get("excerpt") == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA table positions and recent form.", "City preview excerpt must match the search description"
+assert city_item.get("excerpt") == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA points totals and recent form.", "City preview excerpt must match the search description"
 assert "Champions League Matchday 5" in city_item.get("tags", []), (
     "City preview must target the Matchday 5 search phrase"
 )
