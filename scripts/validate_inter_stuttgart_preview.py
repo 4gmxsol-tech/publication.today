@@ -26,7 +26,7 @@ assert "San Siro" in html and "Giuseppe Meazza" in html, "Venue is missing"
 assert "seven points" in html and "six" in html, "League-phase points context is missing"
 assert "uefa.com" in html and "inter.it" in html and "vfb.de" in html and "nist.gov" in html, "Official source references are incomplete"
 
-scripts = re.findall(r'<script type="application/ld\\+json">(.*?)</script>', html, re.S)
+scripts = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
 assert len(scripts) == 1, "Expected exactly one JSON-LD block"
 schema = json.loads(scripts[0])
 assert schema.get("@type") == "NewsArticle", "Article must use NewsArticle schema"
