@@ -10,6 +10,7 @@ SLUGS = {
     "fixtures": "champions-league-matchday-5-fixtures-kickoff-times-november-24-25-2026",
     "madrid": "real-madrid-vs-psv-champions-league-matchday-5-preview-november-24-2026",
     "sabah": "sabah-vs-barcelona-champions-league-matchday-5-preview-november-25-2026",
+    "arsenal": "arsenal-vs-borussia-dortmund-champions-league-matchday-5-preview-november-24-2026",
 }
 PAGES = {
     key: (ROOT / "articles" / f"{slug}.html").read_text(encoding="utf-8")
@@ -42,17 +43,35 @@ assert f'href="{SLUGS["madrid"]}.html"' in PAGES["fixtures"], (
 assert f'href="{SLUGS["sabah"]}.html"' in PAGES["fixtures"], (
     "Full schedule is missing the Sabah vs Barcelona preview"
 )
+assert f'href="{SLUGS["arsenal"]}.html"' in PAGES["fixtures"], (
+    "Full schedule is missing the Arsenal vs Borussia Dortmund preview"
+)
 assert f'href="{SLUGS["fixtures"]}.html"' in PAGES["madrid"], (
     "Real Madrid vs PSV preview must link to the full schedule"
 )
 assert f'href="{SLUGS["fixtures"]}.html"' in PAGES["sabah"], (
     "Sabah vs Barcelona preview must link to the full schedule"
 )
+assert f'href="{SLUGS["fixtures"]}.html"' in PAGES["arsenal"], (
+    "Arsenal vs Borussia Dortmund preview must link to the full schedule"
+)
+assert f'href="{SLUGS["madrid"]}.html"' in PAGES["arsenal"], (
+    "Arsenal preview must cross-link to the Real Madrid vs PSV preview"
+)
+assert f'href="{SLUGS["sabah"]}.html"' in PAGES["arsenal"], (
+    "Arsenal preview must cross-link to the Sabah vs Barcelona preview"
+)
+assert "<title>Arsenal vs Borussia Dortmund: Kick-off Time, Emirates Stadium &amp; Match Preview</title>" in PAGES["arsenal"], (
+    "Arsenal preview must have its expected document title"
+)
+for phrase in ("20:00 GMT", "21:00 CET", "20:00 UTC", "3:00 p.m. in US Eastern Standard Time", "22:00 in Sudan", "Emirates Stadium", "uefa.com", "arsenal.com", "bvb.de", "nist.gov"):
+    assert phrase in PAGES["arsenal"], f"Arsenal preview is missing verified detail or source: {phrase}"
+assert PAGES["arsenal"].count("<h1>") == 1, "Arsenal preview must contain exactly one H1"
 assert f'href="{SLUGS["madrid"]}.html"' in PAGES["sabah"], (
     "Sabah preview must retain its cross-link to the Madrid preview"
 )
 
-# All three pages must remain discoverable in the football feed and sitemap.
+# All four pages must remain discoverable in the football feed and sitemap.
 feed = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
 feed_by_slug = {item.get("slug"): item for item in feed}
 sitemap = ET.parse(ROOT / "sitemap.xml").getroot()
