@@ -121,11 +121,27 @@ assert "<title>Manchester City vs Napoli: Kick-off Time, Etihad Stadium &amp; Ma
     "City preview title must match its intended search title"
 )
 assert PAGES["city"].count("<h1>") == 1, "City preview must contain exactly one H1"
+city_description = re.search(r'<meta name="description" content="([^"]+)">', PAGES["city"]).group(1)
+assert city_description == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA table positions and recent form.", "City preview meta description is stale"
+assert f'<meta property="og:description" content="{desc}">' in PAGES["city"], "City preview Open Graph description must match"
+assert f'<meta name="twitter:description" content="{desc}">' in PAGES["city"], "City preview Twitter description must match"
+city_schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', PAGES["city"], re.S).group(1))
+assert city_schema.get("description") == city_description, "City NewsArticle description must match search metadata"
+assert "Manchester City seventh with 9 points" in PAGES["city"], "City preview is missing the verified UEFA position"
+assert "Napoli are 27th with 3 points" in PAGES["city"], "City preview is missing the verified Napoli position"
+
 city_item = feed_by_slug.get(SLUGS["city"])
 assert city_item and city_item.get("category") == "football", "City preview must be in the football feed"
 assert city_item.get("date") == "November 15, 2026" and city_item.get("lastmod") == "2026-11-15", (
     "City preview feed dates must be November 15, 2026"
 )
+assert "Manchester City vs Napoli standings" in city_item.get("tags", []), (
+    "City preview must include the league-table search phrase"
+)
+assert "Man City vs Napoli 3 PM ET" in city_item.get("tags", []), (
+    "City preview must include the US kick-off search phrase"
+)
+assert city_item.get("excerpt") == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA table positions and recent form.", "City preview excerpt must match the search description"
 assert "Champions League Matchday 5" in city_item.get("tags", []), (
     "City preview must target the Matchday 5 search phrase"
 )
