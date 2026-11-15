@@ -26,7 +26,7 @@ for key, html in PAGES.items():
         f"{key} page must retain exactly one correct canonical URL"
     )
     schemas = re.findall(
-        r'<script type="application/ld\\+json">(.*?)</script>', html, re.S
+        r'<script type="application/ld\+json">(.*?)</script>', html, re.S
     )
     assert len(schemas) == 1, f"{key} page must contain exactly one JSON-LD block"
     schema = json.loads(schemas[0])
