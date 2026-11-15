@@ -127,6 +127,9 @@ assert f'<meta property="og:description" content="{city_description}">' in PAGES
 assert f'<meta name="twitter:description" content="{city_description}">' in PAGES["city"], "City preview Twitter description must match"
 city_schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', PAGES["city"], re.S).group(1))
 assert city_schema.get("description") == city_description, "City NewsArticle description must match search metadata"
+assert city_schema.get("datePublished") == "2026-11-15" and city_schema.get("dateModified") == "2026-11-15", "City NewsArticle dates must match the article review date"
+assert "Manchester City vs Napoli standings" in city_schema.get("keywords", ""), "City NewsArticle keywords must include the league-table query"
+assert "Man City vs Napoli 3 PM ET" in city_schema.get("keywords", ""), "City NewsArticle keywords must include the US kick-off query"
 assert "Manchester City seventh with 9 points" in PAGES["city"], "City preview is missing the verified UEFA position"
 assert "Napoli are 27th with 3 points" in PAGES["city"], "City preview is missing the verified Napoli position"
 
