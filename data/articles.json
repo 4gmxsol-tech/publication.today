@@ -694,8 +694,8 @@
         "text": "Google introduced Gemini 4 Argon as a frontier AI model built for difficult, multi-step work rather than simple question answering. Google says it is designed for complex software engineering, finance, legal work, cybersecurity defense and scientific research. That makes Gemini 4 Argon relevant to developers comparing the best AI coding models, teams exploring AI agents, and businesses looking for ways to automate demanding workflows. The important question is not whether a model sounds impressive in a demo, but whether it completes real tasks accurately, safely and consistently."
       },
       {
-        "heading": "The 1-million-token context window: what it means for developers",
-        "text": "Google’s developer documentation lists a unified context window of up to 1,048,576 tokens for Gemini 4 Argon. A large context window can help a model work with extensive documentation, multiple source files, long technical reports and broader project context in a single workflow. It does not guarantee perfect recall, eliminate hallucinations or mean every task will fit comfortably within practical cost and latency limits. Developers should test representative prompts and verify important outputs."
+        "heading": "The 1-million-token unified input-output budget",
+        "text": "Google describes Gemini 4 Argon's API limit as a unified 1-million-token input-output budget. It is a shared allowance for the content the model reads and generates, not one million input tokens plus a separate one million output tokens. A large budget can help a model work with extensive documentation, multiple source files and long technical reports in one workflow. It does not guarantee perfect recall or remove practical cost and latency limits; developers should test representative prompts and verify important outputs."
       },
       {
         "heading": "AI coding, software engineering and long-running agent workflows",
@@ -731,7 +731,7 @@
       },
       {
         "heading": "Official sources and further reading",
-        "text": "For current specifications, access and pricing, consult Google's official Gemini 4 Argon announcement, Google Cloud's Argon availability report, the Gemini 4 Carbon and Hydrogen announcements, and the Gemini API pricing page. Product availability and prices can change; verify them with Google before making a purchasing or deployment decision."
+        "text": "For current specifications, access and pricing, consult Google's Gemini API model documentation, the official Gemini 4 Argon announcement, Google Cloud's Argon availability report, the Gemini 4 Carbon and Hydrogen announcements, and the Gemini API pricing page. Product availability and prices can change; verify them with Google before making a purchasing or deployment decision."
       }
     ],
     "lastmod": "2026-11-16"
