@@ -53,17 +53,22 @@
     });
     const more = $("#load-more");
     if (more) more.addEventListener("click", () => { state.visible += 9; render(); });
-    try {
-      const response = await fetch("data/articles.json");
-      if (!response.ok) throw new Error("Unable to load the article index");
-      state.articles = await response.json();
-      render();
-      initArticlePage();
-      initSectionPage();
-    } catch (error) {
-      const grid = $("#article-grid");
-      if (grid) grid.innerHTML = '<div class="empty-state">Stories could not be loaded. Please refresh the page.</div>';
-      console.error(error);
+    // Static article pages do not need the 100 KB+ article index.
+    // Fetch it only on pages that actually render data-driven article content.
+    const needsArticleData = Boolean($("#article-grid") || $("#section-content") || $("#article-content"));
+    if (needsArticleData) {
+      try {
+        const response = await fetch("data/articles.json");
+        if (!response.ok) throw new Error("Unable to load the article index");
+        state.articles = await response.json();
+        render();
+        initArticlePage();
+        initSectionPage();
+      } catch (error) {
+        const grid = $("#article-grid");
+        if (grid) grid.innerHTML = '<div class="empty-state">Stories could not be loaded. Please refresh the page.</div>';
+        console.error(error);
+      }
     }
   };
   const initArticlePage = () => {
