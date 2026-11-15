@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Validate advertising consent and disclosure
         run: python scripts/test_ad_consent.py
+      - name: Validate article feed loading is conditional
+        run: python scripts/test_article_feed_loading.py
       - name: Validate article data and sitemap
         run: |
           python - <<'PY'
