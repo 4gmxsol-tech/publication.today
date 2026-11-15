@@ -124,3 +124,5 @@ jobs:
           PY
       - name: Validate football match-day nutrition guide
         run: python scripts/validate_football_nutrition_guide.py
+      - name: Validate Gemini 4 model family update
+        run: python scripts/validate_gemini_4_family_update.py
