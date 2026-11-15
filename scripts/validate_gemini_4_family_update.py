@@ -15,6 +15,8 @@ assert item is not None, "Gemini 4 Argon article missing from feed"
 assert item.get("lastmod") == "2026-11-16", "Feed lastmod must match the reviewed update"
 assert {"Gemini 4 Carbon", "Gemini 4 Hydrogen", "Gemini 4 model comparison"}.issubset(set(item.get("tags", [])))
 assert item.get("readTime") == "9 min read"
+assert "The 1-million-token unified input-output budget" in {part.get("heading") for part in item.get("body", [])}
+assert "not one million input tokens plus a separate one million output tokens" in page
 assert "Gemini 4 Carbon" in page and "Gemini 4 Hydrogen" in page
 assert "November 10, 2026" in page and "November 12" in page
 assert "unavailable on the Free tier" in page
@@ -30,6 +32,7 @@ for official_url in (
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
     "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud?hl=en",
     "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://ai.google.dev/gemini-api/docs/latest-model?hl=en",
 ):
     assert official_url in page, f"Missing official source: {official_url}"
 schemas = re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S)
@@ -53,4 +56,5 @@ assert "Verify release status and pricing against primary sources" not in sectio
 assert f"articles/{SLUG}.html" in section
 body_headings = {part.get("heading") for part in item.get("body", [])}
 assert "How Gemini 4 Argon compares with Carbon and Hydrogen" in body_headings
+assert "The 1-million-token unified input-output budget" in body_headings
 print("Gemini 4 family article, feed, section card, official sources, schema and sitemap are consistent.")
