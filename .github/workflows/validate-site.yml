@@ -128,3 +128,5 @@ jobs:
         run: python scripts/validate_football_nutrition_guide.py
       - name: Validate Gemini 4 model family update
         run: python scripts/validate_gemini_4_family_update.py
+      - name: Validate Inter vs Stuttgart Matchday 5 preview
+        run: python scripts/validate_inter_stuttgart_preview.py
