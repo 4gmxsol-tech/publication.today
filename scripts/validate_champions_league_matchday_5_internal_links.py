@@ -122,7 +122,7 @@ assert "<title>Manchester City vs Napoli: Kick-off Time, Etihad Stadium &amp; Ma
 )
 assert PAGES["city"].count("<h1>") == 1, "City preview must contain exactly one H1"
 city_description = re.search(r'<meta name="description" content="([^"]+)">', PAGES["city"]).group(1)
-assert city_description == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA table positions and recent form.", "City preview meta description is stale"
+assert city_description == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA points totals and recent form.", "City preview meta description is stale"
 assert f'<meta property="og:description" content="{city_description}">' in PAGES["city"], "City preview Open Graph description must match"
 assert f'<meta name="twitter:description" content="{city_description}">' in PAGES["city"], "City preview Twitter description must match"
 city_schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', PAGES["city"], re.S).group(1))
@@ -131,8 +131,10 @@ assert city_schema.get("datePublished") == "2026-11-15" and city_schema.get("dat
 assert "Manchester City vs Napoli standings" in city_schema.get("keywords", ""), "City NewsArticle keywords must include the league-table query"
 assert "Man City vs Napoli 3 PM ET" in city_schema.get("keywords", ""), "City NewsArticle keywords must include the US kick-off query"
 assert "UEFA Champions League league phase table" in city_schema.get("keywords", ""), "City NewsArticle keywords must include the standings query"
-assert "Manchester City seventh with 9 points" in PAGES["city"], "City preview is missing the verified UEFA position"
-assert "Napoli are 27th with 3 points" in PAGES["city"], "City preview is missing the verified Napoli position"
+assert "<h2>League-phase points before Matchday 5</h2>" in PAGES["city"], "City preview heading must describe points rather than unverified ranks"
+assert "Manchester City have 9 points from three wins and one defeat" in PAGES["city"], "City preview is missing the verified UEFA points total"
+assert "Napoli have 3 points from one win and three defeats" in PAGES["city"], "City preview is missing the verified Napoli points total"
+assert "Manchester City seventh" not in PAGES["city"] and "Napoli are 27th" not in PAGES["city"], "Do not publish unverified table positions"
 
 city_item = feed_by_slug.get(SLUGS["city"])
 assert city_item and city_item.get("category") == "football", "City preview must be in the football feed"
@@ -145,7 +147,7 @@ assert "Manchester City vs Napoli standings" in city_item.get("tags", []), (
 assert "Man City vs Napoli 3 PM ET" in city_item.get("tags", []), (
     "City preview must include the US kick-off search phrase"
 )
-assert city_item.get("excerpt") == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA table positions and recent form.", "City preview excerpt must match the search description"
+assert city_item.get("excerpt") == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA points totals and recent form.", "City preview excerpt must match the search description"
 assert "Champions League Matchday 5" in city_item.get("tags", []), (
     "City preview must target the Matchday 5 search phrase"
 )
