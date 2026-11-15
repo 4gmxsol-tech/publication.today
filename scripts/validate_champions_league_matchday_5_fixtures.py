@@ -96,6 +96,10 @@ def main():
         if phrase not in html:
             errors.append("missing schedule or time-zone detail: " + phrase)
 
+    if html.count('class="fixture-table-wrap"') != 2:
+        errors.append("both fixture tables must use the responsive horizontal-scroll wrapper")
+    if "min-width:760px" not in html:
+        errors.append("five-column fixture tables must retain the responsive minimum width")
     if html.count("12:45 p.m. ET</td>") != 4:
         errors.append("exactly four early fixtures must convert to 12:45 p.m. ET")
     if html.count("3:00 p.m. ET</td>") != 14:
