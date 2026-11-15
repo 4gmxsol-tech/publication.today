@@ -123,8 +123,8 @@ assert "<title>Manchester City vs Napoli: Kick-off Time, Etihad Stadium &amp; Ma
 assert PAGES["city"].count("<h1>") == 1, "City preview must contain exactly one H1"
 city_description = re.search(r'<meta name="description" content="([^"]+)">', PAGES["city"]).group(1)
 assert city_description == "Manchester City host Napoli on November 24 at 20:00 GMT (21:00 CET). See the Etihad venue, 3 p.m. ET kick-off, UEFA table positions and recent form.", "City preview meta description is stale"
-assert f'<meta property="og:description" content="{desc}">' in PAGES["city"], "City preview Open Graph description must match"
-assert f'<meta name="twitter:description" content="{desc}">' in PAGES["city"], "City preview Twitter description must match"
+assert f'<meta property="og:description" content="{city_description}">' in PAGES["city"], "City preview Open Graph description must match"
+assert f'<meta name="twitter:description" content="{city_description}">' in PAGES["city"], "City preview Twitter description must match"
 city_schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', PAGES["city"], re.S).group(1))
 assert city_schema.get("description") == city_description, "City NewsArticle description must match search metadata"
 assert "Manchester City seventh with 9 points" in PAGES["city"], "City preview is missing the verified UEFA position"
