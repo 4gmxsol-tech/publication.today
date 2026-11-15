@@ -3,7 +3,6 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import json
-import re
 import sys
 import xml.etree.ElementTree as ET
 
@@ -57,6 +56,7 @@ def main():
     parser.feed(html)
     title = " ".join("".join(parser.title).split())
     description = parser.meta.get("description", "").strip()
+    h1 = " ".join("".join(parser.h1).split())
 
     if parser.canonical != URL:
         errors.append("canonical must point to the new HTTPS article URL")
@@ -64,11 +64,9 @@ def main():
         errors.append("Open Graph and Twitter titles must match the document title")
     if parser.meta.get("og:description") != description or parser.meta.get("twitter:description") != description:
         errors.append("social descriptions must match the meta description")
-    if parser.h1 and "Real Madrid vs PSV" not in " ".join(parser.h1):
-        errors.append("H1 must target the Real Madrid vs PSV fixture")
-    if not parser.h1:
-        errors.append("article must contain one visible H1")
-    if len(re.findall(r"<h1\\b", html, re.I)) != 1:
+    if h1 != title:
+        errors.append("visible H1 must match the document title")
+    if html.count("<h1>") != 1:
         errors.append("article must contain exactly one H1")
 
     for phrase in (
@@ -78,8 +76,8 @@ def main():
         "22:00 in Sudan",
         "Estadio Santiago Bernabéu",
         "Matchday 5",
-        "AEK Athens 3–2",
-        "PSV's most recent league-phase result was a 1–2 home defeat to Club Brugge",
+        "3–2 away win over AEK Athens",
+        "PSV's latest league-phase result was a 1–2 home defeat to Club Brugge",
         "Confirmed starting line-ups are not available yet",
     ):
         if phrase not in html:
@@ -89,14 +87,16 @@ def main():
         if host not in html:
             errors.append("article is missing official source link: " + host)
 
-    scripts = re.findall(r'<script type="application/ld\\+json">(.*?)</script>', html, re.S)
-    if len(scripts) != 1:
+    blocks = html.split('<script type="application/ld+json">')[1:]
+    if len(blocks) != 1:
         errors.append("article must contain exactly one JSON-LD script")
     else:
         try:
-            schema = json.loads(scripts[0])
+            schema = json.loads(blocks[0].split("</script>", 1)[0])
             if schema.get("@type") != "NewsArticle":
                 errors.append("preview must use NewsArticle schema")
+            if schema.get("headline") != title:
+                errors.append("NewsArticle headline must match the document title")
             if schema.get("datePublished") != "2026-11-15" or schema.get("dateModified") != "2026-11-15":
                 errors.append("NewsArticle publication and modification dates must be November 15")
             if schema.get("mainEntityOfPage", {}).get("@id") != URL:
@@ -126,10 +126,10 @@ def main():
     if "Football News" not in section_title or "Match Reports" not in section_title:
         errors.append("Football section title must represent news and match reports")
     if "football match reports" not in section_description.lower() or "fixtures" not in section_description.lower():
-        errors.append("Football section description must reflect its match-report and fixture content")
+        errors.append("Football section description must reflect match-report and fixture content")
     if "football news" not in section_h1.lower() or "match reports" not in section_h1.lower():
         errors.append("Football section H1 must reflect the expanded editorial scope")
-    if f"articles/{SLUG}.html" not in section:
+    if "articles/" + SLUG + ".html" not in section:
         errors.append("Football section must link to the new Matchday 5 preview")
 
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
@@ -140,7 +140,7 @@ def main():
         errors.append("sitemap must include the article with lastmod 2026-11-15")
 
     if errors:
-        print("\\n".join("FAIL: " + item for item in errors))
+        print(" | ".join("FAIL: " + item for item in errors))
         return 1
     print("PASS: Real Madrid vs PSV preview facts, sources, feed, section metadata and sitemap are consistent.")
     return 0
