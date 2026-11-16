@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SLUGS = {
     "fixtures": "champions-league-matchday-5-fixtures-kickoff-times-november-24-25-2026",
+    "galatasaray": "galatasaray-vs-aston-villa-champions-league-matchday-5-preview-november-24-2026",
     "madrid": "real-madrid-vs-psv-champions-league-matchday-5-preview-november-24-2026",
     "sabah": "sabah-vs-barcelona-champions-league-matchday-5-preview-november-25-2026",
     "arsenal": "arsenal-vs-borussia-dortmund-champions-league-matchday-5-preview-november-24-2026",
@@ -38,8 +39,11 @@ for key, html in PAGES.items():
     main_page = schema.get("mainEntityOfPage", {})
     assert main_page.get("@id") == URLS[key], f"{key} schema URL must match its canonical"
 
-# The full schedule must expose all six individual previews; every preview
+# The full schedule must expose all seven individual previews; every preview
 # must lead readers back to the full schedule.
+assert f'href="{SLUGS["galatasaray"]}.html"' in PAGES["fixtures"], (
+    "Full schedule is missing the Galatasaray vs Aston Villa preview"
+)
 assert f'href="{SLUGS["madrid"]}.html"' in PAGES["fixtures"], (
     "Full schedule is missing the Real Madrid vs PSV preview"
 )
@@ -48,6 +52,9 @@ assert f'href="{SLUGS["sabah"]}.html"' in PAGES["fixtures"], (
 )
 assert f'href="{SLUGS["arsenal"]}.html"' in PAGES["fixtures"], (
     "Full schedule is missing the Arsenal vs Borussia Dortmund preview"
+)
+assert f'href="{SLUGS["fixtures"]}.html"' in PAGES["galatasaray"], (
+    "Galatasaray vs Aston Villa preview must link to the full schedule"
 )
 assert f'href="{SLUGS["fixtures"]}.html"' in PAGES["madrid"], (
     "Real Madrid vs PSV preview must link to the full schedule"
@@ -74,7 +81,7 @@ assert f'href="{SLUGS["madrid"]}.html"' in PAGES["sabah"], (
     "Sabah preview must retain its cross-link to the Madrid preview"
 )
 
-# The full schedule and all six previews must remain in the football feed and sitemap.
+# The full schedule and all seven previews must remain in the football feed and sitemap.
 feed = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
 feed_by_slug = {item.get("slug"): item for item in feed}
 fixture_item = feed_by_slug.get(SLUGS["fixtures"])
@@ -105,6 +112,36 @@ for key, slug in SLUGS.items():
         )
 
 
+
+# The Galatasaray vs Aston Villa preview uses the early Matchday 5 slot and
+# only verified results/points; it does not publish an unsupported table rank.
+gal = PAGES["galatasaray"]
+for phrase in (
+    "Tuesday, November 24, 2026", "17:45 GMT", "18:45 CET",
+    "20:45 local time in Istanbul", "RAMS Park",
+    "12:45 p.m. US Eastern Standard Time (EST, UTC−5)",
+    "9:45 a.m. US Pacific Standard Time (PST, UTC−8)", "19:45 in Sudan (UTC+2)",
+    "six points", "nine points", "uefa.com", "avfc.co.uk", "nist.gov"
+):
+    assert phrase in gal, f"Galatasaray vs Aston Villa preview is missing verified detail or source: {phrase}"
+assert "<title>Galatasaray vs Aston Villa: RAMS Park, Kick-off &amp; Preview</title>" in gal, "Galatasaray preview title is stale"
+assert gal.count("<h1>") == 1, "Galatasaray preview must contain exactly one H1"
+gal_description = re.search(r'<meta name="description" content="([^"]+)">', gal).group(1)
+assert gal_description == "Galatasaray host Aston Villa on Nov. 24 at 18:45 CET: 12:45 p.m. EST / 9:45 a.m. PST at RAMS Park. Check verified kick-off times and recent results."
+assert f'<meta property="og:description" content="{gal_description}">' in gal
+assert f'<meta name="twitter:description" content="{gal_description}">' in gal
+gal_schema = json.loads(re.search(r'<script type="application/ld\\+json">(.*?)</script>', gal, re.S).group(1))
+assert gal_schema.get("description") == gal_description
+assert gal_schema.get("datePublished") == "2026-11-16" and gal_schema.get("dateModified") == "2026-11-16"
+assert "Galatasaray vs Aston Villa 12:45 PM ET" in gal_schema.get("keywords", "")
+assert "Galatasaray vs Aston Villa 9:45 AM PT" in gal_schema.get("keywords", "")
+gal_item = feed_by_slug.get(SLUGS["galatasaray"])
+assert gal_item and gal_item.get("category") == "football", "Galatasaray preview must be in the Football feed"
+assert gal_item.get("date") == "November 16, 2026" and gal_item.get("lastmod") == "2026-11-16"
+assert gal_item.get("excerpt") == gal_description, "Galatasaray feed excerpt must match search metadata"
+assert "Galatasaray vs Aston Villa 12:45 PM ET" in gal_item.get("tags", [])
+assert "Galatasaray vs Aston Villa 9:45 AM PT" in gal_item.get("tags", [])
+
 # The Manchester City vs Napoli preview joins the same Matchday 5 internal-link cluster.
 assert f'href="{SLUGS["city"]}.html"' in PAGES["fixtures"], (
     "Full schedule is missing the Manchester City vs Napoli preview"
@@ -115,7 +152,7 @@ assert f'href="{SLUGS["inter"]}.html"' in PAGES["fixtures"], (
 assert f'href="{SLUGS["club_brugge"]}.html"' in PAGES["fixtures"], (
     "Full schedule is missing the Club Brugge vs Liverpool preview"
 )
-for key in ("inter", "club_brugge"):
+for key in ("galatasaray", "inter", "club_brugge"):
     assert f'href="{SLUGS["fixtures"]}.html"' in PAGES[key], (
         f"{key} preview must link back to the full Matchday 5 schedule"
     )
@@ -170,11 +207,14 @@ assert "Champions League Matchday 5" in city_item.get("tags", []), (
 )
 section_html = (ROOT / "section-football.html").read_text(encoding="utf-8")
 fixture_card_position = section_html.index(f'href="articles/{SLUGS["fixtures"]}.html"')
-for preview_key in ("club_brugge", "inter", "city", "arsenal", "madrid", "sabah"):
+for preview_key in ("galatasaray", "club_brugge", "inter", "city", "arsenal", "madrid", "sabah"):
     preview_position = section_html.index(f'href="articles/{SLUGS[preview_key]}.html"')
     assert fixture_card_position < preview_position, (
         f"Full Matchday 5 fixtures card must appear before the {preview_key} preview"
     )
+assert section_html.count(f'href="articles/{SLUGS["galatasaray"]}.html') == 3, (
+    "Football section must expose the Galatasaray preview image, title and CTA links"
+)
 assert section_html.count(f'href="articles/{SLUGS["city"]}.html"') == 3, (
     "Football section must expose the City preview image, title and CTA links"
 )
@@ -190,6 +230,7 @@ assert city_entry.findtext("sm:lastmod", default="", namespaces=ns) == city_item
 priority_section_slugs = [
     SLUGS["fixtures"],
     "champions-league-tiebreaker-rules-2026-27",
+    SLUGS["galatasaray"],
     SLUGS["arsenal"],
     SLUGS["city"],
     SLUGS["madrid"],
@@ -205,10 +246,10 @@ section_card_positions = [
     for slug in priority_section_slugs
 ]
 assert section_card_positions == sorted(section_card_positions), (
-    "Football hub must show the full Matchday 5 schedule, its six dated previews, "
+    "Football hub must show the full Matchday 5 schedule, its seven dated previews, "
     "then evergreen tiebreaker guidance and the later Matchday 6 schedule"
 )
-assert len(re.findall(r'<article class="article-card">', section_html)) == 19, (
+assert len(re.findall(r'<article class="article-card">', section_html)) == 20, (
     "Reordering must preserve all 19 Football section cards"
 )
 
@@ -216,7 +257,7 @@ assert len(re.findall(r'<article class="article-card">', section_html)) == 19, (
 # This prevents the Football hub from showing stale kick-off information after
 # the individual preview metadata has been updated.
 section_cards = re.findall(r'<article class="article-card">.*?</article>', section_html, re.S)
-for preview_key in ("arsenal", "city", "madrid", "sabah", "club_brugge", "inter"):
+for preview_key in ("galatasaray", "arsenal", "city", "madrid", "sabah", "club_brugge", "inter"):
     slug = SLUGS[preview_key]
     item = feed_by_slug.get(slug)
     assert item and item.get("excerpt"), f"{preview_key} preview must have a feed excerpt"
