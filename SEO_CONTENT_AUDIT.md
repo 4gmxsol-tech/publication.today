@@ -73,3 +73,45 @@ Review overlaps before merging; do not delete or noindex pages solely because th
 3. Improve the football section as a coherent utility hub and add contextual internal links among the three football tools and the 2027 calendar.
 4. Rewrite only the highest-value evergreen pages with original examples, authoritative citations, clear author/reviewer information and useful FAQs.
 5. Reassess GSC page/query data after 28 days; expand only the cluster that earns impressions and engagement.
+
+## 2026-11-16 follow-up — current inventory and P1 status
+
+This follow-up preserves the original November 2 audit as historical evidence and records the current state after the November 16 editorial and technical updates.
+
+### Current article and sitemap inventory
+
+The current `data/articles.json` feed contains **70 articles**:
+
+| Category | Articles |
+|---|---:|
+| Football | 16 |
+| Fitness | 11 |
+| Health | 10 |
+| Wellness | 9 |
+| Nutrition | 8 |
+| Technology | 6 |
+| Skincare | 6 |
+| Beauty | 4 |
+| **Total** | **70** |
+
+The current sitemap contains **80 unique URLs**: 70 article pages and 10 core pages. A repository-tree check confirmed that every sitemap URL maps to an existing static file or directory index. The Football collection exposes 19 cards: 16 article cards and three utility cards. No article or legacy page was deleted as part of this follow-up.
+
+### P1 fact-check status
+
+- **Gemini 4 Argon / Carbon / Hydrogen:** reviewed on November 16 against Google's model announcements, Gemini API pricing, and Google Cloud model documentation. The article now distinguishes vendor-reported benchmark claims, states that Argon and Carbon are not on the Gemini API Free tier, and lists the published Argon Standard API rates of $2/$10 per million input/output tokens through November 30, 2026 and $4/$20 from December 1, 2026. Hydrogen's published Standard rates and availability are described separately. Prices and product availability remain changeable and should be rechecked before future updates.
+- **Champions League Matchday 3 coverage:** the former fixtures-week preview is now a dated results report, with the final scores and official club/UEFA references.
+- **El Clásico coverage:** the former preview is now a dated 1–2 result report, with the score, scorers and official match references.
+- **Champions League Matchday 4 coverage:** the former preview is now a results report for Barcelona–Aston Villa and AEK Athens–Real Madrid.
+- **2027 football calendar:** the page records its November 15, 2026 verification date and links to CAF, FIFA and UEFA sources.
+
+### Current football editorial plan
+
+Keep the Football section separate and prioritize useful, non-duplicative coverage. The next high-value update is a Matchday 5 results and standings report after the November 24–25, 2026 fixtures. Do not publish another generic fixture preview while the current Matchday 5 and Matchday 6 guides already satisfy that intent. Link result coverage back to the fixture guide, tiebreaker explainer, timezone converter and countdown tool where contextually useful.
+
+### Remaining evidence gaps
+
+- Google Search Console properties are not currently selected in the connected HYPD source, so no new click, impression, query or indexing claims are made in this follow-up.
+- The HTTP-to-HTTPS redirect and live canonical response still require an independent live HTTP check; repository metadata alone cannot prove the redirect.
+- Ahrefs keyword volume and difficulty were not available on the connected plan. No search-volume or difficulty figures are inferred.
+
+Reassess the page/query data after Search Console access is restored. Expand only the clusters that show impressions and engagement, and preserve the original audit's caution against thin, duplicative or unsupported content.
