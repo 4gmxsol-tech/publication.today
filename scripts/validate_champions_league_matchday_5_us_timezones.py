@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 NIST_URL = "https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst"
 CASES = {
+    "galatasaray-vs-aston-villa-champions-league-matchday-5-preview-november-24-2026": ("12:45 p.m.", "9:45 a.m.", "November 16, 2026"),
     "arsenal-vs-borussia-dortmund-champions-league-matchday-5-preview-november-24-2026": ("3:00 p.m.", "12:00 p.m.", "November 15, 2026"),
     "manchester-city-vs-napoli-champions-league-matchday-5-preview-november-24-2026": ("3:00 p.m.", "12:00 p.m.", "November 15, 2026"),
     "real-madrid-vs-psv-champions-league-matchday-5-preview-november-24-2026": ("3:00 p.m.", "12:00 p.m.", "November 15, 2026"),
