@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SLUG = "champions-league-matchday-5-fixtures-kickoff-times-november-24-25-2026"
 URL = "https://publication.today/articles/" + SLUG + ".html"
 TITLE = "Champions League Matchday 5 Fixtures: Full Schedule & Kick-off Times"
-DESCRIPTION = "See all 18 UEFA Champions League Matchday 5 fixtures for Nov. 24–25, 2026, with CET, US Eastern and Sudan times, standings and US streaming info."
+DESCRIPTION = "All 18 UEFA Champions League Matchday 5 fixtures for Nov. 24–25, 2026, with CET, US Eastern, US Pacific, UTC, Sudan, standings and US streaming info."
 ARTICLE = ROOT / "articles" / (SLUG + ".html")
 FEED = ROOT / "data" / "articles.json"
 SECTION = ROOT / "section-football.html"
@@ -105,20 +105,22 @@ def main():
         errors.append("fixture test list must contain 18 unique matches")
 
     for phrase in ("Tuesday, November 24, 2026: Champions League fixtures", "Wednesday, November 25, 2026: Champions League fixtures",
-                   "18:45 CET", "12:45 p.m. ET", "17:45 UTC", "19:45 Sudan",
-                   "21:00 CET", "3:00 p.m. ET", "20:00 UTC", "22:00 Sudan",
-                   "CET is UTC+1", "US Eastern Time is Eastern Standard Time (EST, UTC−5)", "Sudan is UTC+2"):
+                   "18:45 CET", "12:45 p.m. EST", "9:45 a.m. PST", "17:45 UTC", "19:45 Sudan",
+                   "21:00 CET", "3:00 p.m. EST", "12:00 p.m. PST", "20:00 UTC", "22:00 Sudan",
+                   "CET is UTC+1", "US Eastern Time is Eastern Standard Time (EST, UTC−5)", "US Pacific Time is Pacific Standard Time (PST, UTC−8)", "Sudan is UTC+2"):
         if phrase not in html:
             errors.append("missing schedule or time-zone detail: " + phrase)
 
     if html.count('class="fixture-table-wrap"') != 3:
         errors.append("both fixture tables and the standings table must use the responsive horizontal-scroll wrapper")
-    if "min-width:760px" not in html:
-        errors.append("five-column fixture tables must retain the responsive minimum width")
-    if html.count("12:45 p.m. ET</td>") != 4:
-        errors.append("exactly four early fixtures must convert to 12:45 p.m. ET")
-    if html.count("3:00 p.m. ET</td>") != 14:
-        errors.append("exactly fourteen standard fixtures must convert to 3:00 p.m. ET")
+    if "min-width:920px" not in html:
+        errors.append("six-column fixture tables must retain the responsive minimum width")
+    if html.count("12:45 p.m. EST</td>") != 4 or html.count("9:45 a.m. PST</td>") != 4:
+        errors.append("exactly four early fixtures must convert to 12:45 p.m. EST and 9:45 a.m. PST")
+    if html.count("3:00 p.m. EST</td>") != 14 or html.count("12:00 p.m. PST</td>") != 14:
+        errors.append("exactly fourteen standard fixtures must convert to 3:00 p.m. EST and 12:00 p.m. PST")
+    if html.count("<th scope=\"col\">US Pacific (PST)</th>") != 2:
+        errors.append("both fixture tables must include the US Pacific (PST) column")
     if "<h2>Champions League standings before Matchday 5</h2>" not in html:
         errors.append("pre-Matchday 5 league-phase standings section is missing")
     for row in STANDINGS_ROWS:
@@ -132,8 +134,8 @@ def main():
         if phrase not in html:
             errors.append("missing UEFA league-phase qualification rule: " + phrase)
 
-    if "https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst" not in html:
-        errors.append("US Eastern standard-time conversion must link to NIST")
+    if "https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst" not in html or "https://www.time.gov/" not in html:
+        errors.append("US Eastern and Pacific standard-time conversions must link to official NIST sources")
     if 'href="https://www.paramountplus.com/shows/uefa-champions-league/"' not in html:
         errors.append("US streaming guidance must link to the official Paramount+ Champions League page")
     if "CBS confirms that Paramount+ subscribers can stream Champions League matches live" not in html:
@@ -163,7 +165,7 @@ def main():
                 errors.append("NewsArticle must preserve its November 15 publication date and reflect the November 16 update")
             if schema.get("articleSection") != "Football":
                 errors.append("articleSection must be Football")
-            for phrase in ("Champions League standings before Matchday 5", "Champions League table 2026/27", "UEFA Champions League top eight"):
+            for phrase in ("Champions League standings before Matchday 5", "Champions League table 2026/27", "UEFA Champions League top eight", "Champions League fixtures PST", "US Pacific match times", "Champions League fixtures Pacific Time"):
                 if phrase not in schema.get("keywords", ""):
                     errors.append("NewsArticle keywords are missing standings phrase: " + phrase)
             if schema.get("mainEntityOfPage", {}).get("@id") != URL:
@@ -185,9 +187,12 @@ def main():
             errors.append("article feed is missing the primary search phrase")
         if not {"Champions League Matchday 5 US kickoff times", "Champions League fixtures ET", "Champions League standings before Matchday 5", "Champions League table 2026/27", "UEFA Champions League top eight", "Champions League league phase table"}.issubset(set(item.get("tags", []))):
             errors.append("article feed is missing the US Eastern or standings search phrases")
-        if "US Eastern" not in item.get("excerpt", "") or "standings" not in item.get("excerpt", "").lower():
-            errors.append("article feed excerpt must mention US Eastern kick-off times and the standings snapshot")
+        if "US Eastern" not in item.get("excerpt", "") or "US Pacific" not in item.get("excerpt", "") or "standings" not in item.get("excerpt", "").lower():
+            errors.append("article feed excerpt must mention US Eastern, US Pacific kick-off times and the standings snapshot")
         required_tags = {
+            "Champions League fixtures PST",
+            "US Pacific match times",
+            "Champions League fixtures Pacific Time",
             "Champions League live stream US",
             "where to watch Champions League in US",
             "Paramount+ Champions League",
@@ -203,8 +208,8 @@ def main():
     section = SECTION.read_text(encoding="utf-8")
     if section.count(f'href="articles/{SLUG}.html"') != 3:
         errors.append("Football section must expose image, title and CTA links to the guide")
-    if "US Eastern" not in section:
-        errors.append("Football section card must mention US Eastern kick-off times")
+    if "US Eastern" not in section or "US Pacific" not in section:
+        errors.append("Football section card must mention US Eastern and US Pacific kick-off times")
     if "US streaming guidance" not in section:
         errors.append("Football section card must surface the new US streaming information")
     if "league-phase standings" not in section or "pre-matchday league table snapshot" not in section:
@@ -228,7 +233,7 @@ def main():
         for error in errors:
             print("FAIL:", error)
         raise SystemExit(1)
-    print("PASS: 18 Matchday 5 fixtures, UEFA standings snapshot, qualification rules, time conversions, article metadata, feed, Football links, and sitemap are consistent.")
+    print("PASS: 18 Matchday 5 fixtures, UEFA standings snapshot, qualification rules, EST/PST conversions, article metadata, feed, Football links, and sitemap are consistent.")
 
 if __name__ == "__main__":
     main()
