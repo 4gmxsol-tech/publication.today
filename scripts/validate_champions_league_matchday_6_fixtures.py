@@ -10,7 +10,7 @@ SLUG = "champions-league-matchday-6-fixtures-kickoff-times-december-8-9-2026"
 URL = "https://publication.today/articles/" + SLUG + ".html"
 TITLE = "Champions League Matchday 6 Fixtures: Full Schedule & Kick-off Times"
 TITLE_HTML = "Champions League Matchday 6 Fixtures: Full Schedule &amp; Kick-off Times"
-DESCRIPTION = "See all 18 UEFA Champions League Matchday 6 fixtures for Dec. 8–9, 2026, with CET, US Eastern, GMT, UTC and Sudan kick-off times."
+DESCRIPTION = "See all 18 UEFA Champions League Matchday 6 fixtures for Dec. 8–9, 2026, with CET, US Eastern and Pacific, GMT, UTC and Sudan kick-off times."
 ARTICLE = ROOT / "articles" / (SLUG + ".html")
 FEED = ROOT / "data" / "articles.json"
 SECTION = ROOT / "section-football.html"
@@ -71,15 +71,17 @@ def main():
             if table.count("<tr><td>") != 9:
                 errors.append(f"day {index} must contain exactly nine fixtures")
 
-    if html.count('<div class="fixture-table-wrap">') != 2 or "min-width:760px" not in html:
+    if html.count('<div class="fixture-table-wrap">') != 2 or "min-width:900px" not in html:
         errors.append("both fixture tables must retain the responsive horizontal-scroll wrapper")
     for cell, expected in (
         ("<td>18:45 CET</td>", 4),
         ("<td>12:45 p.m. EST</td>", 4),
+        ("<td>9:45 a.m. PST</td>", 4),
         ("<td>17:45 GMT / UTC</td>", 4),
         ("<td>19:45 Sudan</td>", 4),
         ("<td>21:00 CET</td>", 14),
         ("<td>3:00 p.m. EST</td>", 14),
+        ("<td>12:00 p.m. PST</td>", 14),
         ("<td>20:00 GMT / UTC</td>", 14),
         ("<td>22:00 Sudan</td>", 14),
     ):
@@ -92,6 +94,7 @@ def main():
         "CET is UTC+1",
         "the United Kingdom is on GMT (UTC+0)",
         "US Eastern is on Eastern Standard Time (EST, UTC−5)",
+        "US Pacific is on Pacific Standard Time (PST, UTC−8)",
         "Sudan is UTC+2",
         "US daylight saving time ended on November 1, 2026",
         "The league phase continues with Matchday 7 on January 19–20, 2027",
@@ -147,6 +150,8 @@ def main():
             errors.append("article feed title/category is incorrect")
         if item.get("date") != "November 16, 2026" or item.get("lastmod") != "2026-11-16":
             errors.append("article feed publication and lastmod dates are incorrect")
+        if item.get("excerpt") != DESCRIPTION:
+            errors.append("article feed excerpt must match the expanded timezone coverage")
         if not {"Champions League Matchday 6 fixtures", "Champions League fixtures December 8 2026", "Champions League fixtures December 9 2026", "Champions League fixtures ET"}.issubset(set(item.get("tags", []))):
             errors.append("article feed is missing primary Matchday 6 search phrases")
         body_headings = {part.get("heading") for part in item.get("body", [])}
