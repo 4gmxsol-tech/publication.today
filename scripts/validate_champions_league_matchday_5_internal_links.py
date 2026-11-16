@@ -169,6 +169,12 @@ assert "Champions League Matchday 5" in city_item.get("tags", []), (
     "City preview must target the Matchday 5 search phrase"
 )
 section_html = (ROOT / "section-football.html").read_text(encoding="utf-8")
+fixture_card_position = section_html.index(f'href="articles/{SLUGS["fixtures"]}.html"')
+for preview_key in ("club_brugge", "inter", "city", "arsenal", "madrid", "sabah"):
+    preview_position = section_html.index(f'href="articles/{SLUGS[preview_key]}.html"')
+    assert fixture_card_position < preview_position, (
+        f"Full Matchday 5 fixtures card must appear before the {preview_key} preview"
+    )
 assert section_html.count(f'href="articles/{SLUGS["city"]}.html"') == 3, (
     "Football section must expose the City preview image, title and CTA links"
 )
