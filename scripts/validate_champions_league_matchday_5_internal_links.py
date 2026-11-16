@@ -193,9 +193,9 @@ priority_section_slugs = [
     SLUGS["arsenal"],
     SLUGS["city"],
     SLUGS["madrid"],
+    SLUGS["sabah"],
     SLUGS["club_brugge"],
     SLUGS["inter"],
-    SLUGS["sabah"],
     "champions-league-matchday-6-fixtures-kickoff-times-december-8-9-2026",
 ]
 section_card_positions = [
