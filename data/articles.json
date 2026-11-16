@@ -312,7 +312,7 @@
       },
       {
         "heading": "How to convert Champions League kick-off times to US Eastern, US Pacific and Sudan",
-        "text": "UEFA lists kick-offs in CET and sets 21:00 unless an earlier time is shown. On these dates CET is UTC+1, US Eastern is EST (UTC−5), US Pacific is PST (UTC−8) and Sudan is UTC+2. An 18:45 CET start equals 12:45 p.m. EST, 9:45 a.m. PST, 17:45 UTC and 19:45 in Sudan; a 21:00 CET start equals 3:00 p.m. EST, 12:00 p.m. PST, 20:00 UTC and 22:00 in Sudan. NIST lists November 1, 2026 as the end of US daylight saving time."
+        "text": "UEFA lists kick-offs in CET and sets 21:00 unless an earlier time is shown. On these dates CET is UTC+1, US Eastern Time is EST (UTC−5), US Pacific Time is PST (UTC−8) and Sudan is UTC+2. An 18:45 CET start equals 12:45 p.m. EST, 9:45 a.m. PST, 17:45 UTC and 19:45 in Sudan; a 21:00 CET start equals 3:00 p.m. EST, 12:00 p.m. PST, 20:00 UTC and 22:00 in Sudan. NIST lists November 1, 2026 as the end of US daylight saving time."
       },
       {
         "heading": "Official schedule and related preview",
