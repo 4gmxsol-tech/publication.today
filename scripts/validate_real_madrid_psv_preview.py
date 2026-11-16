@@ -97,7 +97,7 @@ def main():
                 errors.append("preview must use NewsArticle schema")
             if schema.get("headline") != title:
                 errors.append("NewsArticle headline must match the document title")
-            if schema.get("datePublished") != "2026-11-15" or schema.get("dateModified") != "2026-11-15":
+            if schema.get("datePublished") != "2026-11-15" or schema.get("dateModified") != "2026-11-16":
                 errors.append("NewsArticle publication and modification dates must be November 15")
             if schema.get("mainEntityOfPage", {}).get("@id") != URL:
                 errors.append("NewsArticle mainEntityOfPage must match canonical URL")
@@ -112,7 +112,7 @@ def main():
         item = matches[0]
         if item.get("category") != "football" or "Real Madrid vs PSV" not in item.get("title", ""):
             errors.append("article feed category/title is incorrect")
-        if item.get("date") != "November 15, 2026" or item.get("lastmod") != "2026-11-15":
+        if item.get("date") != "November 15, 2026" or item.get("lastmod") != "2026-11-16":
             errors.append("article feed dates must be November 15, 2026")
         if not any("Champions League Matchday 5" in tag for tag in item.get("tags", [])):
             errors.append("article feed must target the Matchday 5 search phrase")
@@ -136,8 +136,8 @@ def main():
     sitemap = ET.parse(SITEMAP).getroot()
     entries = sitemap.findall("sm:url", ns)
     entry = next((node for node in entries if node.findtext("sm:loc", default="", namespaces=ns) == URL), None)
-    if entry is None or entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-15":
-        errors.append("sitemap must include the article with lastmod 2026-11-15")
+    if entry is None or entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-16":
+        errors.append("sitemap must include the article with lastmod 2026-11-16")
 
     if errors:
         print(" | ".join("FAIL: " + item for item in errors))
