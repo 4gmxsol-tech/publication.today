@@ -35,6 +35,18 @@ jobs:
           ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
           urls = [node.text.strip() for node in sitemap.findall("sm:url/sm:loc", ns)]
           assert len(urls) == len(set(urls)), "Duplicate sitemap URLs"
+          core_lastmods = {
+              "https://publication.today/": "2026-11-12",
+              "https://publication.today/section-football.html": "2026-11-16",
+          }
+          for url, expected_lastmod in core_lastmods.items():
+              entry = next((node for node in sitemap.findall("sm:url", ns)
+                            if node.findtext("sm:loc", default="", namespaces=ns) == url), None)
+              assert entry is not None, f"Core page missing from sitemap: {url}"
+              actual_lastmod = entry.findtext("sm:lastmod", default="", namespaces=ns)
+              assert actual_lastmod == expected_lastmod, (
+                  f"Core-page lastmod mismatch for {url}: expected {expected_lastmod}, got {actual_lastmod}"
+              )
           expected_article_urls = {f"https://publication.today/articles/{slug}.html" for slug in slugs}
           missing_article_urls = expected_article_urls - set(urls)
           assert not missing_article_urls, f"Every article feed URL must be present in sitemap: {sorted(missing_article_urls)}"
