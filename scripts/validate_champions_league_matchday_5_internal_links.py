@@ -212,7 +212,7 @@ for preview_key in ("galatasaray", "club_brugge", "inter", "city", "arsenal", "m
     assert fixture_card_position < preview_position, (
         f"Full Matchday 5 fixtures card must appear before the {preview_key} preview"
     )
-assert section_html.count(f'href="articles/{SLUGS["galatasaray"]}.html') == 3, (
+assert section_html.count(f'href="articles/{SLUGS["galatasaray"]}.html"') == 3, (
     "Football section must expose the Galatasaray preview image, title and CTA links"
 )
 assert section_html.count(f'href="articles/{SLUGS["city"]}.html"') == 3, (
@@ -246,11 +246,11 @@ section_card_positions = [
     for slug in priority_section_slugs
 ]
 assert section_card_positions == sorted(section_card_positions), (
-    "Football hub must show the full Matchday 5 schedule, its seven dated previews, "
-    "then evergreen tiebreaker guidance and the later Matchday 6 schedule"
+    "Football hub must show the full Matchday 5 schedule, evergreen tiebreaker guidance, "
+    "seven dated previews and the later Matchday 6 schedule"
 )
 assert len(re.findall(r'<article class="article-card">', section_html)) == 20, (
-    "Reordering must preserve all 19 Football section cards"
+    "Football hub must preserve all 20 section cards"
 )
 
 # Keep each Matchday 5 card snippet aligned with its article-feed excerpt.
