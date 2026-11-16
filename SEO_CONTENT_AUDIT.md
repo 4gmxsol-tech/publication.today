@@ -80,11 +80,11 @@ This follow-up preserves the original November 2 audit as historical evidence an
 
 ### Current article and sitemap inventory
 
-The current `data/articles.json` feed contains **70 articles**:
+The current `data/articles.json` feed contains **71 articles**:
 
 | Category | Articles |
 |---|---:|
-| Football | 16 |
+| Football | 17 |
 | Fitness | 11 |
 | Health | 10 |
 | Wellness | 9 |
@@ -92,9 +92,9 @@ The current `data/articles.json` feed contains **70 articles**:
 | Technology | 6 |
 | Skincare | 6 |
 | Beauty | 4 |
-| **Total** | **70** |
+| **Total** | **71** |
 
-The current sitemap contains **80 unique URLs**: 70 article pages and 10 core pages. A repository-tree check confirmed that every sitemap URL maps to an existing static file or directory index. The Football collection exposes 19 cards: 16 article cards and three utility cards. No article or legacy page was deleted as part of this follow-up.
+The current sitemap contains **81 unique URLs**: 71 article pages and 10 core pages. A repository-tree check confirmed that every sitemap URL maps to an existing static file or directory index. The Football collection exposes 20 cards: 17 article cards and three utility cards. No article or legacy page was deleted as part of this follow-up.
 
 ### P1 fact-check status
 
@@ -106,7 +106,7 @@ The current sitemap contains **80 unique URLs**: 70 article pages and 10 core pa
 
 ### Current football editorial plan
 
-Keep the Football section separate and prioritize useful, non-duplicative coverage. The next high-value update is a Matchday 5 results and standings report after the November 24–25, 2026 fixtures. Do not publish another generic fixture preview while the current Matchday 5 and Matchday 6 guides already satisfy that intent. Link result coverage back to the fixture guide, tiebreaker explainer, timezone converter and countdown tool where contextually useful.
+Keep the Football section separate and prioritize useful, non-duplicative coverage. A dedicated Galatasaray vs Aston Villa preview now covers the 18:45 CET early kick-off with verified venue, recent results and US Eastern/Pacific conversions. The next high-value update is a Matchday 5 results and standings report after the November 24–25, 2026 fixtures. Do not publish another generic fixture preview while the current Matchday 5 and Matchday 6 guides already satisfy that intent. Link result coverage back to the fixture guide, tiebreaker explainer, timezone converter and countdown tool where contextually useful.
 
 ### Remaining evidence gaps
 
