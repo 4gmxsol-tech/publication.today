@@ -68,7 +68,7 @@ def main():
     sitemap = ET.parse(SITEMAP).getroot()
     entries = sitemap.findall("sm:url", ns)
     entry = next((u for u in entries if u.findtext("sm:loc", default="", namespaces=ns) == URL), None)
-    if not entry or entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-09":
+    if entry is None or entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-09":
         errors.append("sitemap lastmod must be 2026-11-09 for the updated article")
 
 
@@ -102,7 +102,7 @@ def main():
             except json.JSONDecodeError:
                 errors.append("Matchday 3 recap NewsArticle JSON-LD is invalid")
         recap_entry = next((u for u in entries if u.findtext("sm:loc", default="", namespaces=ns) == recap_url), None)
-        if not recap_entry or recap_entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-09":
+        if recap_entry is None or recap_entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-09":
             errors.append("Matchday 3 recap sitemap lastmod must be refreshed to 2026-11-09")
 
     if errors:
