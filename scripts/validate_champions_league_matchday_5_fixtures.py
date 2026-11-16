@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SLUG = "champions-league-matchday-5-fixtures-kickoff-times-november-24-25-2026"
 URL = "https://publication.today/articles/" + SLUG + ".html"
 TITLE = "Champions League Matchday 5 Fixtures: Full Schedule & Kick-off Times"
-DESCRIPTION = "See all 18 UEFA Champions League Matchday 5 fixtures for November 24–25, 2026, with CET, US Eastern, UTC and Sudan kick-off times."
+DESCRIPTION = "See all 18 UEFA Champions League Matchday 5 fixtures for Nov. 24–25, 2026, with CET, US Eastern, UTC and Sudan kick-off times plus US streaming info."
 ARTICLE = ROOT / "articles" / (SLUG + ".html")
 FEED = ROOT / "data" / "articles.json"
 SECTION = ROOT / "section-football.html"
@@ -106,6 +106,16 @@ def main():
         errors.append("exactly fourteen standard fixtures must convert to 3:00 p.m. ET")
     if "https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst" not in html:
         errors.append("US Eastern standard-time conversion must link to NIST")
+    if 'href="https://www.paramountplus.com/shows/uefa-champions-league/"' not in html:
+        errors.append("US streaming guidance must link to the official Paramount+ Champions League page")
+    if "CBS confirms that Paramount+ subscribers can stream Champions League matches live" not in html:
+        errors.append("US streaming guidance must describe the CBS-confirmed live-streaming option")
+    if "https://cbsi.my.salesforce-sites.com/CBSi/articles/en_US/Knowledge/PD-How-do-I-find-UEFA-Champions-League-and-Europa-League-schedules-and-watch-matches-live?data=&amp;popup=false&amp;template=ottShoTemplate" not in html:
+        errors.append("US streaming guidance must link to CBS's official help article")
+    if 'href="football-match-time-zone-converter.html"' not in html:
+        errors.append("Fixture guide must link to the football time-zone converter")
+    if 'href="football-match-countdown.html"' not in html:
+        errors.append("Fixture guide must link to the football match countdown")
     if "uefa.com" not in html:
         errors.append("official UEFA source link is required")
     if f'href="{SLUG}.html"' not in PSV_PREVIEW.read_text(encoding="utf-8"):
@@ -146,12 +156,26 @@ def main():
             errors.append("article feed is missing the US Eastern fixture-time search phrases")
         if "US Eastern" not in item.get("excerpt", ""):
             errors.append("article feed excerpt must mention US Eastern kick-off times")
+        required_tags = {
+            "Champions League live stream US",
+            "where to watch Champions League in US",
+            "Paramount+ Champions League",
+            "football match time zone converter",
+            "football match countdown",
+        }
+        if not required_tags.issubset(set(item.get("tags", []))):
+            errors.append("article feed must include US streaming and matchday-tool search terms")
+        body_headings = {part.get("heading") for part in item.get("body", [])}
+        if not {"Where to watch in the United States", "Matchday planning tools"}.issubset(body_headings):
+            errors.append("article feed must include the US streaming and matchday-tools sections")
 
     section = SECTION.read_text(encoding="utf-8")
     if section.count(f'href="articles/{SLUG}.html"') != 3:
         errors.append("Football section must expose image, title and CTA links to the guide")
     if "US Eastern" not in section:
         errors.append("Football section card must mention US Eastern kick-off times")
+    if "US streaming guidance" not in section:
+        errors.append("Football section card must surface the new US streaming information")
 
     sitemap = ET.parse(SITEMAP).getroot()
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
