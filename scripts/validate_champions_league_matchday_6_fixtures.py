@@ -9,6 +9,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 SLUG = "champions-league-matchday-6-fixtures-kickoff-times-december-8-9-2026"
 URL = "https://publication.today/articles/" + SLUG + ".html"
 TITLE = "Champions League Matchday 6 Fixtures: Full Schedule & Kick-off Times"
+TITLE_HTML = "Champions League Matchday 6 Fixtures: Full Schedule &amp; Kick-off Times"
 DESCRIPTION = "See all 18 UEFA Champions League Matchday 6 fixtures for Dec. 8–9, 2026, with CET, US Eastern, GMT, UTC and Sudan kick-off times."
 ARTICLE = ROOT / "articles" / (SLUG + ".html")
 FEED = ROOT / "data" / "articles.json"
@@ -43,14 +44,14 @@ def main():
 
     if html.count(f'<link rel="canonical" href="{URL}">') != 1:
         errors.append("article must declare exactly one matching canonical URL")
-    if html.count(f"<title>{TITLE}</title>") != 1:
+    if html.count(f"<title>{TITLE_HTML}</title>") != 1:
         errors.append("document title is missing or duplicated")
-    if html.count(f"<h1>{TITLE}</h1>") != 1 or html.count("<h1>") != 1:
+    if html.count(f"<h1>{TITLE_HTML}</h1>") != 1 or html.count("<h1>") != 1:
         errors.append("article must contain exactly one matching H1")
     if html.count(f'<meta name="description" content="{DESCRIPTION}">') != 1:
         errors.append("meta description is missing or inconsistent")
     for tag in ("og:title", "twitter:title"):
-        if f'<meta property="{tag}" content="{TITLE}">' not in html and f'<meta name="{tag}" content="{TITLE}">' not in html:
+        if f'<meta property="{tag}" content="{TITLE_HTML}">' not in html and f'<meta name="{tag}" content="{TITLE}">' not in html:
             errors.append(f"{tag} must match the document title")
     for tag in ("og:description", "twitter:description"):
         if f'<meta property="{tag}" content="{DESCRIPTION}">' not in html and f'<meta name="{tag}" content="{DESCRIPTION}">' not in html:
