@@ -212,4 +212,26 @@ assert len(re.findall(r'<article class="article-card">', section_html)) == 19, (
     "Reordering must preserve all 19 Football section cards"
 )
 
+# Keep each Matchday 5 card snippet aligned with its article-feed excerpt.
+# This prevents the Football hub from showing stale kick-off information after
+# the individual preview metadata has been updated.
+section_cards = re.findall(r'<article class="article-card">.*?</article>', section_html, re.S)
+for preview_key in ("arsenal", "city", "madrid", "sabah", "club_brugge", "inter"):
+    slug = SLUGS[preview_key]
+    item = feed_by_slug.get(slug)
+    assert item and item.get("excerpt"), f"{preview_key} preview must have a feed excerpt"
+    card = next(
+        (candidate for candidate in section_cards if f'href="articles/{slug}.html"' in candidate),
+        None,
+    )
+    assert card is not None, f"{preview_key} preview card is missing from the Football hub"
+    card_excerpt = re.search(r"<p>(.*?)</p>", card, re.S)
+    assert card_excerpt, f"{preview_key} preview card must have a descriptive excerpt"
+    assert card_excerpt.group(1) == item["excerpt"], (
+        f"{preview_key} Football card excerpt must match the article feed"
+    )
+    assert "EST" in card_excerpt.group(1) and "PST" in card_excerpt.group(1), (
+        f"{preview_key} Football card must expose both US Eastern and Pacific kick-off times"
+    )
+
 print("Champions League Matchday 5 previews, canonical metadata, feed, sitemap, and Football hub order are valid.")
