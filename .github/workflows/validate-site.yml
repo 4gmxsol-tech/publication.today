@@ -130,3 +130,5 @@ jobs:
         run: python scripts/validate_gemini_4_family_update.py
       - name: Validate Inter vs Stuttgart Matchday 5 preview
         run: python scripts/validate_inter_stuttgart_preview.py
+      - name: Validate Club Brugge vs Liverpool Matchday 5 preview
+        run: python scripts/validate_club_brugge_liverpool_preview.py
