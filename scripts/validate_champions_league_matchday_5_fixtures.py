@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SLUG = "champions-league-matchday-5-fixtures-kickoff-times-november-24-25-2026"
 URL = "https://publication.today/articles/" + SLUG + ".html"
 TITLE = "Champions League Matchday 5 Fixtures: Full Schedule & Kick-off Times"
-DESCRIPTION = "See all 18 UEFA Champions League Matchday 5 fixtures for Nov. 24–25, 2026, with CET, US Eastern, UTC and Sudan kick-off times plus US streaming info."
+DESCRIPTION = "See all 18 UEFA Champions League Matchday 5 fixtures for Nov. 24–25, 2026, with CET, US Eastern and Sudan times, standings and US streaming info."
 ARTICLE = ROOT / "articles" / (SLUG + ".html")
 FEED = ROOT / "data" / "articles.json"
 SECTION = ROOT / "section-football.html"
@@ -26,6 +26,21 @@ FIXTURES = [
     "Club Brugge vs Liverpool", "Inter vs Stuttgart",
     "Shakhtar Donetsk vs Fenerbahçe", "Lille vs Bayern München",
     "Paris Saint-Germain vs Roma", "Sporting CP vs Manchester United",
+]
+
+STANDINGS_ROWS = [
+    '<tr><td>1</td><td>Paris Saint-Germain</td><td>4</td><td>4–0–0</td><td>20–5</td><td>+15</td><td>12</td></tr>',
+    '<tr><td>2</td><td>Real Madrid</td><td>4</td><td>4–0–0</td><td>13–7</td><td>+6</td><td>12</td></tr>',
+    '<tr><td>3</td><td>Arsenal</td><td>4</td><td>3–1–0</td><td>8–3</td><td>+5</td><td>10</td></tr>',
+    '<tr><td>4</td><td>Como</td><td>4</td><td>3–0–1</td><td>19–6</td><td>+13</td><td>9</td></tr>',
+    '<tr><td>5</td><td>Barcelona</td><td>4</td><td>3–0–1</td><td>14–6</td><td>+8</td><td>9</td></tr>',
+    '<tr><td>6</td><td>Aston Villa</td><td>4</td><td>3–0–1</td><td>12–6</td><td>+6</td><td>9</td></tr>',
+    '<tr><td>7</td><td>Manchester City</td><td>4</td><td>3–0–1</td><td>12–7</td><td>+5</td><td>9</td></tr>',
+    '<tr><td>8</td><td>Liverpool</td><td>4</td><td>3–0–1</td><td>14–10</td><td>+4</td><td>9</td></tr>',
+    '<tr><td>9</td><td>Club Brugge</td><td>4</td><td>3–0–1</td><td>11–7</td><td>+4</td><td>9</td></tr>',
+    '<tr><td>10</td><td>Sporting CP</td><td>4</td><td>3–0–1</td><td>8–4</td><td>+4</td><td>9</td></tr>',
+    '<tr><td>11</td><td>Real Betis</td><td>4</td><td>3–0–1</td><td>8–6</td><td>+2</td><td>9</td></tr>',
+    '<tr><td>12</td><td>Borussia Dortmund</td><td>4</td><td>3–0–1</td><td>7–5</td><td>+2</td><td>9</td></tr>',
 ]
 
 class Parser(HTMLParser):
@@ -96,14 +111,27 @@ def main():
         if phrase not in html:
             errors.append("missing schedule or time-zone detail: " + phrase)
 
-    if html.count('class="fixture-table-wrap"') != 2:
-        errors.append("both fixture tables must use the responsive horizontal-scroll wrapper")
+    if html.count('class="fixture-table-wrap"') != 3:
+        errors.append("both fixture tables and the standings table must use the responsive horizontal-scroll wrapper")
     if "min-width:760px" not in html:
         errors.append("five-column fixture tables must retain the responsive minimum width")
     if html.count("12:45 p.m. ET</td>") != 4:
         errors.append("exactly four early fixtures must convert to 12:45 p.m. ET")
     if html.count("3:00 p.m. ET</td>") != 14:
         errors.append("exactly fourteen standard fixtures must convert to 3:00 p.m. ET")
+    if f"<h2>{ "Champions League standings before Matchday 5" }</h2>" not in html:
+        errors.append("pre-Matchday 5 league-phase standings section is missing")
+    for row in STANDINGS_ROWS:
+        if row not in html:
+            errors.append("missing or changed UEFA standings row: " + row)
+    if "Nine clubs are currently level on nine points" not in html:
+        errors.append("standings context must explain the nine-club tie on nine points")
+    if "https://documents.uefa.com/r/Regulations-of-the-UEFA-Champions-League-2026/27/Article-17-Match-system-league-phase-Online?contentId=z80npkZwtB5MkmwVqnk6XA" not in html:
+        errors.append("qualification format must link to UEFA Article 17")
+    for phrase in ("positions 1–8 qualify directly for the round of 16", "positions 9–24 enter the knockout-phase play-offs", "positions 25–36 are eliminated"):
+        if phrase not in html:
+            errors.append("missing UEFA league-phase qualification rule: " + phrase)
+
     if "https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst" not in html:
         errors.append("US Eastern standard-time conversion must link to NIST")
     if 'href="https://www.paramountplus.com/shows/uefa-champions-league/"' not in html:
@@ -135,6 +163,9 @@ def main():
                 errors.append("NewsArticle must preserve its November 15 publication date and reflect the November 16 update")
             if schema.get("articleSection") != "Football":
                 errors.append("articleSection must be Football")
+            for phrase in ("Champions League standings before Matchday 5", "Champions League table 2026/27", "UEFA Champions League top eight"):
+                if phrase not in schema.get("keywords", ""):
+                    errors.append("NewsArticle keywords are missing standings phrase: " + phrase)
             if schema.get("mainEntityOfPage", {}).get("@id") != URL:
                 errors.append("NewsArticle mainEntityOfPage must match canonical URL")
         except (json.JSONDecodeError, AttributeError):
@@ -152,10 +183,10 @@ def main():
             errors.append("article feed must preserve its publication date and use the November 16 lastmod")
         if "Champions League Matchday 5 fixtures" not in item.get("tags", []):
             errors.append("article feed is missing the primary search phrase")
-        if not {"Champions League Matchday 5 US kickoff times", "Champions League fixtures ET"}.issubset(set(item.get("tags", []))):
-            errors.append("article feed is missing the US Eastern fixture-time search phrases")
-        if "US Eastern" not in item.get("excerpt", ""):
-            errors.append("article feed excerpt must mention US Eastern kick-off times")
+        if not {"Champions League Matchday 5 US kickoff times", "Champions League fixtures ET", "Champions League standings before Matchday 5", "Champions League table 2026/27", "UEFA Champions League top eight", "Champions League league phase table"}.issubset(set(item.get("tags", []))):
+            errors.append("article feed is missing the US Eastern or standings search phrases")
+        if "US Eastern" not in item.get("excerpt", "") or "standings" not in item.get("excerpt", "").lower():
+            errors.append("article feed excerpt must mention US Eastern kick-off times and the standings snapshot")
         required_tags = {
             "Champions League live stream US",
             "where to watch Champions League in US",
@@ -166,8 +197,8 @@ def main():
         if not required_tags.issubset(set(item.get("tags", []))):
             errors.append("article feed must include US streaming and matchday-tool search terms")
         body_headings = {part.get("heading") for part in item.get("body", [])}
-        if not {"Where to watch in the United States", "Matchday planning tools"}.issubset(body_headings):
-            errors.append("article feed must include the US streaming and matchday-tools sections")
+        if not {"Where to watch in the United States", "Matchday planning tools", "Champions League standings before Matchday 5"}.issubset(body_headings):
+            errors.append("article feed must include the standings, US streaming and matchday-tools sections")
 
     section = SECTION.read_text(encoding="utf-8")
     if section.count(f'href="articles/{SLUG}.html"') != 3:
@@ -176,6 +207,8 @@ def main():
         errors.append("Football section card must mention US Eastern kick-off times")
     if "US streaming guidance" not in section:
         errors.append("Football section card must surface the new US streaming information")
+    if "league-phase standings" not in section or "pre-matchday league table snapshot" not in section:
+        errors.append("Football section metadata and featured card must surface league-phase standings")
 
     sitemap = ET.parse(SITEMAP).getroot()
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
@@ -195,7 +228,7 @@ def main():
         for error in errors:
             print("FAIL:", error)
         raise SystemExit(1)
-    print("PASS: 18 Matchday 5 fixtures, time conversions, article metadata, feed, Football links, and sitemap are consistent.")
+    print("PASS: 18 Matchday 5 fixtures, UEFA standings snapshot, qualification rules, time conversions, article metadata, feed, Football links, and sitemap are consistent.")
 
 if __name__ == "__main__":
     main()
