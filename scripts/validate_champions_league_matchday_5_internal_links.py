@@ -189,13 +189,13 @@ assert city_entry.findtext("sm:lastmod", default="", namespaces=ns) == city_item
 # the later Matchday 6 schedule, so the section prioritizes the next fixtures.
 priority_section_slugs = [
     SLUGS["fixtures"],
+    "champions-league-tiebreaker-rules-2026-27",
     SLUGS["arsenal"],
     SLUGS["city"],
     SLUGS["madrid"],
     SLUGS["club_brugge"],
     SLUGS["inter"],
     SLUGS["sabah"],
-    "champions-league-tiebreaker-rules-2026-27",
     "champions-league-matchday-6-fixtures-kickoff-times-december-8-9-2026",
 ]
 section_card_positions = [
