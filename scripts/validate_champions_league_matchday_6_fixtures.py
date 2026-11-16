@@ -166,6 +166,8 @@ def main():
         errors.append("Football section must expose image, title and CTA links to the Matchday 6 guide")
     if "Champions League Matchday 5 and 6 fixtures" not in section:
         errors.append("Football section metadata must mention both Matchday 5 and Matchday 6")
+    if "with CET, US Eastern and Pacific, GMT, UTC and Sudan kick-off times" not in section:
+        errors.append("Football card must expose the expanded Eastern and Pacific timezone coverage")
     tie_position = section.find('href="articles/champions-league-tiebreaker-rules-2026-27.html"')
     matchday6_position = section.find(f'href="{section_link}"')
     last_matchday5_preview_position = section.find('href="articles/inter-vs-stuttgart-champions-league-matchday-5-preview-november-25-2026.html"')
