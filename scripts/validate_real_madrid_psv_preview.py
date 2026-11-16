@@ -136,7 +136,7 @@ def main():
     sitemap = ET.parse(SITEMAP).getroot()
     entries = sitemap.findall("sm:url", ns)
     entry = next((node for node in entries if node.findtext("sm:loc", default="", namespaces=ns) == URL), None)
-    if not entry or entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-15":
+    if entry is None or entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-15":
         errors.append("sitemap must include the article with lastmod 2026-11-15")
 
     if errors:
