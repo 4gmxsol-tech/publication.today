@@ -12,6 +12,8 @@ SLUGS = {
     "sabah": "sabah-vs-barcelona-champions-league-matchday-5-preview-november-25-2026",
     "arsenal": "arsenal-vs-borussia-dortmund-champions-league-matchday-5-preview-november-24-2026",
     "city": "manchester-city-vs-napoli-champions-league-matchday-5-preview-november-24-2026",
+    "inter": "inter-vs-stuttgart-champions-league-matchday-5-preview-november-25-2026",
+    "club_brugge": "club-brugge-vs-liverpool-champions-league-matchday-5-preview-november-25-2026",
 }
 PAGES = {
     key: (ROOT / "articles" / f"{slug}.html").read_text(encoding="utf-8")
@@ -36,8 +38,8 @@ for key, html in PAGES.items():
     main_page = schema.get("mainEntityOfPage", {})
     assert main_page.get("@id") == URLS[key], f"{key} schema URL must match its canonical"
 
-# The full schedule must expose both individual match previews; each preview
-# must lead readers back to the full schedule. The two previews are cross-linked.
+# The full schedule must expose all six individual previews; every preview
+# must lead readers back to the full schedule.
 assert f'href="{SLUGS["madrid"]}.html"' in PAGES["fixtures"], (
     "Full schedule is missing the Real Madrid vs PSV preview"
 )
@@ -75,6 +77,11 @@ assert f'href="{SLUGS["madrid"]}.html"' in PAGES["sabah"], (
 # All four pages must remain discoverable in the football feed and sitemap.
 feed = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
 feed_by_slug = {item.get("slug"): item for item in feed}
+fixture_item = feed_by_slug.get(SLUGS["fixtures"])
+assert fixture_item and fixture_item.get("date") == "November 15, 2026", "Fixture guide publication date must remain unchanged"
+assert fixture_item.get("lastmod") == "2026-11-16", "Fixture feed lastmod must reflect the new internal-link update"
+assert '"datePublished":"2026-11-15","dateModified":"2026-11-16"' in PAGES["fixtures"], "Fixture NewsArticle modified date is stale"
+assert "Updated November 16, 2026" in PAGES["fixtures"], "Fixture guide visible update date is stale"
 sitemap = ET.parse(ROOT / "sitemap.xml").getroot()
 ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 entries = {}
@@ -102,6 +109,16 @@ for key, slug in SLUGS.items():
 assert f'href="{SLUGS["city"]}.html"' in PAGES["fixtures"], (
     "Full schedule is missing the Manchester City vs Napoli preview"
 )
+assert f'href="{SLUGS["inter"]}.html"' in PAGES["fixtures"], (
+    "Full schedule is missing the Inter vs Stuttgart preview"
+)
+assert f'href="{SLUGS["club_brugge"]}.html"' in PAGES["fixtures"], (
+    "Full schedule is missing the Club Brugge vs Liverpool preview"
+)
+for key in ("inter", "club_brugge"):
+    assert f'href="{SLUGS["fixtures"]}.html"' in PAGES[key], (
+        f"{key} preview must link back to the full Matchday 5 schedule"
+    )
 assert f'href="{SLUGS["fixtures"]}.html"' in PAGES["city"], (
     "Manchester City vs Napoli preview must link to the full schedule"
 )
