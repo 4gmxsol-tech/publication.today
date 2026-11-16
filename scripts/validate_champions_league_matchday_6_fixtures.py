@@ -70,6 +70,8 @@ def main():
         for index, table in enumerate(tables, start=1):
             if table.count("<tr><td>") != 9:
                 errors.append(f"day {index} must contain exactly nine fixtures")
+            if table.count("<th scope=\"col\">US Pacific (PST)</th>") != 1:
+                errors.append(f"day {index} table must include one US Pacific (PST) column")
 
     if html.count('<div class="fixture-table-wrap">') != 2 or "min-width:900px" not in html:
         errors.append("both fixture tables must retain the responsive horizontal-scroll wrapper")
@@ -152,7 +154,7 @@ def main():
             errors.append("article feed publication and lastmod dates are incorrect")
         if item.get("excerpt") != DESCRIPTION:
             errors.append("article feed excerpt must match the expanded timezone coverage")
-        if not {"Champions League Matchday 6 fixtures", "Champions League fixtures December 8 2026", "Champions League fixtures December 9 2026", "Champions League fixtures ET"}.issubset(set(item.get("tags", []))):
+        if not {"Champions League Matchday 6 fixtures", "Champions League fixtures December 8 2026", "Champions League fixtures December 9 2026", "Champions League fixtures ET", "Champions League fixtures PT", "Champions League fixtures PST", "Champions League fixtures Pacific Time"}.issubset(set(item.get("tags", []))):
             errors.append("article feed is missing primary Matchday 6 search phrases")
         body_headings = {part.get("heading") for part in item.get("body", [])}
         if not {"Tuesday, December 8 fixtures", "Wednesday, December 9 fixtures", "Kick-off times by timezone", "The four early kick-offs"}.issubset(body_headings):
