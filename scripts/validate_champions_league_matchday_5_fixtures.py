@@ -119,7 +119,7 @@ def main():
         errors.append("exactly four early fixtures must convert to 12:45 p.m. ET")
     if html.count("3:00 p.m. ET</td>") != 14:
         errors.append("exactly fourteen standard fixtures must convert to 3:00 p.m. ET")
-    if f"<h2>{ "Champions League standings before Matchday 5" }</h2>" not in html:
+    if "<h2>Champions League standings before Matchday 5</h2>" not in html:
         errors.append("pre-Matchday 5 league-phase standings section is missing")
     for row in STANDINGS_ROWS:
         if row not in html:
