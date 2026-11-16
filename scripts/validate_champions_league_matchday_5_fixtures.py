@@ -121,8 +121,8 @@ def main():
                 errors.append("fixture guide must use NewsArticle schema")
             if schema.get("headline") != TITLE or schema.get("description") != DESCRIPTION:
                 errors.append("NewsArticle headline and description must match metadata")
-            if schema.get("datePublished") != "2026-11-15" or schema.get("dateModified") != "2026-11-15":
-                errors.append("NewsArticle dates must be November 15, 2026")
+            if schema.get("datePublished") != "2026-11-15" or schema.get("dateModified") != "2026-11-16":
+                errors.append("NewsArticle must preserve its November 15 publication date and reflect the November 16 update")
             if schema.get("articleSection") != "Football":
                 errors.append("articleSection must be Football")
             if schema.get("mainEntityOfPage", {}).get("@id") != URL:
@@ -138,8 +138,8 @@ def main():
         item = matches[0]
         if item.get("category") != "football" or item.get("title") != TITLE:
             errors.append("article feed title/category is incorrect")
-        if item.get("date") != "November 15, 2026" or item.get("lastmod") != "2026-11-15":
-            errors.append("article feed dates are incorrect")
+        if item.get("date") != "November 15, 2026" or item.get("lastmod") != "2026-11-16":
+            errors.append("article feed must preserve its publication date and use the November 16 lastmod")
         if "Champions League Matchday 5 fixtures" not in item.get("tags", []):
             errors.append("article feed is missing the primary search phrase")
         if not {"Champions League Matchday 5 US kickoff times", "Champions League fixtures ET"}.issubset(set(item.get("tags", []))):
@@ -158,6 +158,10 @@ def main():
     urls = [node.text.strip() for node in sitemap.findall("sm:url/sm:loc", ns)]
     if urls.count(URL) != 1:
         errors.append("fixture guide must appear exactly once in sitemap")
+    sitemap_entry = next((node for node in sitemap.findall("sm:url", ns)
+                          if node.findtext("sm:loc", default="", namespaces=ns) == URL), None)
+    if sitemap_entry is None or sitemap_entry.findtext("sm:lastmod", default="", namespaces=ns) != "2026-11-16":
+        errors.append("fixture guide sitemap lastmod must match the November 16 content update")
     if len(urls) != len(set(urls)):
         errors.append("sitemap must not contain duplicate URLs")
     if "https://publication.today/section-football.html" not in urls:
