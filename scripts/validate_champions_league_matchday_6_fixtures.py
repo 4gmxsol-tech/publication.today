@@ -75,13 +75,11 @@ def main():
     for cell, expected in (
         ("<td>18:45 CET</td>", 4),
         ("<td>12:45 p.m. EST</td>", 4),
-        ("<td>17:45 GMT</td>", 4),
-        ("<td>17:45 UTC</td>", 4),
+        ("<td>17:45 GMT / UTC</td>", 4),
         ("<td>19:45 Sudan</td>", 4),
         ("<td>21:00 CET</td>", 14),
         ("<td>3:00 p.m. EST</td>", 14),
-        ("<td>20:00 GMT</td>", 14),
-        ("<td>20:00 UTC</td>", 14),
+        ("<td>20:00 GMT / UTC</td>", 14),
         ("<td>22:00 Sudan</td>", 14),
     ):
         if html.count(cell) != expected:
@@ -101,7 +99,7 @@ def main():
             errors.append("missing date, schedule or timezone detail: " + phrase)
 
     required_links = (
-        "https://www.uefa.com/uefachampionsleague/news/02a8-2174c9e9019d-f909a77bd77a-1000--do-not-publish-202627-champions-league-all-the-league-phase-fixtures/",
+        "https://www.uefa.com/uefachampionsleague/news/02a8-2174c9e9019d-f909a77bd77a-1000--2026-27-uefa-champions-league-all-the-league-phase-fix/",
         "https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst",
         "https://www.paramountplus.com/shows/uefa-champions-league/",
         'href="champions-league-tiebreaker-rules-2026-27.html"',
