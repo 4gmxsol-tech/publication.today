@@ -235,7 +235,8 @@
       "Champions League standings before Matchday 5",
       "Champions League table 2026/27",
       "UEFA Champions League top eight",
-      "Champions League league phase table"
+      "Champions League league phase table",
+      "Champions League tiebreaker rules"
     ],
     "body": [
       {
@@ -248,7 +249,7 @@
       },
       {
         "heading": "Champions League standings before Matchday 5",
-        "text": "After four of eight league-phase matches, Paris Saint-Germain and Real Madrid lead on 12 points, with Arsenal on 10. Nine clubs are currently level on nine points, making the race for a top-eight finish especially tight. This is UEFA's published table snapshot before Matchday 5; positions are provisional and can change as the remaining fixtures are played. UEFA's 2026/27 table after four matchdays lists Paris Saint-Germain and Real Madrid on 12 points, Arsenal on 10, and Como, Barcelona, Aston Villa, Manchester City, Liverpool, Club Brugge, Sporting CP, Real Betis and Borussia Dortmund on nine points each. The top eight qualify directly for the round of 16; positions 9–24 enter the knockout-phase play-offs and positions 25–36 are eliminated. The standings are provisional."
+        "text": "After four of eight league-phase matches, Paris Saint-Germain and Real Madrid lead on 12 points, with Arsenal on 10. Nine clubs are currently level on nine points, making the race for a top-eight finish especially tight. This is UEFA's published table snapshot before Matchday 5; positions are provisional and can change as the remaining fixtures are played. UEFA's 2026/27 table after four matchdays lists Paris Saint-Germain and Real Madrid on 12 points, Arsenal on 10, and Como, Barcelona, Aston Villa, Manchester City, Liverpool, Club Brugge, Sporting CP, Real Betis and Borussia Dortmund on nine points each. The top eight qualify directly for the round of 16; positions 9–24 enter the knockout-phase play-offs and positions 25–36 are eliminated. The standings are provisional. Read the separate Champions League tiebreaker guide for the live Matchday 1–7 order and the final Article 18 criteria."
       },
       {
         "heading": "How the time conversions work",
@@ -265,6 +266,60 @@
       {
         "heading": "Matchday planning tools",
         "text": "Use the football match time zone converter to convert a scheduled kick-off into your local timezone, or the football match countdown to track the time remaining before a fixture."
+      }
+    ]
+  },
+  {
+    "slug": "champions-league-tiebreaker-rules-2026-27",
+    "category": "football",
+    "title": "Champions League Tiebreaker Rules 2026/27: How Teams Are Ranked",
+    "excerpt": "How UEFA ranks teams level on points in the 2026/27 Champions League: live Matchday 1–7 criteria, all 10 final tie-breakers, qualification places and the head-to-head rule.",
+    "readTime": "6 min read",
+    "date": "November 16, 2026",
+    "lastmod": "2026-11-16",
+    "tags": [
+      "Champions League tiebreaker rules",
+      "Champions League tiebreakers 2026/27",
+      "Champions League table tie-breakers",
+      "UEFA Article 18",
+      "Champions League head-to-head rule",
+      "Champions League league phase standings",
+      "Champions League qualification rules",
+      "how Champions League table works",
+      "Champions League points tie-breakers"
+    ],
+    "body": [
+      {
+        "heading": "Quick answer",
+        "text": "During Matchdays 1–7, UEFA separates clubs level on points using goal difference, goals scored, away goals scored, wins and away wins. If they remain level after those five criteria, they share the same ranking and are displayed alphabetically by abbreviated name. After the league phase is complete, all ten Article 18 criteria apply. Head-to-head results are not a league-phase tiebreaker."
+      },
+      {
+        "heading": "How the 36-team league phase works",
+        "text": "All 36 clubs appear in one table. Each team plays eight different opponents, with four home matches and four away matches. A win earns three points, a draw one and a defeat zero. The standings remain provisional until every club has completed its eight league-phase matches."
+      },
+      {
+        "heading": "The five criteria used during Matchdays 1–7",
+        "text": "While the league phase is in progress, UEFA compares teams level on points by overall goal difference, total goals scored, away goals scored, number of wins and number of away wins, in that order. If all five remain equal, the teams share the same ranking and their abbreviations are displayed alphabetically."
+      },
+      {
+        "heading": "All ten final tiebreakers after the league phase",
+        "text": "Once all league-phase matches are complete, Article 18 applies the full sequence: goal difference; goals scored; away goals scored; wins; away wins; the combined points earned by each club's eight opponents; the opponents' combined goal difference; the opponents' combined goals scored; the lower disciplinary-points total; and finally the higher UEFA club coefficient."
+      },
+      {
+        "heading": "Does head-to-head count?",
+        "text": "No. A head-to-head result is not a league-phase tiebreaker. The 36 clubs do not all play one another, so UEFA uses common table-wide criteria rather than a direct meeting between every pair of teams."
+      },
+      {
+        "heading": "What the table positions mean",
+        "text": "At the end of the league phase, positions 1–8 qualify directly for the round of 16. Positions 9–24 enter the knockout-phase play-offs, while positions 25–36 are eliminated."
+      },
+      {
+        "heading": "Why the rules matter before Matchday 5",
+        "text": "After four matchdays, several clubs are level on nine points. Goal difference, goals scored and the other provisional criteria determine how tied teams are displayed while the league phase continues. The Matchday 5 fixture guide includes the current table snapshot and all 18 upcoming fixtures; the table can change after every round."
+      },
+      {
+        "heading": "Official sources",
+        "text": "This guide follows UEFA's 2026/27 league-phase standings explanation and Articles 17 and 18 of the competition regulations. Check UEFA's official table for live positions and the regulations for final ranking rules."
       }
     ]
   },

@@ -100,6 +100,8 @@ jobs:
         run: python scripts/validate_champions_league_matchday_5_fixtures.py
       - name: Validate Champions League Matchday 5 preview cross-links
         run: python scripts/validate_champions_league_matchday_5_internal_links.py
+      - name: Validate Champions League tiebreaker guide
+        run: python scripts/validate_champions_league_tiebreakers.py
       - name: Check new article metadata and references
         run: |
           python - <<'PY'
