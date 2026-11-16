@@ -161,9 +161,9 @@ def main():
         errors.append("Football section metadata must mention both Matchday 5 and Matchday 6")
     tie_position = section.find('href="articles/champions-league-tiebreaker-rules-2026-27.html"')
     matchday6_position = section.find(f'href="{section_link}"')
-    first_preview_position = section.find('href="articles/club-brugge-vs-liverpool-champions-league-matchday-5-preview-november-25-2026.html"')
-    if not (0 <= tie_position < matchday6_position < first_preview_position):
-        errors.append("Football hub order must keep the Matchday 6 guide after the tiebreaker guide and before individual previews")
+    last_matchday5_preview_position = section.find('href="articles/inter-vs-stuttgart-champions-league-matchday-5-preview-november-25-2026.html"')
+    if not (0 <= tie_position < last_matchday5_preview_position < matchday6_position):
+        errors.append("Football hub order must keep the Matchday 6 guide after the tiebreaker guide and all six upcoming Matchday 5 previews")
 
     sitemap = ET.parse(SITEMAP).getroot()
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}

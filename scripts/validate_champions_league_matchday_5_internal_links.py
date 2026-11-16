@@ -185,4 +185,31 @@ assert city_entry.findtext("sm:lastmod", default="", namespaces=ns) == city_item
     "City preview feed and sitemap lastmod must match"
 )
 
-print("Champions League Matchday 5 previews, canonical metadata, feed and sitemap links are valid.")
+# Keep the upcoming Matchday 5 coverage together in chronological order before
+# the later Matchday 6 schedule, so the section prioritizes the next fixtures.
+priority_section_slugs = [
+    SLUGS["fixtures"],
+    "champions-league-tiebreaker-rules-2026-27",
+    SLUGS["arsenal"],
+    SLUGS["city"],
+    SLUGS["madrid"],
+    SLUGS["sabah"],
+    SLUGS["club_brugge"],
+    SLUGS["inter"],
+    "champions-league-matchday-6-fixtures-kickoff-times-december-8-9-2026",
+]
+section_card_positions = [
+    section_html.index(
+        f'<article class="article-card"><a class="article-visual visual-football" href="articles/{slug}.html"'
+    )
+    for slug in priority_section_slugs
+]
+assert section_card_positions == sorted(section_card_positions), (
+    "Football hub must show the full Matchday 5 schedule, its six dated previews, "
+    "then evergreen tiebreaker guidance and the later Matchday 6 schedule"
+)
+assert len(re.findall(r'<article class="article-card">', section_html)) == 19, (
+    "Reordering must preserve all 19 Football section cards"
+)
+
+print("Champions League Matchday 5 previews, canonical metadata, feed, sitemap, and Football hub order are valid.")
