@@ -16,17 +16,19 @@ BASE = "https://publication.today"
 NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 ET.register_namespace("", NS)
 
+# Keep lastmod aligned with the latest substantive content commit for core pages.
+# Update these dates whenever the corresponding page content changes.
 CORE_PAGES = [
-    ("", "1.0"),
-    ("section-fitness.html", "0.8"),
-    ("section-health.html", "0.8"),
-    ("section-skincare.html", "0.8"),
-    ("section-nutrition.html", "0.8"),
-    ("section-wellness.html", "0.8"),
-    ("section-beauty.html", "0.8"),
-    ("section-football.html", "0.8"),
-    ("section-technology.html", "0.8"),
-    ("privacy.html", "0.3"),
+    ("", "1.0", "2026-11-12"),
+    ("section-fitness.html", "0.8", ""),
+    ("section-health.html", "0.8", ""),
+    ("section-skincare.html", "0.8", ""),
+    ("section-nutrition.html", "0.8", ""),
+    ("section-wellness.html", "0.8", ""),
+    ("section-beauty.html", "0.8", ""),
+    ("section-football.html", "0.8", "2026-11-16"),
+    ("section-technology.html", "0.8", ""),
+    ("privacy.html", "0.3", ""),
 ]
 
 
@@ -57,11 +59,17 @@ def main() -> None:
         raise SystemExit("Duplicate article slugs found in data/articles.json.")
 
     entries: list[tuple[str, str, str]] = []
-    for relative, priority in CORE_PAGES:
+    for relative, priority, lastmod in CORE_PAGES:
         target = ROOT / (relative or "index.html")
         if not target.is_file():
             raise SystemExit(f"Core page is missing: {target.relative_to(ROOT)}")
-        entries.append((f"{BASE}/" if not relative else f"{BASE}/{relative}", "", priority))
+        if lastmod:
+            try:
+                lastmod = datetime.strptime(lastmod, "%Y-%m-%d").date().isoformat()
+            except (TypeError, ValueError) as exc:
+                page_name = relative or "index.html"
+                raise SystemExit(f"Invalid core-page lastmod for {page_name}: {lastmod}") from exc
+        entries.append((f"{BASE}/" if not relative else f"{BASE}/{relative}", lastmod, priority))
 
     for item in feed:
         relative = pathlib.Path("articles") / f"{item['slug']}.html"
