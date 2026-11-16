@@ -51,7 +51,7 @@ def main():
     if html.count(f'<meta name="description" content="{DESCRIPTION}">') != 1:
         errors.append("meta description is missing or inconsistent")
     for tag in ("og:title", "twitter:title"):
-        if f'<meta property="{tag}" content="{TITLE_HTML}">' not in html and f'<meta name="{tag}" content="{TITLE}">' not in html:
+        if f'<meta property="{tag}" content="{TITLE_HTML}">' not in html and f'<meta name="{tag}" content="{TITLE_HTML}">' not in html:
             errors.append(f"{tag} must match the document title")
     for tag in ("og:description", "twitter:description"):
         if f'<meta property="{tag}" content="{DESCRIPTION}">' not in html and f'<meta name="{tag}" content="{DESCRIPTION}">' not in html:
