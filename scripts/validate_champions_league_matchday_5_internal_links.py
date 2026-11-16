@@ -74,7 +74,7 @@ assert f'href="{SLUGS["madrid"]}.html"' in PAGES["sabah"], (
     "Sabah preview must retain its cross-link to the Madrid preview"
 )
 
-# All four pages must remain discoverable in the football feed and sitemap.
+# The full schedule and all six previews must remain in the football feed and sitemap.
 feed = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
 feed_by_slug = {item.get("slug"): item for item in feed}
 fixture_item = feed_by_slug.get(SLUGS["fixtures"])
