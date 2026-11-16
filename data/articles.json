@@ -269,7 +269,7 @@
     "slug": "champions-league-matchday-5-fixtures-kickoff-times-november-24-25-2026",
     "category": "football",
     "title": "Champions League Matchday 5 Fixtures: Full Schedule & Kick-off Times",
-    "excerpt": "See all 18 UEFA Champions League Matchday 5 fixtures for Nov. 24–25, 2026, with CET, US Eastern and Sudan times, standings and US streaming info.",
+    "excerpt": "See all 18 UEFA Champions League Matchday 5 fixtures for Nov. 24–25, 2026, with CET, US Eastern, US Pacific, UTC and Sudan times, standings and US streaming info.",
     "readTime": "5 min read",
     "date": "November 15, 2026",
     "lastmod": "2026-11-16",
@@ -292,24 +292,27 @@
       "Champions League table 2026/27",
       "UEFA Champions League top eight",
       "Champions League league phase table",
-      "Champions League tiebreaker rules"
+      "Champions League tiebreaker rules",
+      "Champions League fixtures PST",
+      "US Pacific match times",
+      "Champions League fixtures Pacific Time"
     ],
     "body": [
       {
         "heading": "Tuesday, November 24 fixtures",
-        "text": "Bodø/Glimt vs LASK and Galatasaray vs Aston Villa start at 18:45 CET (12:45 p.m. ET, 17:45 UTC, 19:45 in Sudan). Arsenal vs Borussia Dortmund, Como vs AEK Athens, Feyenoord vs Porto, Manchester City vs Napoli, Leipzig vs Lens, Real Madrid vs PSV Eindhoven, and Slovan Bratislava vs Real Betis start at 21:00 CET (3:00 p.m. ET, 20:00 UTC, 22:00 in Sudan)."
+        "text": "Bodø/Glimt vs LASK and Galatasaray vs Aston Villa start at 18:45 CET (12:45 p.m. EST, 9:45 a.m. PST, 17:45 UTC, 19:45 in Sudan). Arsenal vs Borussia Dortmund, Como vs AEK Athens, Feyenoord vs Porto, Manchester City vs Napoli, Leipzig vs Lens, Real Madrid vs PSV Eindhoven, and Slovan Bratislava vs Real Betis start at 21:00 CET (3:00 p.m. EST, 12:00 p.m. PST, 20:00 UTC, 22:00 in Sudan)."
       },
       {
         "heading": "Wednesday, November 25 fixtures",
-        "text": "Sabah vs Barcelona and Slavia Praha vs Villarreal start at 18:45 CET (12:45 p.m. ET, 17:45 UTC, 19:45 in Sudan). Atlético de Madrid vs Viking, Club Brugge vs Liverpool, Inter vs Stuttgart, Shakhtar Donetsk vs Fenerbahçe, Lille vs Bayern München, Paris Saint-Germain vs Roma, and Sporting CP vs Manchester United start at 21:00 CET (3:00 p.m. ET, 20:00 UTC, 22:00 in Sudan)."
+        "text": "Sabah vs Barcelona and Slavia Praha vs Villarreal start at 18:45 CET (12:45 p.m. EST, 9:45 a.m. PST, 17:45 UTC, 19:45 in Sudan). Atlético de Madrid vs Viking, Club Brugge vs Liverpool, Inter vs Stuttgart, Shakhtar Donetsk vs Fenerbahçe, Lille vs Bayern München, Paris Saint-Germain vs Roma, and Sporting CP vs Manchester United start at 21:00 CET (3:00 p.m. EST, 12:00 p.m. PST, 20:00 UTC, 22:00 in Sudan)."
       },
       {
         "heading": "Champions League standings before Matchday 5",
         "text": "After four of eight league-phase matches, Paris Saint-Germain and Real Madrid lead on 12 points, with Arsenal on 10. Nine clubs are currently level on nine points, making the race for a top-eight finish especially tight. This is UEFA's published table snapshot before Matchday 5; positions are provisional and can change as the remaining fixtures are played. UEFA's 2026/27 table after four matchdays lists Paris Saint-Germain and Real Madrid on 12 points, Arsenal on 10, and Como, Barcelona, Aston Villa, Manchester City, Liverpool, Club Brugge, Sporting CP, Real Betis and Borussia Dortmund on nine points each. The top eight qualify directly for the round of 16; positions 9–24 enter the knockout-phase play-offs and positions 25–36 are eliminated. The standings are provisional. Read the separate Champions League tiebreaker guide for the live Matchday 1–7 order and the final Article 18 criteria."
       },
       {
-        "heading": "How the time conversions work",
-        "text": "UEFA lists kick-offs in CET and sets 21:00 unless an earlier time is shown. On these dates CET is UTC+1, US Eastern is EST (UTC−5) and Sudan is UTC+2: 18:45 CET equals 12:45 p.m. ET, 17:45 UTC and 19:45 in Sudan; 21:00 CET equals 3:00 p.m. ET, 20:00 UTC and 22:00 in Sudan."
+        "heading": "How to convert Champions League kick-off times to US Eastern, US Pacific and Sudan",
+        "text": "UEFA lists kick-offs in CET and sets 21:00 unless an earlier time is shown. On these dates CET is UTC+1, US Eastern is EST (UTC−5), US Pacific is PST (UTC−8) and Sudan is UTC+2. An 18:45 CET start equals 12:45 p.m. EST, 9:45 a.m. PST, 17:45 UTC and 19:45 in Sudan; a 21:00 CET start equals 3:00 p.m. EST, 12:00 p.m. PST, 20:00 UTC and 22:00 in Sudan. NIST lists November 1, 2026 as the end of US daylight saving time."
       },
       {
         "heading": "Official schedule and related preview",
