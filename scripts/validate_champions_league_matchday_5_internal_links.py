@@ -130,7 +130,7 @@ gal_description = re.search(r'<meta name="description" content="([^"]+)">', gal)
 assert gal_description == "Galatasaray host Aston Villa on Nov. 24 at 18:45 CET: 12:45 p.m. EST / 9:45 a.m. PST at RAMS Park. Check verified kick-off times and recent results."
 assert f'<meta property="og:description" content="{gal_description}">' in gal
 assert f'<meta name="twitter:description" content="{gal_description}">' in gal
-gal_schema = json.loads(re.search(r'<script type="application/ld\\+json">(.*?)</script>', gal, re.S).group(1))
+gal_schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', gal, re.S).group(1))
 assert gal_schema.get("description") == gal_description
 assert gal_schema.get("datePublished") == "2026-11-16" and gal_schema.get("dateModified") == "2026-11-16"
 assert "Galatasaray vs Aston Villa 12:45 PM ET" in gal_schema.get("keywords", "")
