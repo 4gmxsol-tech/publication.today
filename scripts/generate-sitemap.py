@@ -23,7 +23,7 @@ CORE_PAGES = [
     ("section-fitness.html", "0.8", ""),
     ("section-health.html", "0.8", ""),
     ("section-skincare.html", "0.8", ""),
-    ("section-nutrition.html", "0.8", ""),
+    ("section-nutrition.html", "0.8", "2026-11-17"),
     ("section-wellness.html", "0.8", ""),
     ("section-beauty.html", "0.8", ""),
     ("section-football.html", "0.8", "2026-11-16"),
