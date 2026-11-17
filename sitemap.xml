@@ -19,6 +19,7 @@
   </url>
   <url>
     <loc>https://publication.today/section-nutrition.html</loc>
+    <lastmod>2026-11-17</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -41,6 +42,21 @@
   <url>
     <loc>https://publication.today/privacy.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/air-fryer-fries-temperature-time-crispy-guide.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/green-bean-casserole-recipe-easy-thanksgiving-side.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/homemade-cranberry-sauce-recipe-fresh-cranberries.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/champions-league-matchday-6-fixtures-kickoff-times-december-8-9-2026.html</loc>
@@ -348,21 +364,6 @@
   <url>
     <loc>https://publication.today/articles/atletico-madrid-vs-barcelona-2026-match-report-fermin-comeback.html</loc>
     <lastmod>2026-11-09</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://publication.today/articles/air-fryer-fries-temperature-time-crispy-guide.html</loc>
-    <lastmod>2026-11-17</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://publication.today/articles/green-bean-casserole-recipe-easy-thanksgiving-side.html</loc>
-    <lastmod>2026-11-17</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://publication.today/articles/homemade-cranberry-sauce-recipe-fresh-cranberries.html</loc>
-    <lastmod>2026-11-17</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
