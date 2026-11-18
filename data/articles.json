@@ -2690,5 +2690,21 @@
         "text": "Match result and scoring details were checked against post-match coverage from AS and the published match record. See the official FC Barcelona fixture page for the club's match listing. This is a post-match report, not a live update."
       }
     ]
+  },
+  {
+    "slug": "ai-agent-vs-ai-assistant-differences",
+    "title": "AI Agent vs AI Assistant: What's the Difference?",
+    "category": "technology",
+    "date": "November 18, 2026",
+    "lastmod": "2026-11-18",
+    "readTime": "7 min read",
+    "excerpt": "Understand autonomy, tool use, real-world examples, risks and how to choose the right AI workflow.",
+    "tags": [
+      "AI agent vs AI assistant",
+      "what is an AI agent",
+      "AI assistant vs agent",
+      "AI agent examples",
+      "AI automation"
+    ]
   }
 ]
