@@ -22,6 +22,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Verify article ad-consent injection
+        run: |
+          python -m unittest discover -s scripts -p 'test_inject_ads.py' -v
+          python scripts/inject_ads.py
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
