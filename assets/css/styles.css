@@ -123,6 +123,8 @@ input,select,textarea{font-size:16px} /* stops iOS auto-zoom on focus */
 
 /* --- Phones (<=560px): single column, full-width actions --- */
 @media(max-width:560px){
+  .hero{grid-template-columns:1fr}
+  .department-grid,.article-grid{grid-template-columns:1fr}
   .tool-grid{grid-template-columns:1fr!important}
   .hero-actions .button{flex:1 1 auto}
   .newsletter-inner .button{width:100%}
