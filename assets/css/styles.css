@@ -56,3 +56,92 @@ body{background:var(--paper);color:var(--ink);font-size:15px;line-height:1.65}
 .preferred-source-copy p:last-child{margin:0;color:var(--muted);font-size:13px}
 .preferred-source-inline{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px 18px;margin:24px 0;background:#e9e8df;border:1px solid var(--line);font-size:12px;color:#4f554c}
 @media(max-width:640px){.preferred-source-section{align-items:flex-start;flex-direction:column;gap:16px}.preferred-source-inline{align-items:flex-start;flex-direction:column}}
+
+/* ============================================================
+   Responsive & visual polish layer (Nov 2026)
+   One consistent system for phone, tablet/iPad, laptop and
+   large screens. Appended last so it wins over earlier layers.
+   ============================================================ */
+
+/* --- Global safety: nothing may push the page sideways --- */
+html,body{overflow-x:clip}
+img,video,iframe,embed,object{max-width:100%}
+img,video{height:auto}
+::selection{background:#e9c9ba;color:#202d28}
+
+/* --- Accessible focus + comfortable touch targets --- */
+a,button,input,select,textarea,[tabindex]{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid #b9533d;outline-offset:2px;border-radius:2px}
+.menu-toggle{min-width:44px;min-height:44px;align-items:center;justify-content:center}
+.filter-chip{min-height:40px;display:inline-flex;align-items:center}
+.card-read{display:inline-flex;align-items:center;min-height:32px}
+input,select,textarea{font-size:16px} /* stops iOS auto-zoom on focus */
+
+/* --- Tables (fixtures, conversion charts): scroll, never overflow --- */
+.article-body table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-collapse:collapse;margin:22px 0;font-size:14px;line-height:1.5}
+.article-body th,.article-body td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+.article-body th{font-weight:700;color:#202d28;background:#f4f0e8}
+
+/* --- Calculator / tool panels on every screen --- */
+.tool-panel{max-width:100%}
+.tool-panel input,.tool-panel select{font-size:16px;min-height:48px}
+.tool-action{min-height:48px;width:auto}
+.ad-placement{max-width:100%;overflow:hidden;margin-inline:auto}
+.ad-placement iframe{max-width:100%}
+
+/* --- Visual richness: depth, softer corners, gentle motion --- */
+.article-visual{border-radius:10px;box-shadow:0 2px 10px rgba(32,45,40,.06)}
+.article-card{transition:transform .25s ease}
+.article-card:hover{transform:translateY(-3px)}
+.article-card:hover .article-visual{box-shadow:0 14px 30px rgba(32,45,40,.13)}
+.department-card{border-radius:10px}
+.hero-art{box-shadow:0 24px 50px rgba(32,45,40,.14)}
+.featured-art{border-radius:10px}
+.button{border-radius:6px}
+.filter-chip{transition:background .2s,color .2s,border-color .2s}
+.department-card,.article-visual img{will-change:transform}
+
+/* --- iPad / tablet portrait & landscape (768–1100px) --- */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr 1fr;gap:36px}
+  .hero h1{font-size:clamp(42px,5.2vw,60px)}
+  .featured-layout{gap:44px}
+}
+@media(max-width:1024px){
+  .department-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .main-nav{gap:14px}
+  .header-cta{display:none}
+}
+
+/* --- Small tablets & large phones (561–760px tweaks) --- */
+@media(max-width:760px){
+  .main-nav a{min-height:44px;display:flex;align-items:center;width:100%}
+  .tool-action{width:100%}
+  .article-body table{font-size:13px}
+}
+
+/* --- Phones (<=560px): single column, full-width actions --- */
+@media(max-width:560px){
+  .tool-grid{grid-template-columns:1fr!important}
+  .hero-actions .button{flex:1 1 auto}
+  .newsletter-inner .button{width:100%}
+  .footer-top{flex-direction:column;align-items:flex-start}
+}
+
+/* --- Large screens (>=1440px): use the extra room gracefully --- */
+@media(min-width:1440px){
+  :root{--max:1320px}
+  body{font-size:16px}
+  .hero{padding-top:84px;padding-bottom:84px}
+}
+
+/* --- Landscape phones: keep the hero compact --- */
+@media(max-height:480px) and (orientation:landscape){
+  .hero{padding-top:28px;padding-bottom:28px}
+  .hero-art{min-height:220px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .article-card,.article-card:hover{transform:none!important}
+}
