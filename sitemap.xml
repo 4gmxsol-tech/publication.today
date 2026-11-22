@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://publication.today/</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -25,7 +25,7 @@
   </url>
   <url>
     <loc>https://publication.today/section-wellness.html</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -50,6 +50,11 @@
     <loc>https://publication.today/2027-goals-planner.html</loc>
     <lastmod>2026-11-21</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://publication.today/articles/free-printable-2027-calendar.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://publication.today/articles/2027-goals-plan-year-you-finish.html</loc>
