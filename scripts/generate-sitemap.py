@@ -29,7 +29,7 @@ CORE_PAGES = [
     ("section-football.html", "0.8", "2026-11-16"),
     ("section-technology.html", "0.8", "2026-11-21"),
     ("privacy.html", "0.3", ""),
-    ("2027-goals-planner.html", "0.8", "2026-11-21"),
+    ("2027-goals-planner.html", "0.8", "2026-11-24"),
 ]
 
 

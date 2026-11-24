@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free 2027 Goals Planner App: Set Goals, Track Habits and Review Your Week — Publication Today</title>
+<meta name="description" content="A free interactive 2027 goals planner: set goals with deadlines and progress, track daily habits with streaks, browse the 2027 calendar and review your week — private, saved on your device.">
+<link rel="canonical" href="https://publication.today/articles/2027-goals-planner-app.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Publication Today"><meta property="og:title" content="Free 2027 Goals Planner App: Set Goals, Track Habits and Review Your Week"><meta property="og:description" content="A free interactive 2027 goals planner: set goals with deadlines and progress, track daily habits with streaks, browse the 2027 calendar and review your week — private, saved on your device."><meta property="og:url" content="https://publication.today/articles/2027-goals-planner-app.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"2027 Goals Planner","url":"https://publication.today/articles/2027-goals-planner-app.html","applicationCategory":"LifestyleApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Publication Today Editorial"},"publisher":{"@type":"Organization","name":"Publication Today","url":"https://publication.today/"},"description":"A free interactive 2027 goals planner: set goals with deadlines and progress, track daily habits with streaks, browse the 2027 calendar and review your week — private, saved on your device.","featureList":"Set 2027 goals with categories, deadlines and progress; track daily habits with streaks; browse the 2027 calendar; weekly review; export, import and print your plan.","datePublished":"2026-11-24","dateModified":"2026-11-24","inLanguage":"en"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the 2027 goals planner app free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The interactive planner is free to use in your browser — no account, no sign-up, no payment. Your goals and habits are saved only on your device."}},{"@type":"Question","name":"Does the planner save my goals and habits?","acceptedAnswer":{"@type":"Answer","text":"Yes — everything is stored in your browser's local storage on your device. Nothing is uploaded to a server. Use Export my plan (JSON) to back up your plan or move it to another device."}},{"@type":"Question","name":"Can I print my 2027 plan?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Print my plan button to print your goals, habits and weekly review."}},{"@type":"Question","name":"What is the difference between the free planner app and the 2027 Goals Planner Bundle?","acceptedAnswer":{"@type":"Answer","text":"The free app is the interactive digital version of the same system — goals, habits, calendar and weekly review in your browser. The 2027 Goals Planner & Calendar Bundle is the printable 24-page PDF planner and calendar plus the 60-page print book — the same system, on paper."}}]}</script>
+<style>
+  * { box-sizing: border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  body { margin: 0; background: #0f172a; color: #e2e8f0; }
+  header { padding: 30px 20px 8px; text-align: center; }
+  h1 { margin: 0; font-size: 30px; } h1 span { color: #c9a227; }
+  header p { color: #94a3b8; margin: 8px 0 0; }
+  #countdown { font-size: 20px; color: #c9a227; font-weight: 700; margin-top: 10px; }
+  main { max-width: 960px; margin: 0 auto; padding: 20px; }
+  .panel { background: #111c33; border: 1px solid #1e293b; border-radius: 14px; padding: 20px; margin-top: 16px; }
+  .panel h2 { margin: 0 0 12px; font-size: 19px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; }
+  input, select { padding: 10px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; }
+  input[type=text] { flex: 2 1 240px; } select { flex: 1 1 130px; } input[type=date] { flex: 1 1 150px; }
+  button { background: #c9a227; color: #111827; border: 0; padding: 11px 18px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+  button.ghost { background: transparent; color: #e2e8f0; border: 1px solid #334155; }
+  button.small { padding: 6px 10px; font-size: 13px; }
+  .goal, .habit { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 12px 14px; margin-top: 10px; }
+  .goal .top, .habit .top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .goal .cat { color: #c9a227; font-size: 12px; }
+  .bar { height: 9px; background: #1e293b; border-radius: 999px; overflow: hidden; margin-top: 8px; }
+  .bar > div { height: 100%; background: #c9a227; }
+  .prog { font-size: 13px; color: #94a3b8; }
+  input[type=range] { width: 100%; margin-top: 8px; accent-color: #c9a227; }
+  .days { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .day { width: 40px; height: 40px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; cursor: pointer; font-size: 12px; }
+  .day.done { background: #c9a227; color: #111827; border-color: #c9a227; font-weight: 700; }
+  .day.today { outline: 2px solid #c9a227; outline-offset: 1px; }
+  .streak { color: #c9a227; font-weight: 700; }
+  .cal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 13px; }
+  .cal-grid .wd { color: #94a3b8; font-size: 11px; padding: 4px 0; }
+  .cal-grid .d { padding: 8px 0; border-radius: 8px; background: #0f172a; border: 1px solid #1e293b; }
+  .cal-grid .d.today { background: #c9a227; color: #111827; font-weight: 700; }
+  .cal-grid .d.marked { border-color: #c9a227; }
+  .cal-grid .d.empty { background: transparent; border: 0; }
+  .upgrade { background: linear-gradient(135deg, #1e293b, #3a2f10); border: 1px solid #c9a227; }
+  .upgrade a { color: #c9a227; font-weight: 700; }
+  .muted { color: #94a3b8; font-size: 13px; line-height: 1.6; }
+  footer { text-align: center; color: #64748b; font-size: 13px; padding: 18px; }
+  @media print { body { background: #fff; color: #000; } .panel { border-color: #999; } button, .upgrade { display: none; } }
+</style>
+</head>
+<body>
+<div style="max-width:960px;margin:0 auto;padding:14px 20px 0;font-size:14px"><a href="../index.html" style="color:#c9a227">← Publication Today</a> &nbsp;·&nbsp; <a href="../section-wellness.html" style="color:#94a3b8">Wellness</a> &nbsp;·&nbsp; <a href="../2027-goals-planner.html" style="color:#94a3b8">2027 Goals Planner Bundle</a></div>
+<header>
+  <h1>2027 Goals <span>Planner</span></h1>
+  <p>Set your goals, check in on your habits every day, and watch your year take shape — free, private, saved on your device.</p>
+  <div id="countdown">…</div>
+</header>
+<main>
+  <section class="panel" id="goalsPanel">
+    <h2>🎯 My 2027 Goals</h2>
+    <div class="row">
+      <input type="text" id="goalText" placeholder="e.g. Read 24 books" maxlength="120">
+      <select id="goalCat"><option>Health</option><option>Money</option><option>Learning</option><option>Relationships</option><option>Career</option><option>Home</option></select>
+      <input type="date" id="goalDate" value="2027-12-31" min="2027-01-01" max="2027-12-31">
+      <button id="addGoal">Add Goal</button>
+    </div>
+    <div id="goals"></div>
+    <p class="muted" id="goalsSummary"></p>
+  </section>
+
+  <section class="panel" id="habitsPanel">
+    <h2>🔥 Daily Habits &amp; Streaks</h2>
+    <div class="row">
+      <input type="text" id="habitText" placeholder="e.g. Walk 30 minutes" maxlength="120">
+      <button id="addHabit">Add Habit</button>
+    </div>
+    <div id="habits"></div>
+  </section>
+
+  <section class="panel">
+    <h2>📅 2027 Calendar</h2>
+    <div class="cal-head">
+      <button class="ghost small" id="prevMonth">← Prev</button>
+      <b id="calTitle"></b>
+      <button class="ghost small" id="nextMonth">Next →</button>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <p class="muted">Gold dots mark days you checked in on at least one habit. Today is highlighted.</p>
+  </section>
+
+  <section class="panel">
+    <h2>📊 This Week's Review</h2>
+    <div id="review"></div>
+  </section>
+
+  <section class="panel upgrade">
+    <h2>Want the full 2027 Goals Planner?</h2>
+    <p>This free planner lives in your browser. The full bundle gives you the printable 24-page PDF planner and calendar plus the 60-page print book — the same system, on paper, anywhere.</p>
+    <p><a href="https://publication.today/2027-goals-planner.html">Get the 2027 Goals Planner Bundle →</a></p>
+  </section>
+
+  <section class="panel">
+    <h2>Your data</h2>
+    <p class="muted">Everything is stored only in this browser (localStorage). Nothing is uploaded anywhere. Use the buttons to back up or move your plan to another device.</p>
+    <button class="ghost" id="exportBtn">Export my plan (JSON)</button>
+    <button class="ghost" id="importBtn">Import plan</button>
+    <input type="file" id="importFile" accept=".json" hidden>
+    <button class="ghost" id="printBtn">Print my plan</button>
+    <button class="ghost" id="resetBtn">Reset everything</button>
+  </section>
+</main>
+
+  <section class="panel">
+    <h2>More from the 2027 New Year cluster</h2>
+    <p class="muted">The planner app is the tool; these guides are the system behind it.</p>
+    <ul style="line-height:1.9">
+      <li><a href="2027-goals-plan-year-you-finish.html" style="color:#c9a227">2027 Goals: How to Plan a Year You Will Actually Finish</a> — review 2026, choose three goals, plan in 90-day quarters.</li>
+      <li><a href="new-years-resolution-ideas-2027.html" style="color:#c9a227">50 New Year&apos;s Resolution Ideas for 2027</a> — small actions with a first step, grouped by area of life.</li>
+      <li><a href="new-year-resolutions-fail-february-90-day-fix.html" style="color:#c9a227">New Year Resolutions That Fail by February — and the 90-Day Fix</a></li>
+      <li><a href="free-printable-2027-calendar.html" style="color:#c9a227">Free Printable 2027 Calendar</a> — all 12 months, holidays and key dates.</li>
+      <li><a href="new-year-countdown-2027.html" style="color:#c9a227">New Year 2027 Countdown</a> — live countdown to Friday, January 1, 2027.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Frequently asked questions</h2>
+    <h3 style="font-size:16px;margin:14px 0 4px">Is the 2027 goals planner app free?</h3>
+    <p class="muted">Yes. The interactive planner is free to use in your browser — no account, no sign-up, no payment. Your goals and habits are saved only on your device.</p>
+    <h3 style="font-size:16px;margin:14px 0 4px">Does the planner save my goals and habits?</h3>
+    <p class="muted">Yes — everything is stored in your browser&apos;s local storage on your device. Nothing is uploaded to a server. Use Export my plan (JSON) to back up your plan or move it to another device.</p>
+    <h3 style="font-size:16px;margin:14px 0 4px">Can I print my 2027 plan?</h3>
+    <p class="muted">Yes. Use the Print my plan button to print your goals, habits and weekly review.</p>
+    <h3 style="font-size:16px;margin:14px 0 4px">What is the difference between the free planner app and the 2027 Goals Planner Bundle?</h3>
+    <p class="muted">The free app is the interactive digital version of the same system — goals, habits, calendar and weekly review in your browser. The <a href="../2027-goals-planner.html" style="color:#c9a227">2027 Goals Planner &amp; Calendar Bundle</a> is the printable 24-page PDF planner and calendar plus the 60-page print book — the same system, on paper.</p>
+  </section>
+
+<footer>2027 Goals Planner — a free tool from Publication Today. Buy once, plan all year.</footer>
+
+<script>
+const KEY = 'gp2027-v1';
+const $ = id => document.getElementById(id);
+const todayISO = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); };
+const isoToDate = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); };
+const dateToISO = d => d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+const addDays = (iso, n) => { const d = isoToDate(iso); d.setDate(d.getDate()+n); return dateToISO(d); };
+
+let state = { goals: [], habits: [] };
+try { const raw = localStorage.getItem(KEY); if (raw) state = JSON.parse(raw); } catch (e) { state = { goals: [], habits: [] }; }
+if (!Array.isArray(state.goals)) state.goals = [];
+if (!Array.isArray(state.habits)) state.habits = [];
+const save = () => localStorage.setItem(KEY, JSON.stringify(state));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// ---------- countdown ----------
+function tick(){
+  const now = new Date(); const target = new Date(2027, 0, 1, 0, 0, 0);
+  let ms = target - now;
+  if (ms <= 0) { $('countdown').textContent = '🎉 Happy New Year 2027 — the year is here!'; return; }
+  const d = Math.floor(ms/86400000); ms -= d*86400000;
+  const h = Math.floor(ms/3600000); ms -= h*3600000;
+  const m = Math.floor(ms/60000); const s = Math.floor((ms - m*60000)/1000);
+  $('countdown').textContent = `${d} days ${h}h ${m}m ${s}s until January 1, 2027`;
+}
+tick(); setInterval(tick, 1000);
+
+// ---------- goals ----------
+function renderGoals(){
+  const box = $('goals');
+  box.innerHTML = state.goals.map((g, i) => `
+    <div class="goal">
+      <div class="top"><b>${esc(g.text)}</b><span class="cat">${esc(g.cat)} · by ${esc(g.date || 'Dec 31, 2027')}</span></div>
+      <input type="range" min="0" max="100" value="${g.progress || 0}" data-g="${i}">
+      <div class="bar"><div style="width:${g.progress || 0}%"></div></div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px"><span class="prog">${g.progress || 0}% complete</span><button class="ghost small" data-del-g="${i}">Delete</button></div>
+    </div>`).join('') || '<p class="muted">No goals yet — add your first one above.</p>';
+  const avg = state.goals.length ? Math.round(state.goals.reduce((a,g)=>a+(g.progress||0),0)/state.goals.length) : 0;
+  const done = state.goals.filter(g => (g.progress||0) >= 100).length;
+  $('goalsSummary').textContent = state.goals.length ? `${state.goals.length} goals · average progress ${avg}% · ${done} completed 🎉` : '';
+  box.querySelectorAll('[data-g]').forEach(r => r.oninput = e => { state.goals[+e.target.dataset.g].progress = +e.target.value; save(); renderGoals(); renderReview(); });
+  box.querySelectorAll('[data-del-g]').forEach(b => b.onclick = () => { state.goals.splice(+b.dataset.delG, 1); save(); renderGoals(); renderReview(); });
+}
+$('addGoal').onclick = () => {
+  const t = $('goalText').value.trim(); if (!t) return;
+  state.goals.push({ text: t, cat: $('goalCat').value, date: $('goalDate').value, progress: 0 });
+  $('goalText').value = ''; save(); renderGoals(); renderReview();
+};
+
+// ---------- habits & streaks ----------
+function streakFor(habit){
+  const set = new Set(habit.days || []);
+  let cur = todayISO(); let n = 0;
+  if (!set.has(cur)) cur = addDays(cur, -1); // streak counts through yesterday if today not yet checked
+  while (set.has(cur)) { n++; cur = addDays(cur, -1); }
+  return n;
+}
+function renderHabits(){
+  const box = $('habits');
+  const today = todayISO();
+  // last 7 days ending today
+  const days = []; for (let i = 6; i >= 0; i--) days.push(addDays(today, -i));
+  box.innerHTML = state.habits.map((h, i) => {
+    const set = new Set(h.days || []);
+    const week = days.map(d => `<button class="day ${set.has(d) ? 'done' : ''} ${d === today ? 'today' : ''}" data-h="${i}" data-d="${d}" title="${d}">${new Date(isoToDate(d)).toLocaleDateString('en-US',{weekday:'short'})}<br>${+d.slice(8)}</button>`).join('');
+    return `<div class="habit"><div class="top"><b>${esc(h.text)}</b><span class="streak">🔥 ${streakFor(h)}-day streak</span></div>
+      <div class="days">${week}</div>
+      <div style="margin-top:8px"><button class="ghost small" data-del-h="${i}">Delete habit</button></div></div>`;
+  }).join('') || '<p class="muted">No habits yet — add one above, then tap a day to check it off.</p>';
+  box.querySelectorAll('[data-h][data-d]').forEach(b => b.onclick = () => {
+    const h = state.habits[+b.dataset.h]; h.days = h.days || [];
+    const d = b.dataset.d; const idx = h.days.indexOf(d);
+    if (idx >= 0) h.days.splice(idx, 1); else h.days.push(d);
+    save(); renderHabits(); renderCalendar(); renderReview();
+  });
+  box.querySelectorAll('[data-del-h]').forEach(b => b.onclick = () => { state.habits.splice(+b.dataset.delH, 1); save(); renderHabits(); renderCalendar(); renderReview(); });
+}
+$('addHabit').onclick = () => {
+  const t = $('habitText').value.trim(); if (!t) return;
+  state.habits.push({ text: t, days: [] });
+  $('habitText').value = ''; save(); renderHabits(); renderCalendar(); renderReview();
+};
+
+// ---------- 2027 calendar ----------
+let calMonth = new Date().getFullYear() === 2027 ? new Date().getMonth() : 0;
+function renderCalendar(){
+  const year = 2027, month = calMonth;
+  const first = new Date(year, month, 1);
+  $('calTitle').textContent = first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  const marked = new Set(); state.habits.forEach(h => (h.days || []).forEach(d => marked.add(d)));
+  const today = todayISO();
+  let html = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(w => `<div class="wd">${w}</div>`).join('');
+  for (let i = 0; i < first.getDay(); i++) html += '<div class="d empty"></div>';
+  const daysIn = new Date(year, month + 1, 0).getDate();
+  for (let d = 1; d <= daysIn; d++) {
+    const iso = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    html += `<div class="d ${iso === today ? 'today' : ''} ${marked.has(iso) ? 'marked' : ''}">${d}</div>`;
+  }
+  $('calGrid').innerHTML = html;
+}
+$('prevMonth').onclick = () => { calMonth = (calMonth + 11) % 12; renderCalendar(); };
+$('nextMonth').onclick = () => { calMonth = (calMonth + 1) % 12; renderCalendar(); };
+
+// ---------- weekly review ----------
+function renderReview(){
+  const today = todayISO();
+  const weekStart = addDays(today, -6);
+  let checks = 0, possible = 0;
+  state.habits.forEach(h => { const set = new Set(h.days || []); for (let i = 0; i < 7; i++) { possible++; if (set.has(addDays(weekStart, i))) checks++; } });
+  const avg = state.goals.length ? Math.round(state.goals.reduce((a,g)=>a+(g.progress||0),0)/state.goals.length) : 0;
+  const best = state.habits.reduce((m, h) => Math.max(m, streakFor(h)), 0);
+  $('review').innerHTML = state.goals.length || state.habits.length
+    ? `<p>📈 Goals average progress: <b>${avg}%</b></p>
+       <p>✅ Habit check-ins this week: <b>${checks} / ${possible}</b>${possible ? ` (${Math.round(checks/possible*100)}%)` : ''}</p>
+       <p>🔥 Best current streak: <b>${best} day${best === 1 ? '' : 's'}</b></p>
+       <p class="muted">Tip: one missed day never breaks a year. Check in again tomorrow and the streak rebuilds.</p>`
+    : '<p class="muted">Add a goal or a habit above and your weekly review will appear here.</p>';
+}
+
+// ---------- data tools ----------
+$('exportBtn').onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' }));
+  a.download = 'my-2027-plan.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+};
+$('importBtn').onclick = () => $('importFile').click();
+$('importFile').onchange = async e => {
+  if (!e.target.files[0]) return;
+  try { const data = JSON.parse(await e.target.files[0].text());
+    if (Array.isArray(data.goals) && Array.isArray(data.habits)) { state = data; save(); renderAll(); } else alert('That file does not look like a planner export.');
+  } catch (err) { alert('Could not read that file.'); }
+};
+$('printBtn').onclick = () => window.print();
+$('resetBtn').onclick = () => { if (confirm('Delete all goals and habits? This cannot be undone.')) { state = { goals: [], habits: [] }; save(); renderAll(); } };
+
+function renderAll(){ renderGoals(); renderHabits(); renderCalendar(); renderReview(); }
+renderAll();
+</script>
+</body>
+</html>
