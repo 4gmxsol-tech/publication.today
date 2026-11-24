@@ -19,12 +19,12 @@ ET.register_namespace("", NS)
 # Keep lastmod aligned with the latest substantive content commit for core pages.
 # Update these dates whenever the corresponding page content changes.
 CORE_PAGES = [
-    ("", "1.0", "2026-11-23"),
+    ("", "1.0", "2026-11-24"),
     ("section-fitness.html", "0.8", "2026-11-21"),
     ("section-health.html", "0.8", ""),
     ("section-skincare.html", "0.8", ""),
     ("section-nutrition.html", "0.8", "2026-11-17"),
-    ("section-wellness.html", "0.8", "2026-11-23"),
+    ("section-wellness.html", "0.8", "2026-11-24"),
     ("section-beauty.html", "0.8", ""),
     ("section-football.html", "0.8", "2026-11-16"),
     ("section-technology.html", "0.8", "2026-11-21"),
